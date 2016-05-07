@@ -1,0 +1,10 @@
+before_script:
+  - apt-get update -qq && apt-get install -y -qq sqlite3
+
+rspec:
+  script:
+    - python --version
+
+rubocop:
+  script:
+    - python3 --version
