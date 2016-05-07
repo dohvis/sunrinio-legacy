@@ -1,13 +1,18 @@
 before_script:
-  - apt-get update -qq && apt-get install -y -qq sqlite3 python3
-  - apt-get install -y -qq python-dev python3-dev libtiff5-dev libjpeg62-turbo-dev zlib1g-dev
-  - apt-get install -y -qq liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk build-essential python-virtualenv
-  - virtualenv --system-site-packages --python=/usr/bin/python3 venv3
-  - venv3/bin/pip install -r requirements.txt
-  - venv3/bin/pip install flake8 coverage
+  - apt-get update -qq && apt-get install -y -qq sqlite3 python3 > /dev/null
+  - apt-get install -y -qq python-dev python3-dev python-virtualenv > /dev/null
+  #- apt-get install -y -qq liblcms2-dev libwebp-dev tcl8.6-dev tk8.6-dev python-tk build-essential libtiff5-dev libjpeg62-turbo-dev zlib1g-dev > /dev/null
+  - virtualenv --system-site-packages --python=/usr/bin/python3 -q venv3
+  - venv3/bin/pip install -r requirements.txt -q
+  - venv3/bin/pip install -q flake8 coverage
   - source venv3/bin/activate
+
+
+flake8:
+  script:
+    - flake8 --exclude=migrations,venv3 --ignore=E501 .
 
 test:
   script:
-    - flake8 --exclude=migrations,venv3 --ignore=E501 .
     - coverage run manage.py test accounts
+
