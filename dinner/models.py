@@ -1,3 +1,15 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
+
+class SellingItem(models.Model):
+    seller = models.OneToOneField(User)
+    date = models.DateField(auto_now=True)
+    buyer_candidate = models.OneToOneField(User, null=True) # When this is not NULL, then there's a buyer waiting
+    price = models.IntegerField()
+
+    def add_buyer(self, user):
+        # Push an alert by doing something like
+        # alert.PushAlert(self.seller, "%s wants to buy your dinner meal!"%(user))
+        if isinstance(user, User):
+            self.buyer_candidate = user
