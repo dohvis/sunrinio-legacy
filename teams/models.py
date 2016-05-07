@@ -13,3 +13,12 @@ class Team(models.Model):
 
     def __str__(self):
         return '<%s>' % self.name
+
+
+class Want2Join(models.Model):
+    team = models.ForeignKey(Team, related_name='want2join')
+    user = models.ForeignKey(User, related_name='want2join')
+    message = models.CharField(max_length=512, help_text='팀에게 남길 말을 간단히 작성해 주세요.')
+
+    def __str__(self):
+        return '<%s 가 %s에 들어가기를 희망합니다>' % (self.user.username, self.team.name)
