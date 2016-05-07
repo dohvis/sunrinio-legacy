@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.db import models
+from django.utils import timezone
 
 
 class Tag(models.Model):
@@ -33,15 +34,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     klass = models.PositiveSmallIntegerField(help_text="반")
     number = models.PositiveSmallIntegerField(help_text="번호")
 
-    def get_default_graduate_year(self):
-        return self.entrance_year+3
-
-    graduate_year = models.IntegerField(help_text="졸업년도", default=get_default_graduate_year)
+    graduate_year = models.IntegerField(help_text="졸업년도")
     gender = models.IntegerField(choices=Gender.CHOICES, null=True, blank=True, help_text='성별')
 
     profile_image = models.ImageField(upload_to='profile_image')
     introduction = models.CharField(max_length=256)
     tags = models.ManyToManyField(Tag, related_name='users', help_text="유저 태그")
+
+    date_joined = models.DateTimeField(default=timezone.now)
+    is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'username'
 
@@ -52,8 +53,19 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.name
 
     def __init__(self, *args, **kwargs):
-        super(self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self._password = None
 
     def __str__(self):
-        return '<User %s>' % self.user.username
+        return '<User %s>' % self.username
+
+    def save(self, *args, **kwargs):
+        if not self.entrance_year:
+            self.entrance_year = timezone.now().year
+        if not self.graduate_year:
+            self.graduate_year = self.entrance_year+2
+        super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = '사용자'
+        verbose_name_plural = '사용자 관리'

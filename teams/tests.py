@@ -1,5 +1,5 @@
 from django.test import TestCase
-from django.contrib.auth.models import User
+from accounts.models import User
 from teams.models import (
     Tag,
     Team,
@@ -8,7 +8,7 @@ from teams.models import (
 
 class ModelTestCase(TestCase):
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', email='test@gmail.com', password='1234')
+        self.user = User.objects.create_user(username='testuser', email='test@gmail.com', password='1234', grade=1, klass=1, number=1)
         self.team = Team.objects.create(
             name='테스트팀',
             introduce='스택나가요',
