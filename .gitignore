@@ -196,4 +196,9 @@ target/
 #Ipython Notebook
 .ipynb_checkpoints
 
+#Virtualenv
 venv/
+
+#Vim
+*~
+.*~
