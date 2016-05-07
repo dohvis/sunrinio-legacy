@@ -63,7 +63,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         if not self.entrance_year:
             self.entrance_year = timezone.now().year
         if not self.graduate_year:
-            self.graduate_year = self.entrance_year+2
+            self.graduate_year = self.entrance_year + 2
         super().save(*args, **kwargs)
 
     class Meta:
