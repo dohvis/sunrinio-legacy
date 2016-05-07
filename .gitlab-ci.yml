@@ -9,5 +9,5 @@ before_script:
 
 test:
   script:
-    - flake8 --exclude=migrations,venv3 ignore=E501 .
+    - flake8 --exclude=migrations,venv3 --ignore=E501 .
     - coverage run manage.py test accounts
