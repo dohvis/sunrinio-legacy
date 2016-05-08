@@ -16,12 +16,21 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from accounts import urls as accounts_urls
-from teams import urls as teams_urls
+from rest_framework.routers import DefaultRouter
 
+from accounts import urls as accounts_urls
+from accounts import views as accounts_views
+from teams import urls as teams_urls
+from teams import views as teams_views
+
+router = DefaultRouter()
+router.register(r'users', accounts_views.UserViewSet)
+router.register(r'tags', accounts_views.TagViewSet)
+router.register(r'teams', teams_views.TeamViewSet)
 
 urlpatterns = [
+    url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(accounts_urls)),
-    url(r'^teams/', include(teams_urls)),
+    url(r'^team/', include(teams_urls)),
 ]

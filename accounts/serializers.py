@@ -6,6 +6,9 @@ from allauth.utils import (email_address_exists,
 from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 
+from accounts.models import Tag, User
+from teams.models import Team
+
 
 class RegisterSerializer(serializers.Serializer):
     username = serializers.CharField(
@@ -85,3 +88,21 @@ class RegisterSerializer(serializers.Serializer):
 
 class VerifyEmailSerializer(serializers.Serializer):
     key = serializers.CharField()
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    tags = serializers.StringRelatedField(many=True)
+    teams = serializers.HyperlinkedRelatedField(queryset=Team.objects.all(), view_name='team-detail', many=True)
+
+    class Meta:
+        model = User
+        fields = ('url', 'username', 'name', 'grade', 'klass', 'number', 'tags', 'teams', 'introduction')
+
+
+class TagSerializer(serializers.HyperlinkedModelSerializer):
+    teams = serializers.HyperlinkedRelatedField(queryset=Team.objects.all(), view_name='team-detail', many=True)
+    users = serializers.HyperlinkedRelatedField(queryset=User.objects.all(), view_name='user-detail', many=True)
+
+    class Meta:
+        model = Tag
+        fields = ('name', 'teams', 'users')

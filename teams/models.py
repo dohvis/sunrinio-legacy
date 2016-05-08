@@ -9,7 +9,11 @@ class Team(models.Model):
     content = models.TextField(help_text='내용')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    member = models.ManyToManyField(User, related_name='teams', help_text='팀원')
+    members = models.ManyToManyField(User, related_name='teams', help_text='팀원')
+
+    @property
+    def users(self):
+        return self.members
 
     def __str__(self):
         return '<%s>' % self.name
