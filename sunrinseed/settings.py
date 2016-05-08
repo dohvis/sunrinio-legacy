@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'django_nose',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -137,3 +138,4 @@ REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'accounts.serializers.RegisterSerializer',
 }
 SITE_ID = 1
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
