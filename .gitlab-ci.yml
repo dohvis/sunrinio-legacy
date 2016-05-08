@@ -15,4 +15,4 @@ flake8:
 test:
   script:
     - coverage run --omit=venv3/* manage.py test
-    - coverage report
+    - coverage report --skip-covered
