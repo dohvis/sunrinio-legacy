@@ -30,9 +30,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     addr = models.CharField(max_length=255, blank=True, null=True, help_text='주소')
 
     entrance_year = models.IntegerField(help_text="입학년도")
-    grade = models.PositiveSmallIntegerField(help_text="학년")
-    klass = models.PositiveSmallIntegerField(help_text="반")
-    number = models.PositiveSmallIntegerField(help_text="번호")
+    grade = models.PositiveSmallIntegerField(help_text="학년", null=True)
+    klass = models.PositiveSmallIntegerField(help_text="반", null=True)
+    number = models.PositiveSmallIntegerField(help_text="번호", null=True)
 
     graduate_year = models.IntegerField(help_text="졸업년도")
     gender = models.IntegerField(choices=Gender.CHOICES, null=True, blank=True, help_text='성별')
