@@ -14,5 +14,5 @@ flake8:
 
 test:
   script:
-    - coverage run manage.py test accounts
+    - coverage run manage.py test
 
