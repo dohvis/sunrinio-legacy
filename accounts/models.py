@@ -45,6 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['name', 'grade', 'klass', 'number', 'email']
 
     def get_full_name(self):
         return self.name
