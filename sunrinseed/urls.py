@@ -22,15 +22,19 @@ from accounts import urls as accounts_urls
 from accounts import views as accounts_views
 from teams import urls as teams_urls
 from teams import views as teams_views
+from dinner import views as dinner_views
 
 router = DefaultRouter()
 router.register(r'users', accounts_views.UserViewSet)
 router.register(r'tags', accounts_views.TagViewSet)
 router.register(r'teams', teams_views.TeamViewSet)
+router.register(r'dinners', dinner_views.DinnerViewSet)
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(accounts_urls)),
+
+    url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^team/', include(teams_urls)),
 ]
