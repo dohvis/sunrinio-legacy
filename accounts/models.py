@@ -47,6 +47,14 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['name', 'grade', 'klass', 'number', 'email']
 
+    @property
+    def first_name(self):
+        return self.name
+
+    @property
+    def last_name(self):
+        return self.name
+
     def get_full_name(self):
         return self.name
 
