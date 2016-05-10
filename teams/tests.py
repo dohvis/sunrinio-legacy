@@ -59,23 +59,24 @@ class TestTeamList(TestCase):
             ]
         )
 
-        class TestJoinRequest(TestCase):
-            def setUp(self):
-                self.l_username = 'leader'
-                self.l_pw = 'qwer1234'
 
-                self.team, self.leader, self.user = make_team_and_user()
-                self.c = Client()
-                self.c.login(username=self.user.username, password='qwer1234')
+class TestJoinRequest(TestCase):
+    def setUp(self):
+        self.l_username = 'leader'
+        self.l_pw = 'qwer1234'
 
-            def test_join_request(self):
-                res = self.c.post('/team/{team_id}/want2join/'.format(team_id=self.team.id))
-                self.assertEqual(res.status_code, 200)
+        self.team, self.leader, self.user = make_team_and_user()
+        self.c = Client()
+        self.c.login(username=self.user.username, password='qwer1234')
 
-                self.assertJSONEqual(
-                    str(res.content, encoding='utf8'),
-                    {'status': 'success'}
-                )
-                w = Want2Join.objects.first()
-                self.assertEqual(w.team, self.team)
-                self.assertEqual(w.user, self.user)
+    def test_join_request(self):
+        res = self.c.post('/team/{team_id}/want2join/'.format(team_id=self.team.id))
+        self.assertEqual(res.status_code, 200)
+
+        self.assertJSONEqual(
+            str(res.content, encoding='utf8'),
+            {'status': 'success'}
+        )
+        w = Want2Join.objects.first()
+        self.assertEqual(w.team, self.team)
+        self.assertEqual(w.user, self.user)
