@@ -90,7 +90,6 @@ class TestDeal(TestCase):
         res = self.c.put(
             '/api/dinners/1/',
             data=dumps({'message': '2교시 끝나고 3-2로 갈께요', 'status': '2', 'price': 5000}),
-            status=Dinner.Status.DEALING,
             # TODO: res['status'], Is it needed?
             content_type='application/json'
         )
@@ -105,7 +104,32 @@ class TestDeal(TestCase):
         self._buy_dinner()
 
     def test_buy_dinner_accept(self):
-        pass
+        self._bringout_dinner()
+        self._buy_dinner()
+        dinners = Dinner.objects.all()
+        self.assertEqual(dinners.first().status, Dinner.Status.DEALING)
+        res = self.c.put(
+            '/api/dinners/1/',
+            data=dumps({'status': '3'}),
+            content_type='application/json'
+        )
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(dinners.count(), 1)
+        self.assertEqual(dinners.first().status, Dinner.Status.SOLD_OUT)
 
     def test_buy_dinner_deny(self):
-        pass
+        self._bringout_dinner()
+        self._buy_dinner()
+        dinners = Dinner.objects.all()
+        self.assertEqual(dinners.first().status, Dinner.Status.DEALING)
+        res = self.c.put(
+            '/api/dinners/1/',
+            data=dumps({'status': '1'}),
+            content_type='application/json'
+        )
+
+        self.assertEqual(res.status_code, 200)
+        dinners = Dinner.objects.all()
+        self.assertEqual(dinners.count(), 1)
+        self.assertEqual(dinners.first().status, Dinner.Status.NEW)
