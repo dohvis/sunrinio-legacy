@@ -175,3 +175,19 @@ SWAGGER_SETTINGS = {
     },
     'doc_expansion': 'none',
 }
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE': ['email', 'user_birthday', 'user_education_history'],
+        'AUTH_PARAMS': {'auth_type': 'rerequest'},
+        'METHOD': 'oauth2',
+        'VERIFIED_EMAIL': False
+    },
+}
+
+ACCOUNT_EMAIL_REQUIRED = False
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)

@@ -1,6 +1,7 @@
-from django.conf.urls import include, url
+from django.conf.urls import url
+
+from accounts import views
 
 urlpatterns = [
-    url(r'^auth/', include('rest_auth.urls')),
-    url(r'^auth/registration/', include('rest_auth.registration.urls')),
+    url('^signin/', views.signin),
 ]

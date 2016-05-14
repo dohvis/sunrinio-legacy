@@ -25,6 +25,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.CharField(max_length=64, null=True, blank=True, help_text="이메일 주소")
     is_staff = models.BooleanField(default=False, help_text="관리자 여부")
 
+    first_name = models.CharField(max_length=10, null=True)
+    last_name = models.CharField(max_length=10, null=True)
+
     name = models.CharField(max_length=10, null=False, help_text="이름")
     birthday = models.DateField(blank=True, null=True, help_text="생일")
     addr = models.CharField(max_length=255, blank=True, null=True, help_text='주소')
@@ -46,14 +49,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['name', 'grade', 'klass', 'number', 'email']
-
-    @property
-    def first_name(self):
-        return self.name
-
-    @property
-    def last_name(self):
-        return self.name
 
     def get_full_name(self):
         return self.name

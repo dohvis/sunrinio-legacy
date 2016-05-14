@@ -1,4 +1,10 @@
+from django.contrib.sites.models import Site
 from accounts.models import Tag, User
+
+from allauth.socialaccount.models import SocialApp
+
+FB_ID = "528049860707304"
+FB_SECRET = "92cb5cd475a48d9aafec759a9e540e11"
 
 
 def create_tags():
@@ -8,7 +14,14 @@ def create_tags():
     return tag_list
 
 
+def create_social_apps():
+    fb = SocialApp.objects.create(provider='facebook', name='EduPick', client_id=FB_ID, secret=FB_SECRET)
+    fb.sites.add(Site.objects.first())
+    fb.save()
+
+
 def run():
+    create_social_apps()
     create_tags()
     print("[+] Create Tags")
     User.objects.create_superuser(username='admin', email='a@gmail.com', password='qwer1234',

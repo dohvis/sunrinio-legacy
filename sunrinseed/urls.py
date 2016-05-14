@@ -32,6 +32,10 @@ router.register(r'dinners', dinner_views.DinnerViewSet)
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),
+    url(r'^api/auth/', include('rest_auth.urls')),
+    url(r'^api/auth/registration/', include('rest_auth.registration.urls')),
+    url(r'^api/auth/facebook/$', accounts_views.FacebookLogin.as_view(), name='fb_login'),
+
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(accounts_urls)),
 
