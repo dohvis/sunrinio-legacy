@@ -6,6 +6,16 @@ from dinner.serializers import DinnerSerializer
 
 
 class DinnerViewSet(viewsets.ModelViewSet):
+    """
+    석식 거래 API
+
+    <h2>status</h2>
+    <ul>
+    <li> 1: 판매중</li>
+    <li> 2: 거래중</li>
+    <li> 3: 판매 완료</li>
+    </ul>
+    """
     queryset = Dinner.objects.all()
     serializer_class = DinnerSerializer
 

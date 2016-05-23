@@ -151,7 +151,7 @@ SWAGGER_SETTINGS = {
         'patch',
         'delete'
     ],
-    'api_key': '',
+    'api_key': 'sunrinseed_special_key',
     'is_authenticated': False,
     'is_superuser': False,
     'unauthenticated_user': 'django.contrib.auth.models.AnonymousUser',
@@ -160,18 +160,16 @@ SWAGGER_SETTINGS = {
     'base_path': '127.0.0.1:8000/docs',
     'info': {
         'contact': 'apiteam@wordnik.com',
-        'description': 'This is a sample server Petstore server. '
-                       'You can find out more about Swagger at '
+        'description': 'You can find out more about Swagger at '
                        '<a href="http://swagger.wordnik.com">'
                        'http://swagger.wordnik.com</a> '
-                       'or on irc.freenode.net, #swagger. '
                        'For this sample, you can use the api key '
-                       '"special-key" to test '
+                       '"sunrinseed_special_key" to test '
                        'the authorization filters',
         'license': 'Apache 2.0',
         'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html',
         'termsOfServiceUrl': 'http://helloreverb.com/terms/',
-        'title': 'Swagger Sample App',
+        'title': 'Sunrin-Seed API 문서',
     },
     'doc_expansion': 'none',
 }
