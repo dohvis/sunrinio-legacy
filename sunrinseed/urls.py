@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 
 from rest_framework.routers import DefaultRouter
@@ -24,6 +25,7 @@ from teams import urls as teams_urls
 from teams import views as teams_views
 from dinner import views as dinner_views
 
+from sunrinseed.settings import base as settings
 router = DefaultRouter()
 router.register(r'users', accounts_views.UserViewSet)
 router.register(r'tags', accounts_views.TagViewSet)
@@ -41,4 +43,5 @@ urlpatterns = [
 
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^team/', include(teams_urls)),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
