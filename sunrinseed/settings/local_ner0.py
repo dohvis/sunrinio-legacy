@@ -1,4 +1,4 @@
-from sunrinseed.settings import *
+from sunrinseed.settings.base import *
 
 DATABASES = {
     'default': {

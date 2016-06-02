@@ -11,13 +11,15 @@ import os
 import site
 import sys
 
-from django.core.wsgi import get_wsgi_application
+
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../")))
 
 site.addsitedir('/home/nero/.virtualenvs/sseed/lib/python3.4/site-packages')
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sunrinseed.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sunrinseed.settings.production")
 
+from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
+

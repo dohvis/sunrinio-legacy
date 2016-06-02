@@ -1,4 +1,4 @@
-from sunrinseed.settings import *
+from sunrinseed.settings.base import *
 
 SWAGGER_SETTINGS['base_path'] = 'dev.ner0.kr/docs'
 DATABASES = {
