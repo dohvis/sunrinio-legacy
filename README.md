@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/nerogit/sunrin-seed/tree/master.svg?style=svg)](https://circleci.com/gh/nerogit/sunrin-seed/tree/master)
+[![CircleCI](https://circleci.com/gh/nerogit/sunrin-seed.svg?style=shield&circle-token=c24192cd2c24a7ea0d80c99af9016c98ed4800d7)](https://circleci.com/gh/nerogit/sunrin-seed)
 
 http://dev.ner0.kr/docs/
 # Sunrin-SEED
