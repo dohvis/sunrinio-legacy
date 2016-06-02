@@ -1,4 +1,4 @@
-from sunrinseed.settings.base import *
+from sunrinseed.settings.base import *  # NOQA
 
 SWAGGER_SETTINGS['base_path'] = 'dev.ner0.kr/docs'
 DATABASES = {

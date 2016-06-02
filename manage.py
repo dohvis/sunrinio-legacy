@@ -14,7 +14,7 @@ if __name__ == "__main__":
         execute_from_command_line(sys.argv)
     except ImportError:
         os.environ['DJANGO_SETTINGS_MODULE'] = ''
-        os.environ["DJANGO_SETTINGS_MODULE"]= "sunrinseed.settings.production"
-        import django; django.setup()
+        os.environ["DJANGO_SETTINGS_MODULE"] = "sunrinseed.settings.production"
+        import django
+        django.setup()
         execute_from_command_line(sys.argv)
-

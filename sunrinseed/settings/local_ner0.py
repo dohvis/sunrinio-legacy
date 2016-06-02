@@ -1,4 +1,4 @@
-from sunrinseed.settings.base import *
+from sunrinseed.settings.base import *  # NOQA
 
 DATABASES = {
     'default': {

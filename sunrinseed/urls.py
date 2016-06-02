@@ -26,6 +26,7 @@ from teams import views as teams_views
 from dinner import views as dinner_views
 
 from sunrinseed.settings import base as settings
+
 router = DefaultRouter()
 router.register(r'users', accounts_views.UserViewSet)
 router.register(r'tags', accounts_views.TagViewSet)
@@ -44,4 +45,3 @@ urlpatterns = [
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^team/', include(teams_urls)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
