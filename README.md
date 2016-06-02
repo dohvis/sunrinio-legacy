@@ -1,4 +1,4 @@
-[![build status](https://gitlab.com/nerogit/sunrin-seed/badges/master/build.svg)](https://gitlab.com/nerogit/sunrin-seed/commits/master)
+[![CircleCI](https://circleci.com/gh/nerogit/sunrin-seed/tree/master.svg?style=svg)](https://circleci.com/gh/nerogit/sunrin-seed/tree/master)
 
 http://dev.ner0.kr/docs/
 # Sunrin-SEED
