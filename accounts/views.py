@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from django.shortcuts import render
 
-from accounts.models import Tag, User
+from accounts.models import User
 from accounts.permissions import IsOwnerOrReadOnly
 from accounts.serializers import UserSerializer
 
