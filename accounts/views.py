@@ -7,7 +7,7 @@ from django.shortcuts import render
 
 from accounts.models import Tag, User
 from accounts.permissions import IsOwnerOrReadOnly
-from accounts.serializers import UserSerializer, TagSerializer
+from accounts.serializers import UserSerializer
 
 
 class UserViewSet(ReadOnlyModelViewSet):
@@ -15,13 +15,6 @@ class UserViewSet(ReadOnlyModelViewSet):
                           IsOwnerOrReadOnly,)
     queryset = User.objects.all()
     serializer_class = UserSerializer
-
-
-class TagViewSet(ReadOnlyModelViewSet):
-    permission_classes = (IsAuthenticatedOrReadOnly,
-                          IsOwnerOrReadOnly,)
-    queryset = Tag.objects.all()
-    serializer_class = TagSerializer
 
 
 class FacebookOAuth2AdapterCustom(FacebookOAuth2Adapter):

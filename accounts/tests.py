@@ -1,6 +1,7 @@
 from django.test import Client, TestCase
 
-from accounts.models import User, Tag
+from accounts.models import User
+from tags.models import Tag
 from scripts.init_data import create_tags
 
 
@@ -29,7 +30,7 @@ class TestAuthentication(TestCase):
         grade = 1
         data = {'username': username, 'password1': pw, 'password2': pw, 'email': 'signupuser@gmail.com',
                 'grade': grade, 'klass': 2, 'number': 3}
-        res = self.c.post('/accounts/auth/registration/', data=data)
+        res = self.c.post('/api/auth/registration/', data=data)
         self.assertEqual(res.status_code, 201)
         self.assertEqual(User.objects.get(username=username).grade, grade)
 

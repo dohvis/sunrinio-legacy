@@ -21,6 +21,7 @@ from rest_framework.routers import DefaultRouter
 
 from accounts import urls as accounts_urls
 from accounts import views as accounts_views
+from tags import views as tags_views
 from teams import urls as teams_urls
 from teams import views as teams_views
 from dinner import views as dinner_views
@@ -29,7 +30,7 @@ from sunrinseed.settings import base as settings
 
 router = DefaultRouter()
 router.register(r'users', accounts_views.UserViewSet)
-router.register(r'tags', accounts_views.TagViewSet)
+router.register(r'tags', tags_views.TagViewSet)
 router.register(r'teams', teams_views.TeamViewSet)
 router.register(r'dinners', dinner_views.DinnerViewSet)
 

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'dinner',
+    'tags',
     'teams',
 ]
 

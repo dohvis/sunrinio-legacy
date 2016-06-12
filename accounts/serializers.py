@@ -6,7 +6,7 @@ from allauth.utils import (email_address_exists,
 from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 
-from accounts.models import Tag, User
+from accounts.models import User
 from teams.models import Team
 
 
@@ -97,12 +97,3 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('url', 'username', 'name', 'grade', 'klass', 'number', 'tags', 'teams', 'introduction')
-
-
-class TagSerializer(serializers.HyperlinkedModelSerializer):
-    teams = serializers.HyperlinkedRelatedField(queryset=Team.objects.all(), view_name='team-detail', many=True)
-    users = serializers.HyperlinkedRelatedField(queryset=User.objects.all(), view_name='user-detail', many=True)
-
-    class Meta:
-        model = Tag
-        fields = ('name', 'teams', 'users')

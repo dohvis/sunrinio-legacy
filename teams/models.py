@@ -1,5 +1,7 @@
-from accounts.models import User, Tag
 from django.db import models
+
+from accounts.models import User
+from tags.models import Tag
 
 
 class Team(models.Model):
