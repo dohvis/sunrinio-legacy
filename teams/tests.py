@@ -36,6 +36,9 @@ class TestModel(TestCase):
 
 
 class TestTeamList(TestCase):
+    """
+    팀 목록 조회 테스트
+    """
     def setUp(self):
         self.team, self.leader, self.user = make_team_and_user()
         self.c = Client()
@@ -61,6 +64,9 @@ class TestTeamList(TestCase):
 
 
 class TestJoinRequest(TestCase):
+    """
+    팀 가입 요청 테스트
+    """
     def setUp(self):
         self.l_username = 'leader'
         self.l_pw = 'qwer1234'
