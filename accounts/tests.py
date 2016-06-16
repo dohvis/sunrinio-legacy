@@ -73,6 +73,21 @@ class TestUpdateUserInfo(TestCase):
         updated_data = {"email": "asdf"}
         self.assertFalse(self._update_info(updated_data))
 
+    def test_update_profile_image(self):
+        fn = generate_image()
+        url = '/accounts/update_profile_image/'
+        prev_image = self.user.profile_image
+
+        with open(fn, 'rb') as fp:
+            res = self.c.post(url, data={'profile_image': fp})
+        self.user.refresh_from_db()
+
+        self.assertEqual(res.status_code, 200)
+        self.assertNotEqual(self.user.profile_image, prev_image)
+
+        import os
+        os.remove(fn)
+
 
 class TestUserList(TestCase):
     def setUp(self):
