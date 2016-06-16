@@ -93,6 +93,7 @@ class VerifyEmailSerializer(serializers.Serializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     tags = serializers.StringRelatedField(many=True)
     teams = serializers.HyperlinkedRelatedField(queryset=Team.objects.all(), view_name='team-detail', many=True)
+    profile_image = serializers.ImageField(required=False)
 
     class Meta:
         model = User

@@ -1,3 +1,4 @@
+from json import dumps
 from django.test import Client, TestCase
 
 from accounts.models import User
@@ -52,15 +53,25 @@ class TestUpdateUserInfo(TestCase):
     def setUp(self):
         self.user, self.c = make_user(login=True)
 
-    def test_update(self):
-        name = generate_image()
-        with open(name, 'rb') as fp:
-            res = self.c.put('/api/users/{}'.format(self.user.id), data={'profile_image': fp})
-        print(res)
-        self.assertEqual(res.status_code, 301)
+    def _update_info(self, updated_data):
+        url = '/api/users/{}/'.format(self.user.pk)
+        res = self.c.patch(url, data=dumps(updated_data), content_type='application/json')
+        self.assertEqual(res.status_code, 200)
+        self.user.refresh_from_db()
+        for key in updated_data.keys():
+            obj_value = getattr(self.user, key)
+            if obj_value != updated_data[key]:
+                return False
 
-        import os
-        os.remove(name)
+        return True
+
+    def test_update(self):
+        updated_data = {"klass": 12, "number": 3}
+        self.assertTrue(self._update_info(updated_data))
+
+    def test_invalid_update(self):
+        updated_data = {"email": "asdf"}
+        self.assertFalse(self._update_info(updated_data))
 
 
 class TestUserList(TestCase):
