@@ -1,6 +1,6 @@
 from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from rest_auth.registration.views import SocialLoginView
-from rest_framework.viewsets import ReadOnlyModelViewSet
+from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from django.shortcuts import render
@@ -10,7 +10,7 @@ from accounts.permissions import IsOwnerOrReadOnly
 from accounts.serializers import UserSerializer
 
 
-class UserViewSet(ReadOnlyModelViewSet):
+class UserViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly,
                           IsOwnerOrReadOnly,)
     queryset = User.objects.all()
