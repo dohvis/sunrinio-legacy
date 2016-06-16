@@ -36,7 +36,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     gender = models.IntegerField(choices=Gender.CHOICES, null=True, blank=True, help_text='성별')
 
     profile_image = models.ImageField(upload_to='profile_image')
-    introduction = models.CharField(max_length=256)
+    introduction = models.CharField(max_length=256, blank=True)
     tags = models.ManyToManyField(Tag, related_name='users', help_text="유저 태그")
 
     date_joined = models.DateTimeField(default=timezone.now)
