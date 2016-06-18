@@ -1,6 +1,7 @@
 defusedxml==0.4.1
 Django==1.8.9
 django-allauth==0.24.1
+django-debug-toolbar==1.4
 django-extensions==1.6.1
 django-nose==1.4.3
 django-rest-auth==0.7.0
