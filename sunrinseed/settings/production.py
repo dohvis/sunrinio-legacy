@@ -1,5 +1,9 @@
 from sunrinseed.settings.base import *  # NOQA
-
+try:
+    import pymysql
+    pymysql.install_as_MySQLdb()
+except ImportError:
+    pass
 SWAGGER_SETTINGS['base_path'] = 'dev.ner0.kr/docs'
 DATABASES = {
     'default': {
