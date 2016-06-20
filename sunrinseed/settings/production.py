@@ -4,7 +4,7 @@ try:
     pymysql.install_as_MySQLdb()
 except ImportError:
     pass
-SWAGGER_SETTINGS['base_path'] = 'dev.ner0.kr/docs'
+SWAGGER_SETTINGS['base_path'] = 'dev.sunrin.io/docs'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
