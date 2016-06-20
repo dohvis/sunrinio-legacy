@@ -26,3 +26,6 @@ class Dinner(models.Model):
         # alert.PushAlert(self.seller, "%s wants to buy your dinner meal!"%(user))
         if isinstance(user, User):
             self.buyer_candidate = user
+
+    def __str__(self):
+        return "판매자:{}, 구매자:{}".format(self.seller, self.buyer_candidate)
