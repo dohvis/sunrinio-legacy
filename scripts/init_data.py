@@ -32,15 +32,16 @@ def create_social_apps():
 
 def create_places():
     info_list = [
-        ('육쌈냉면', '서울특별시 용산구 청파로4가길 7', '겨울 냉면', '37.5445323,126.9669203'),
-        ('서울쌈냉면', '서울특별시 용산구 청파로47길 47-5 경성빌리지', '고기랑 냉면 같이줌', '37.5443699,126.9677534'),
+        ('육쌈냉면', '서울특별시 용산구 청파로4가길 7', '겨울 냉면', 126.9669203, 37.5445323),
+        ('서울쌈냉면', '서울특별시 용산구 청파로47길 47-5 경성빌리지', '고기랑 냉면 같이줌', 126.9677534, 37.5443699),
     ]
     for info in info_list:
         Place.objects.create(
             name=info[0],
             address=info[1],
             description=info[2],
-            location=info[3],
+            x=info[3],
+            y=info[4],
         )
     return Place.objects.first()
 
@@ -50,7 +51,7 @@ def create_reviews():
     place2 = Place.objects.all()[1]
     user = User.objects.first() or create_super_user()
     from sunrinseed.settings.base import BASE_DIR
-    import io, os
+    import os
     sulsam = open(os.path.join(BASE_DIR, 'media', 'sulsam.jpg'), 'rb')
     yuksam = open(os.path.join(BASE_DIR, 'media', '6sam.jpg'), 'rb')
     info_list = [
@@ -83,6 +84,11 @@ def run():
         create_places()
         create_reviews()
         print("[+] Create Places and Reviews")
+
+    except IntegrityError as e:
+        print(e)
+
+    try:
         create_super_user()
         print("[+] Create admin:qwer1234")
     except IntegrityError:
