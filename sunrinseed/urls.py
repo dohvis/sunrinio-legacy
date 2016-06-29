@@ -21,6 +21,7 @@ from rest_framework.routers import DefaultRouter
 
 from accounts import urls as accounts_urls
 from accounts import views as accounts_views
+from hotplace import views as place_views
 from tags import views as tags_views
 from teams import urls as teams_urls
 from teams import views as teams_views
@@ -33,9 +34,11 @@ router.register(r'users', accounts_views.UserViewSet)
 router.register(r'tags', tags_views.TagViewSet)
 router.register(r'teams', teams_views.TeamViewSet)
 router.register(r'dinners', dinner_views.DinnerViewSet)
-
+router.register(r'places', place_views.PlaceViewSet)
+router.register(r'reviews', place_views.ReviewViewSet)
 urlpatterns = [
     url(r'^api/', include(router.urls)),
+
     url(r'^api/auth/', include('rest_auth.urls')),
     url(r'^api/auth/registration/', include('rest_auth.registration.urls')),
     url(r'^api/auth/facebook/$', accounts_views.FacebookLogin.as_view(), name='fb_login'),

@@ -1,10 +1,20 @@
 from django.contrib.sites.models import Site
+from django.core.files import File
+from django.db.utils import (
+    IntegrityError,
+)
 from accounts.models import Tag, User
-
+from hotplace.models import Image, Place, Review
 from allauth.socialaccount.models import SocialApp
 
 FB_ID = "528049860707304"
 FB_SECRET = "92cb5cd475a48d9aafec759a9e540e11"
+
+
+def create_super_user():
+    return User.objects.create_superuser(
+        username='admin', email='a@gmail.com', password='qwer1234',
+        grade=4, klass=1, number=1)
 
 
 def create_tags():
@@ -20,10 +30,60 @@ def create_social_apps():
     fb.save()
 
 
+def create_places():
+    info_list = [
+        ('육쌈냉면', '서울시　용산구　청파동', '고기랑 냉면 같이줌', '36.0,127.0'),
+        ('서울쌈냉면', '서울시　용산구　청파동', '고기랑 냉면 같이줌', '36.1,127.0'),
+    ]
+    for info in info_list:
+        Place.objects.create(
+            name=info[0],
+            address=info[1],
+            description=info[2],
+            location=info[3],
+        )
+    return Place.objects.first()
+
+
+def create_reviews():
+    place = Place.objects.first() or create_places()
+    place2 = Place.objects.all()[1]
+    user = User.objects.first() or create_super_user()
+    from sunrinseed.settings.base import BASE_DIR
+    import io, os
+    sulsam = open(os.path.join(BASE_DIR, 'media', 'sulsam.jpg'), 'rb')
+    yuksam = open(os.path.join(BASE_DIR, 'media', '6sam.jpg'), 'rb')
+    info_list = [
+        ((place, user, 4, '좋아염'), [yuksam, ],),
+        ((place2, user, 4, '좋아염'), [sulsam, ],),
+    ]
+    for info in info_list:
+        review_info = info[0]
+        review = Review.objects.create(
+            place=review_info[0],
+            user=review_info[1],
+            rate=review_info[2],
+            comment=review_info[3],
+        )
+        for img in info[1]:
+            Image.objects.create(image=File(img), review=review)
+    sulsam.close()
+    yuksam.close()
+
+
 def run():
-    create_social_apps()
-    create_tags()
-    print("[+] Create Tags")
-    User.objects.create_superuser(username='admin', email='a@gmail.com', password='qwer1234',
-                                  grade=4, klass=1, number=1)
-    print("[+] Create admin:qwer1234")
+    try:
+        create_social_apps()
+        create_tags()
+        print("[+] Create Tags")
+    except IntegrityError:
+        pass
+
+    try:
+        create_places()
+        create_reviews()
+        print("[+] Create Places and Reviews")
+        create_super_user()
+        print("[+] Create admin:qwer1234")
+    except IntegrityError:
+        pass

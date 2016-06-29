@@ -204,3 +204,6 @@ venv/
 #Vim
 *~
 .*~
+
+#Local Setting
+local_.*.py

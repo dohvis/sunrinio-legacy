@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
 
     'django_nose',
+    'location_field',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     'accounts',
     'boards',
     'dinner',
+    'hotplace',
     'tags',
     'teams',
 ]
