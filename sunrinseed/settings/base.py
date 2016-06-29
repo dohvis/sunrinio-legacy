@@ -193,3 +193,5 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+
+GOOGLE_MAPS_V3_APIKEY = "AIzaSyCC4k1rRvHyZodyQJO8QiBoi3tywMoKdCc"
