@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="theme-color" content="#01579b">
+    <title>Parallax Template - Materialize</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/static/bower_components/Materialize/dist/css/materialize.css" type="text/css" rel="stylesheet"
+          media="screen,projection"/>
+    <link href="/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<nav>
+    <div class="nav-wrapper">
+        <a href="#!" class="brand-logo"><span class="blue-text text-lighten-5">Sunrin.io</span></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+            <li>
+                <div class="col s12 m8 offset-m2 l6 offset-l3">
+                    <div class="card-panel grey lighten-5 z-depth-1">
+                        <div class="row valign-wrapper">
+                            <div class="col s7">
+                                <img src="/static/images/sample.jpg" alt="" class="circle user_photo-img">
+                                <!-- notice the "circle" class -->
+                            </div>
+                            <div class="col s5">
+                  <span class="black-text">
+                    username
+                  </span>
+
+                            </div>
+
+                        </div>
+                        <a class="waves-effect waves-light btn" href="/login.html">LOGIN</a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="badges.html">Components</a></li>
+            <li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">Mobile</a></li>
+        </ul>
+
+    </div>
+
+</nav>
+{% block content %}
+{% endblock %}
+<!--  Scripts-->
+<script src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/static/bower_components/Materialize/dist/js/materialize.min.js"></script>
+<script src="/static/js/bundle.js"></script>
+
+</body>
+</html>

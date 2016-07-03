@@ -208,5 +208,6 @@ venv/
 #Local Setting
 local_.*.py
 node_modules/
+bower_components/
 static_root/
 bundle.js
