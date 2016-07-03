@@ -207,41 +207,11 @@ SOCIALACCOUNT_PROVIDERS = {
 
 GOOGLE_MAPS_V3_APIKEY = "AIzaSyCC4k1rRvHyZodyQJO8QiBoi3tywMoKdCc"
 
-# Django Pipeline (and browserify)
-STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
-
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'pipeline.finders.PipelineFinder',
 )
 
-PIPELINE = {
-    'PIPELINE_ENABLED': True,
-}
-
-# browserify-specific
-PIPELINE_COMPILERS = (
-    'pipeline_browserify.compiler.BrowserifyCompiler',
-)
-
-PIPELINE_CSS_COMPRESSOR = 'pipeline.compressors.NoopCompressor'
-PIPELINE_JS_COMPRESSOR = 'pipeline.compressors.uglifyjs.UglifyJSCompressor'
-
-if DEBUG:
-    PIPELINE_BROWSERIFY_ARGUMENTS = '-t babelify'
-
-PIPELINE_JS = {
-    'js': {
-        'source_filenames': (
-            'js/bower_components/jquery/dist/jquery.min.js',
-            'js/bower_components/react/JSXTransformer.js',
-            'js/bower_components/react/react-with-addons.js',
-            'js/webpack.config.js',
-        ),
-        'output_filename': 'js/mysite_js.js',
-    }
-}
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination'
 }
