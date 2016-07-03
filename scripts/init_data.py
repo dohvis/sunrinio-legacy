@@ -25,7 +25,7 @@ def create_tags():
 
 
 def create_social_apps():
-    fb = SocialApp.objects.create(provider='facebook', name='EduPick', client_id=FB_ID, secret=FB_SECRET)
+    fb = SocialApp.objects.create(provider='facebook', name='sunrinio', client_id=FB_ID, secret=FB_SECRET)
     fb.sites.add(Site.objects.first())
     fb.save()
 
