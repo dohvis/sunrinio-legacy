@@ -207,3 +207,6 @@ venv/
 
 #Local Setting
 local_.*.py
+node_modules/
+static_root/
+bundle.js

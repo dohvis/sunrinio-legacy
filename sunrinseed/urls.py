@@ -26,8 +26,10 @@ from tags import views as tags_views
 from teams import urls as teams_urls
 from teams import views as teams_views
 from dinner import views as dinner_views
+from utils import views as util_views
 
 from sunrinseed.settings import base as settings
+
 
 router = DefaultRouter()
 router.register(r'users', accounts_views.UserViewSet)
@@ -48,6 +50,7 @@ urlpatterns = [
 
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^team/', include(teams_urls)),
+    url(r'^debug/(?P<dir_name>\w+)/(?P<template_name>\w+)/$', util_views.template_debug),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
