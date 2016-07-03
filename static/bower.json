@@ -1,0 +1,19 @@
+{
+  "name": "sunrinio",
+  "description": "",
+  "authors": [
+    "DoHyun Kim <nero.union12@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/nerogit/sunrinio",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",m
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "Materialize": "materialize#^0.97.6"
+  }
+}
