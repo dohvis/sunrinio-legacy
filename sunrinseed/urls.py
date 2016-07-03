@@ -22,6 +22,7 @@ from rest_framework.routers import DefaultRouter
 from accounts import urls as accounts_urls
 from accounts import views as accounts_views
 from hotplace import views as place_views
+from boards import views as boards_views
 from tags import views as tags_views
 from teams import urls as teams_urls
 from teams import views as teams_views
@@ -37,6 +38,8 @@ router.register(r'teams', teams_views.TeamViewSet)
 router.register(r'dinners', dinner_views.DinnerViewSet)
 router.register(r'places', place_views.PlaceViewSet)
 router.register(r'reviews', place_views.ReviewViewSet)
+router.register(r'boards', boards_views.BoardViewSet)
+
 urlpatterns = [
     url(r'^api/', include(router.urls)),
 

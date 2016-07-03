@@ -242,3 +242,6 @@ PIPELINE_JS = {
         'output_filename': 'js/mysite_js.js',
     }
 }
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination'
+}

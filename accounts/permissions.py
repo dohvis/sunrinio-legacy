@@ -8,4 +8,5 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
             return True
 
         # Write permissions are only allowed to the owner of the snippet
+        # TODO: 이거 try-except로 obj.author 등 추가해서 로그인말고도 다른곳에서도 쓸수 있게
         return obj == request.user
