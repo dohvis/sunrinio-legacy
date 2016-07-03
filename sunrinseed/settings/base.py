@@ -194,6 +194,17 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = ''
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE': ['email', 'user_birthday'],
+        'AUTH_PARAMS': {'auth_type': 'rerequest'},
+        'METHOD': 'oauth2',
+        'VERIFIED_EMAIL': False
+    }
+}
+
 GOOGLE_MAPS_V3_APIKEY = "AIzaSyCC4k1rRvHyZodyQJO8QiBoi3tywMoKdCc"
 
 # Django Pipeline (and browserify)

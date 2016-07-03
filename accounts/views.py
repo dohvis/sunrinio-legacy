@@ -29,8 +29,8 @@ class FacebookLogin(SocialLoginView):
     adapter_class = FacebookOAuth2AdapterCustom
 
 
-def signin(request):
-    return render(request, "accounts/signin.html")
+def login(request):
+    return render(request, "accounts/login.html")
 
 
 def update_profile_image(request):

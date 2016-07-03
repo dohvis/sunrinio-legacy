@@ -30,7 +30,6 @@ from utils import views as util_views
 
 from sunrinseed.settings import base as settings
 
-
 router = DefaultRouter()
 router.register(r'users', accounts_views.UserViewSet)
 router.register(r'tags', tags_views.TagViewSet)
@@ -46,8 +45,8 @@ urlpatterns = [
     url(r'^api/auth/facebook/$', accounts_views.FacebookLogin.as_view(), name='fb_login'),
 
     url(r'^admin/', admin.site.urls),
-    url(r'^accounts/', include(accounts_urls)),
-
+    url(r'^accounts/', include(accounts_urls, namespace='accounts')),
+    url(r'^allauth/', include('allauth.urls')),
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^team/', include(teams_urls)),
     url(r'^debug/(?P<dir_name>\w+)/(?P<template_name>\w+)/$', util_views.template_debug),

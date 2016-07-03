@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
     <meta name="theme-color" content="#01579b">
-    <title>Parallax Template - Materialize</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -27,20 +27,22 @@
             <li>
                 <div class="col s12 m8 offset-m2 l6 offset-l3">
                     <div class="card-panel grey lighten-5 z-depth-1">
-                        <div class="row valign-wrapper">
-                            <div class="col s7">
-                                <img src="/static/images/sample.jpg" alt="" class="circle user_photo-img">
-                                <!-- notice the "circle" class -->
+                        {% if request.user.is_authenticated %}
+                            <div class="row valign-wrapper">
+                                <div class="col s7">
+                                    <img src="{{ request.user.profile_image }}" alt="프로필 사진"
+                                         class="circle user_photo-img">
+                                    <!-- notice the "circle" class -->
+                                </div>
+                                <div class="col s5">
+                                <span class="black-text">
+                                    {{ request.user.name }}
+                                </span>
+                                </div>
                             </div>
-                            <div class="col s5">
-                  <span class="black-text">
-                    username
-                  </span>
-
-                            </div>
-
-                        </div>
-                        <a class="waves-effect waves-light btn" href="/login.html">LOGIN</a>
+                        {% else %}
+                            <a class="waves-effect waves-light btn" href="{% url 'accounts:login' %}">로그인</a>
+                        {% endif %}
                     </div>
                 </div>
             </li>
