@@ -10,6 +10,7 @@ class BoardSerializer(serializers.ModelSerializer):
     posts = serializers.HyperlinkedIdentityField(
         view_name='post-detail',
         lookup_field='pk',
+        many=True,
     )
 
     class Meta:

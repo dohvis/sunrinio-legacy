@@ -20,7 +20,8 @@ def write_post(boards=None):
         (boards[0], '제목1', User.objects.first(), '내용', tags),
     )
     for post in posts:
-        Post.objects.create(board=post[0], title=post[1], author=post[2], tags=post[3])
+        Post.objects.create(board=post[0], title=post[1], author=post[2])
+        Post.objects.create(board=post[0], title=post[1], author=post[2])
 
 
 def board_init():
@@ -40,10 +41,31 @@ class TestBoardListAPI(TestCase):
         self.assertJSONEqual(
             str(resp.content, encoding='utf8'),
             [
-                {'name': '스마트 틴 앱 챌린지', 'pk': 1},
-                {'name': '모바일 콘텐츠 경진대회', 'pk': 2},
+                {'name': '스마트 틴 앱 챌린지', 'pk': 1, 'posts': []},
+                {'name': '모바일 콘텐츠 경진대회', 'pk': 2, 'posts': []},
             ]
         )
+
+
+class TestBoardPostAPI(TestCase):
+    def setUp(self):
+        self.user, self.c = make_user(login=True)
+        board_init()
+
+    def test_listing(self):
+        url = '/api/boards/?pk=1'
+        resp = self.c.get(url)
+
+        self.assertJSONEqual(
+            str(resp.content, encoding='utf8'),
+            [
+                {
+                    'name': '스마트 틴 앱 챌린지', 'pk': 1,
+                    'posts': ['http://testserver/api/posts/1/', 'http://testserver/api/posts/2/'],
+                },
+            ]
+        )
+
 
 """
 class TestPostListAPI(TestCase):

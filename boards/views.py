@@ -17,9 +17,9 @@ class BoardViewSet(viewsets.ModelViewSet):
     serializer_class = BoardSerializer
 
     def get_queryset(self):
-        name = self.request.GET.get('name', False)
-        if name:
-            queryset = Board.objects.filter(name=name).all()
+        pk = self.request.GET.get('pk', False)
+        if pk:
+            queryset = Board.objects.filter(pk=pk)
         else:
             queryset = Board.objects.all()
         return queryset
