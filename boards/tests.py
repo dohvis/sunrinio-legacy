@@ -6,8 +6,10 @@ from tags.models import Tag
 from .models import Board, Post
 
 
+# TODO: 접근 제어 테스트
+
 def create_boards():
-    names = ['스마트 틴 앱 챌린지', '모바일 콘텐츠 경진대회']
+    names = ['공지사항', '자유게시판']
     boards = [(Board.objects.create(name=b)) for b in names]
     return boards
 
@@ -21,7 +23,6 @@ def write_post(boards=None):
     )
     for post in posts:
         Post.objects.create(board=post[0], title=post[1], author=post[2])
-        Post.objects.create(board=post[0], title=post[1], author=post[2])
 
 
 def board_init():
@@ -29,42 +30,86 @@ def board_init():
     write_post(boards=boards)
 
 
-class TestBoardListAPI(TestCase):
-    def setUp(self):
-        self.user, self.c = make_user(login=True)
-        create_boards()
-
-    def test_listing(self):
-        url = '/api/boards/'
-        resp = self.c.get(url)
-
-        self.assertJSONEqual(
-            str(resp.content, encoding='utf8'),
-            [
-                {'name': '스마트 틴 앱 챌린지', 'pk': 1, 'posts': []},
-                {'name': '모바일 콘텐츠 경진대회', 'pk': 2, 'posts': []},
-            ]
-        )
-
-
-class TestBoardPostAPI(TestCase):
+class TestBoardAPI(TestCase):
     def setUp(self):
         self.user, self.c = make_user(login=True)
         board_init()
 
-    def test_listing(self):
-        url = '/api/boards/?pk=1'
-        resp = self.c.get(url)
-
-        self.assertJSONEqual(
-            str(resp.content, encoding='utf8'),
-            [
-                {
-                    'name': '스마트 틴 앱 챌린지', 'pk': 1,
-                    'posts': ['http://testserver/api/posts/1/', 'http://testserver/api/posts/2/'],
-                },
-            ]
+    def test_board(self):
+        cases = (
+            (
+                '/api/boards/', [
+                    {'name': '공지사항', 'id': 1, 'posts': ['http://testserver/api/posts/1/', ],},
+                    {'name': '자유게시판', 'id': 2, 'posts': []},
+                ],
+            ),
+            (
+                '/api/boards/?pk=1', [
+                    {
+                        'name': '공지사항', 'id': 1,
+                        'posts': ['http://testserver/api/posts/1/', ],
+                    },
+                ]
+            )
         )
+        for case in cases:
+            resp = self.c.get(case[0])
+            self.assertJSONEqual(str(resp.content, encoding='utf8'), case[1])
+
+
+class TestPostAPI(TestCase):
+    def setUp(self):
+        username = 'testuser'
+        password = 'qwer1234'
+        User.objects.create_user(username=username, password=password, name='김선린', email='test@test.com',
+                                 introduction='접대롤 잘함 / 스택하고파여',
+                                 grade=1, klass=2, number=3)
+
+        self.c = Client(enforce_csrf_checks=True)
+        self.c.login(username=username, password=password)
+        self.c.cookies['csrftoken'] = 'just' * 8
+        board_init()
+
+    def test_post(self):
+        first_post = Post.objects.first()
+        get_cases = (
+            ('/api/posts/1/', {
+                'author': 'test@test.com', 'board': '공지사항',
+                'content': '',
+                'id': 1,
+                'tags': [],
+                'title': '제목1',
+                'created_at': first_post.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+                'updated_at': first_post.updated_at.strftime("%Y-%m-%d %H:%M:%S"),
+            }, 200),
+        )
+
+        for case in get_cases:
+            resp = self.c.get(case[0])
+            print(resp.content)
+            self.assertEqual(resp.status_code, case[2])
+            self.assertJSONEqual(str(resp.content, encoding='utf8'), case[1])
+
+        post_cases = (
+            ('/api/posts/', {'title': '제목', 'content': '내용', 'board': '공지사항', 'author': 'test@test.com'}, 201),
+            ('/api/posts/', {'title': '제목', 'content': '내용', 'board': '1', 'author': 'test@test.com'}, 400),
+        )
+
+        for case in post_cases:
+            params = case[1]
+            params['csrfmiddlewaretoken'] = 'just' * 8
+            resp = self.c.post(case[0], params)
+            print(resp.content)
+            self.assertEqual(resp.status_code, case[2])
+
+        # TODO: 수정, 삭제 테스트
+        """
+        patch_cases = (
+        )
+
+        delete_cases = (
+        )
+        """
 
 
 """
