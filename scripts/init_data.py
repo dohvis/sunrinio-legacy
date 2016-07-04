@@ -4,6 +4,10 @@ from django.db.utils import (
     IntegrityError,
 )
 from accounts.models import Tag, User
+from boards.models import (
+    Board,
+    Post,
+)
 from hotplace.models import Image, Place, Review
 from allauth.socialaccount.models import SocialApp
 
@@ -72,6 +76,22 @@ def create_reviews():
     yuksam.close()
 
 
+def create_board():
+    names = ['공지사항', '질문게시판']
+    boards = [Board.objects.create(name=name) for name in names]
+    return boards
+
+
+def create_post():
+    user = User.objects.first()
+    board = Board.objects.first()
+    tag = Tag.objects.first()
+    p = Post.objects.create(board=board, title='제목', author=user)
+    p.tags.add(tag)
+    p.save()
+    return p
+
+
 def run():
     try:
         create_social_apps()
@@ -93,3 +113,11 @@ def run():
         print("[+] Create admin:qwer1234")
     except IntegrityError:
         pass
+
+    try:
+        create_board()
+        create_post()
+        print("[+] Create Board and Post")
+
+    except IntegrityError as e:
+        print(e)

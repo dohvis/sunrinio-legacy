@@ -39,6 +39,8 @@ router.register(r'dinners', dinner_views.DinnerViewSet)
 router.register(r'places', place_views.PlaceViewSet)
 router.register(r'reviews', place_views.ReviewViewSet)
 router.register(r'boards', boards_views.BoardViewSet)
+router.register(r'posts', boards_views.PostViewSet)
+
 
 urlpatterns = [
     url(r'^api/', include(router.urls)),

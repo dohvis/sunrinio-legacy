@@ -1,8 +1,14 @@
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
-from .models import Board
-from .serializers import BoardSerializer
+from .models import (
+    Board,
+    Post,
+)
+from .serializers import (
+    BoardSerializer,
+    PostSerializer,
+)
 
 
 class BoardViewSet(viewsets.ModelViewSet):
@@ -10,9 +16,16 @@ class BoardViewSet(viewsets.ModelViewSet):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
 
+    def get_queryset(self):
+        name = self.request.GET.get('name', False)
+        if name:
+            queryset = Board.objects.filter(name=name).all()
+        else:
+            queryset = Board.objects.all()
+        return queryset
+
 
 class PostViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
-
-    def get_queryset(self):
-        self.request.GET.pop('board')
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
