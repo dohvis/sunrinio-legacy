@@ -4,7 +4,7 @@ from tags.models import Tag
 
 
 class Board(models.Model):
-    name = models.CharField(max_length=32)
+    name = models.CharField(max_length=32, unique=True)
 
     def __str__(self):
         return '<%s %s>' % (self.__class__.__name__, self.name)
