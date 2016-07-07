@@ -21,5 +21,8 @@
     "react-google-maps": "^4.11.0",
     "uglify-js": "^2.6.4",
     "webpack": "^1.13.1"
+  },
+  "devDependencies": {
+    "webpack": "~1.13.1"
   }
 }
