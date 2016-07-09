@@ -8,4 +8,4 @@ dependencies:
         - sudo pip install html5validator
 test:
     override:
-        - html5validator --root templates/
+        - html5validator --root templates/ --ignore-re 'error: Bad value "{'
