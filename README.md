@@ -1,8 +1,8 @@
-[![CircleCI](https://circleci.com/gh/nerogit/sunrin-seed.svg?style=shield&circle-token=c24192cd2c24a7ea0d80c99af9016c98ed4800d7)](https://circleci.com/gh/nerogit/sunrin-seed)
+[![CircleCI](https://circleci.com/gh/nerogit/sunrinio.svg?style=shield&circle-token=c24192cd2c24a7ea0d80c99af9016c98ed4800d7)](https://circleci.com/gh/nerogit/sunrinio)
 
 http://dev.sunrin.io/docs/
 # SunrinIO
-SunrinIO는 대학 커뮤티티와 유사한 커뮤니티 시스템을 지향하는 프로젝트입니다.
+선린 종합 포털
 
 # How to run
 `pip install -r requirements.txt`
