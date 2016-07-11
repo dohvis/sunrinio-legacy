@@ -41,8 +41,11 @@ router.register(r'reviews', place_views.ReviewViewSet)
 router.register(r'boards', boards_views.BoardViewSet)
 router.register(r'posts', boards_views.PostViewSet)
 
+join_urls = DefaultRouter()
+join_urls.register(r'^', teams_views.Want2JoinViewSet)
 
 urlpatterns = [
+    url(r'^api/teams/(?P<pk>\d+)/join', include(join_urls.urls)),
     url(r'^api/', include(router.urls)),
 
     url(r'^api/auth/', include('rest_auth.urls')),
@@ -53,7 +56,6 @@ urlpatterns = [
     url(r'^accounts/', include(accounts_urls, namespace='accounts')),
     url(r'^allauth/', include('allauth.urls')),
     url(r'^docs/', include('rest_framework_swagger.urls')),
-    url(r'^team/', include(teams_urls)),
     url(r'^debug/(?P<dir_name>\w+)/(?P<template_name>\w+)/$', util_views.template_debug),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

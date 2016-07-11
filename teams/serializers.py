@@ -1,6 +1,10 @@
 from rest_framework import serializers
 from accounts.models import User
-from teams.models import Team
+from accounts.serializers import UserSerializer
+from teams.models import (
+    Team,
+    Want2Join,
+)
 
 
 class TeamSerializer(serializers.HyperlinkedModelSerializer):
@@ -10,3 +14,11 @@ class TeamSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Team
         fields = ('url', 'name', 'tags', 'users', 'introduce', 'content')
+
+
+class Want2JoinSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
+    team = TeamSerializer(read_only=True)
+
+    class Meta:
+        model = Want2Join

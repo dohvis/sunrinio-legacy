@@ -39,6 +39,7 @@ class TestTeamList(TestCase):
     """
     팀 목록 조회 테스트
     """
+
     def setUp(self):
         self.team, self.leader, self.user = make_team_and_user()
         self.c = Client()
@@ -67,6 +68,7 @@ class TestJoinRequest(TestCase):
     """
     팀 가입 요청 테스트
     """
+
     def setUp(self):
         self.l_username = 'leader'
         self.l_pw = 'qwer1234'
@@ -76,13 +78,32 @@ class TestJoinRequest(TestCase):
         self.c.login(username=self.user.username, password='qwer1234')
 
     def test_join_request(self):
-        res = self.c.post('/team/{team_id}/want2join/'.format(team_id=self.team.id))
-        self.assertEqual(res.status_code, 200)
-
-        self.assertJSONEqual(
-            str(res.content, encoding='utf8'),
-            {'status': 'success'}
+        post_cases = (
+            (
+                {'base_url': "/api/teams/{team_pk}/join/", 'pk': self.team.pk, "params": {'message': "껴주세요"}},
+                {'status_code': 201, 'data': {'message': '가입신청 되었습니다. 결과를 기다려 주세요.'}},
+                True
+            ),
+            (
+                {'base_url': "/api/teams/{team_pk}/join/", 'pk': self.team.pk + 1, "params": {'message': "껴주세요"}},
+                {'status_code': 404, 'data': {'detail': 'Not found.'}},
+                False
+            ),
         )
-        w = Want2Join.objects.first()
-        self.assertEqual(w.team, self.team)
-        self.assertEqual(w.user, self.user)
+        for case in post_cases:
+            request, response, is_valid = case
+            url = request['base_url'].format(team_pk=request['pk'])
+            res = self.c.post(url, data=request['params'])
+            self.assertEqual(res.status_code, response['status_code'])
+
+            self.assertJSONEqual(
+                str(res.content, encoding='utf8'),
+                response['data']
+            )
+            try:
+                w = Want2Join.objects.get(pk=request['pk'])
+            except Want2Join.DoesNotExist:
+                continue
+            self.assertEqual(w.team == self.team, is_valid)
+            self.assertEqual(w.user == self.user, is_valid)
+            self.assertEqual(w.message == "껴주세요", is_valid)
