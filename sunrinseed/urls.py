@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include, patterns
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from rest_framework.routers import DefaultRouter
 
@@ -43,6 +44,7 @@ router.register(r'posts', boards_views.PostViewSet)
 
 
 urlpatterns = [
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^api/', include(router.urls)),
 
     url(r'^api/auth/', include('rest_auth.urls')),
