@@ -9,3 +9,7 @@ dependencies:
 test:
     override:
         - html5validator --root templates/ --ignore-re "Bad value \"{"
+notify:
+  webhooks:
+    # deploy
+    - url: http://deploy.sunrin.io
