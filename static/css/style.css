@@ -5,9 +5,15 @@
  *
  * Made By MaterializeCSS.com
  */
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+nav {
+  background-color: #00bcd4;
+}
 
 nav ul a,
 nav .brand-logo {
+  font-family: 'Noto Sans KR', sans-serif;
   color: #444;
 }
 
@@ -65,8 +71,44 @@ video.responsive-video {
 
 img.login_logo-img,
 video.responsive-video {
-margin-top: 3em;
-margin-left: 8em;
-  width: 10em;
-  height: 10em;
+  margin-top: 10%;
+  margin-bottom: 5%;
+  width: 40%;
+  height: 40%;
 }
+
+/* Navbar */
+#menu-button {
+  padding-left: 10px;
+}
+.active > i { /* Active tab icon */
+  color: #80deea !important;
+}
+.tabs {
+  padding-top: 5px;
+}
+.tabs .indicator {
+  background-color: #00bcd4;
+}
+
+/*loginbutton*/
+.loginbutton {
+  width: 70%;
+  height: 50px;
+  background-color: #00bcd4;
+}
+.facebooklogin {
+  width: 70%;
+  height: 50px;
+  background-color: #3b5998;
+}
+
+.signup{
+  margin-top: 10%;
+}
+
+.signuplink{
+  text-align: center;
+  font-weight: bold;
+}
+
