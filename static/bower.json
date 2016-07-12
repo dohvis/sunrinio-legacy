@@ -14,6 +14,7 @@
     "tests"
   ],
   "dependencies": {
-    "Materialize": "materialize#^0.97.6"
+    "Materialize": "materialize#^0.97.6",
+    "font-awesome": "^4.6.3"
   }
 }
