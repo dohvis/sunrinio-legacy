@@ -23,8 +23,8 @@ from accounts import urls as accounts_urls
 from accounts import views as accounts_views
 from hotplace import views as place_views
 from boards import views as boards_views
+from schedule import views as schedule_views
 from tags import views as tags_views
-from teams import urls as teams_urls
 from teams import views as teams_views
 from dinner import views as dinner_views
 from utils import views as util_views
@@ -40,6 +40,7 @@ router.register(r'places', place_views.PlaceViewSet)
 router.register(r'reviews', place_views.ReviewViewSet)
 router.register(r'boards', boards_views.BoardViewSet)
 router.register(r'posts', boards_views.PostViewSet)
+router.register(r'schedule', schedule_views.ScheduleViewSet)
 
 join_urls = DefaultRouter()
 join_urls.register(r'^', teams_views.Want2JoinViewSet)

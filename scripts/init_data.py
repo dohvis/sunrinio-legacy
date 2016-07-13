@@ -92,6 +92,18 @@ def create_post():
     return p
 
 
+def create_schedule():
+    from datetime import date
+    from schedule.models import Schedule
+    schedules = [
+        ("학급회장, 학생회장 선거", date(2016, 7, 15)),
+        ("교내 해킹방어대회", date(2016, 7, 15)),
+        ("꽃동네 봉사활동(1학년 멀티)", date(2016, 7, 19)),
+    ]
+    objs = [Schedule.objects.create(name=s[0], date=s[1]) for s in schedules]
+    return objs
+
+
 def run():
     try:
         create_social_apps()
@@ -121,3 +133,6 @@ def run():
 
     except IntegrityError as e:
         print(e)
+
+    create_schedule()
+    print("[+] Create Schedule")
