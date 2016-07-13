@@ -41,6 +41,11 @@
                                 </span>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <a class="waves-effect waves-light btn" href="{% url 'accounts:logout' %}">로그아웃</a>
+                                </div>
+                            </div>
                         {% else %}
                             <a class="waves-effect waves-light btn" href="{% url 'accounts:login' %}">로그인</a>
                         {% endif %}
