@@ -6,7 +6,9 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.shortcuts import (
     HttpResponse,
     render,
+    redirect,
 )
+from django.contrib.auth import logout as _logout
 
 from accounts.models import User
 from accounts.permissions import IsOwnerOrReadOnly
@@ -31,6 +33,11 @@ class FacebookLogin(SocialLoginView):
 
 def login(request):
     return render(request, "accounts/login.html")
+
+
+def logout(request):
+    _logout(request)
+    return redirect('index')
 
 
 def update_profile_image(request):
