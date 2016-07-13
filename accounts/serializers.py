@@ -35,9 +35,6 @@ class RegisterSerializer(serializers.Serializer):
                 raise serializers.ValidationError("이미 등록된 메일입니다.")
         return email
 
-    def validate_name(self, name):
-        return get_adapter().clean_email(name)
-
     def validate_password1(self, password):
         return get_adapter().clean_password(password)
 
