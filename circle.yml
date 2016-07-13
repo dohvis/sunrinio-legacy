@@ -1,14 +1,16 @@
 machine:
     python:
         version: 3.4.3
-    java:
-        version: oraclejdk8
+    node:
+        version: 4.2.6
 dependencies:
     pre:
-        - sudo pip install html5validator
+        - npm install htmlhint -g
+        - python manage.py migrate
 test:
     override:
-        - html5validator --root templates/ --ignore-re "Bad value \"{"
+        - htmlhint templates --config htmlhintrc
+        - python manage.py test
 notify:
   webhooks:
     # deploy
