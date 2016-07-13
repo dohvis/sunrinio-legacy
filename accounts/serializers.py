@@ -17,6 +17,7 @@ class RegisterSerializer(serializers.Serializer):
         required=allauth_settings.USERNAME_REQUIRED
     )
     email = serializers.EmailField(required=allauth_settings.EMAIL_REQUIRED)
+    name = serializers.CharField(required=True, write_only=True)
     password1 = serializers.CharField(required=True, write_only=True)
     password2 = serializers.CharField(required=True, write_only=True)
     grade = serializers.IntegerField(required=True, write_only=True)
@@ -61,9 +62,11 @@ class RegisterSerializer(serializers.Serializer):
         grade = data.get('grade', '')
         klass = data.get('klass', '')
         number = data.get('number', '')
+        name = data.get('name', '')
         user.grade = grade
         user.klass = klass
         user.number = number
+        user.name = name
         user.save()
 
     def get_cleaned_data(self):
@@ -71,6 +74,7 @@ class RegisterSerializer(serializers.Serializer):
             'username': self.validated_data.get('username', ''),
             'password1': self.validated_data.get('password1', ''),
             'email': self.validated_data.get('email', ''),
+            'name': self.validated_data.get('name', ''),
             'grade': self.validated_data.get('grade', ''),
             'klass': self.validated_data.get('klass', ''),
             'number': self.validated_data.get('number', ''),

@@ -42,11 +42,13 @@ class TestAuthentication(TestCase):
         username = 'signupuser'
         pw = 'password'
         grade = 1
-        data = {'username': username, 'password1': pw, 'password2': pw, 'email': 'signupuser@gmail.com',
+        name = '홍길동'
+        data = {'username': username, 'name': name, 'password1': pw, 'password2': pw, 'email': 'signupuser@gmail.com',
                 'grade': grade, 'klass': 2, 'number': 3}
         res = self.c.post('/api/auth/registration/', data=data)
         self.assertEqual(res.status_code, 201)
         self.assertEqual(User.objects.get(username=username).grade, grade)
+        self.assertEqual(User.objects.get(name=name).username, username)
 
 
 class TestUpdateUserInfo(TestCase):
