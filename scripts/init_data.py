@@ -35,17 +35,15 @@ def create_social_apps():
 
 
 def create_places():
-    info_list = [
-        ('육쌈냉면', '서울특별시 용산구 청파로4가길 7', '겨울 냉면', 126.9669203, 37.5445323),
-        ('서울쌈냉면', '서울특별시 용산구 청파로47길 47-5 경성빌리지', '고기랑 냉면 같이줌', 126.9677534, 37.5443699),
-    ]
+    import pickle
+    info_list = pickle.load("fixtures/near_sunrin.json")
     for info in info_list:
         Place.objects.create(
-            name=info[0],
-            address=info[1],
-            description=info[2],
-            x=info[3],
-            y=info[4],
+            name=info['name'],
+            address=info['address'],
+            telephone=info['telephone'],
+            x=info['x'],
+            y=info['y'],
         )
     return Place.objects.first()
 
