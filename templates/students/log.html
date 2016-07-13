@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card blue-grey darken-1">
+                <div class="card-content white-text">
+                    <span class="card-title">급식의 지니!</span>
+                    <p>한달에 한번씩 원하는 메뉴를 투표를 통해 급식에 반영 합니다!!</p>
+                </div>
+                <div class="card-action">
+                    <div class="progress">
+                        <div class="determinate" style="width: 70%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">query_builder</i>3월 1일</div>
+                    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">query_builder</i>4월 1일</div>
+                    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">query_builder</i>5월 1일</div>
+                    <div class="collapsible-body"><p>홍어 당첨!</p></div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">query_builder</i>6월 1일</div>
+                    <div class="collapsible-body"><p>라면 1등!</p></div>
+                </li>
+                <li>
+                    <div class="collapsible-header"><i class="material-icons">query_builder</i>7월 1일</div>
+                    <div class="collapsible-body"><p>구슬 아이스크림 1등!</p></div>
+                </li>
+                <li>
+                    <div class="collapsible-header active"><i class="material-icons">query_builder</i>8월 1일</div>
+                    <div class="collapsible-body"><p>갈비탕 1등</p></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+
+{% endblock %}
