@@ -111,4 +111,29 @@ video.responsive-video {
   text-align: center;
   font-weight: bold;
 }
-
+.meal-layout{
+    background: lightgray;
+    border-radius : 10% ;
+    text-align: center;
+}
+.meal-top {
+	height: 6em;
+    border-radius : 30% ;
+	background: whitesmoke;
+    text-align: center;
+}
+.meal-bottom {
+	height: 11em;
+    border-radius : 30% ;
+	background: whitesmoke;
+    text-align: center;
+}
+.meal-bottom2 {
+	height: 11em;
+    border-radius : 100% ;
+	background: whitesmoke;
+    text-align: center;
+}
+.meal_text {
+    margin-top : auto;
+}
