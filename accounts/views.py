@@ -40,6 +40,9 @@ def logout(request):
     return redirect('index')
 
 
+def signup(request):
+    return render(request, "accounts/signup.html")
+
 def update_profile_image(request):
     # TODO: POST말고 다른 메소드로는 파일업로드가 안되서 우선 임시로 프사변경만 API따로 만들어둠
     if request.method != 'POST':
