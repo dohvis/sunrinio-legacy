@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link href="/static/css/account_detail.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row" id="image-area">
+        <div class="col s4">
+            <img class="circle user-profile-image" src="/media/{{ request.user.profile_image }}">
+        </div>
+        <div class="col s8">
+            <p id="user-name">양민석</p>
+            <p id="user-joined">2015년 입학</p>
+            <p id="user-class">2학년 3반 14번</p>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col s12">
+            <p class="area-title">자기소개</p>
+            <p class="flow-text" id="user-bio">안녕하세요, 양민석입니다.<br>Python에 관심이 많은 학생입니다.</p>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="col s12">
+            <p class="area-title">관심분야</p>
+            <p class="flow-text" id="user-bio">안녕하세요, 양민석입니다.<br>Python에 관심이 많은 학생입니다.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
