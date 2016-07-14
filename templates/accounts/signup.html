@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block style %}
+<link href="/static/css/signup.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="col s12" align="center">
@@ -89,7 +92,10 @@
             </div>
             <div class="input-field col s12">
                 <input id="email" type="email" class="validate" required>
-                <label for="email" data-error="Blah blah" >Email</label>
+                <label for="email">Email</label>
+            </div>
+            <div class="col s12">
+                <p id="error-msg" class="red-text"></p>
             </div>
         </div>
         <div class="row">
@@ -107,6 +113,7 @@
 {% block script %}
 <script>
     $('form').on('submit', function(e) {
+        $("#error-msg").html("");
         $.post(
             "{% url 'rest_register' %}",
             {
@@ -150,6 +157,9 @@
             }
             if(data.number){
                 notify_error(data.number, "number");
+            }
+            if(data.non_field_errors){
+                $("#error-msg").html(data.non_field_errors);
             }
         });
         e.preventDefault();
