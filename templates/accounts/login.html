@@ -37,6 +37,10 @@
                 <input id="pw-field" type="password" class="validate" name="password" required="required">
                 <label for="pw-field">PW</label>
             </div>
+
+            <div class="col s12">
+                <p id="error-msg" class="red-text" style="text-align: center"></p>
+            </div>
         </div>
 
         <div class="row">
@@ -145,8 +149,20 @@
             ).done(function (data) {
                 location.href = "{% url 'index' %}";
             }).fail(function (data) {
-                console.log(data);
-                alert('오류가 발생했습니다!');
+                var notify_error = function(resp, elem_id){
+                    $("#"+elem_id).addClass("invalid");
+                    $("label[for="+elem_id+"]").attr("data-error", resp);
+                };
+                data = data.responseJSON;
+                if(data.username){
+                    notify_error(data.username, "id-field");
+                }
+                if(data.password){
+                    notify_error(data.email, "pw-field");
+                }
+                if(data.non_field_errors){
+                    $("#error-msg").html(data.non_field_errors);
+                }
             });
             e.preventDefault();
         });
