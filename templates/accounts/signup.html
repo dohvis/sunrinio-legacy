@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block style %}
+<link href="/static/css/signup.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="col s12" align="center">
@@ -8,41 +11,163 @@
 
 <div class="row">
     <form class="col s12">
+        {% csrf_token %}
         <div class="row">
-            <div class="input-field col s6">
-                <input id="name" type="text" class="validate">
+            <div class="input-field col s5">
+                <input id="name" type="text" class="validate" required>
                 <label for="name">Name</label>
             </div>
-            <div class="input-field col s6">
-                <input id="number" type="text" class="validate">
-                <label for="number">Number</label>
+            <div class="input-field col s2">
+                <select id="grade">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+               </select>
+                <label>Grade</label>
+            </div>
+            <div class="input-field col s2">
+                <select id="class" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                </select>
+                <label>Class</label>
+            </div>
+            <div class="input-field col s3">
+                <select id="number" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="30">31</option>
+                </select>
+                <label>Number</label>
             </div>
             <div class="input-field col s12">
                 <input id="id" type="text" class="validate">
                 <label for="id">ID</label>
             </div>
             <div class="input-field col s12">
-                <input id="password" type="password" class="validate">
+                <input id="password" type="password" class="validate" required>
                 <label for="password">Password</label>
             </div>
             <div class="input-field col s12">
-                <input id="email" type="email" class="validate">
+                <input id="password-confirm" type="password" class="validate" required>
+                <label for="password-confirm">Confirm Password</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="email" type="email" class="validate" required>
                 <label for="email">Email</label>
+            </div>
+            <div class="col s12">
+                <p id="error-msg" class="red-text"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12" align="center">
+                <button class="btn waves-effect waves-light loginbutton" type="submit" name="action">Sign Up</button>
             </div>
         </div>
     </form>
 </div>
 
-<div class="row">
-    <div class="col s12" align="center">
-        <button class="btn waves-effect waves-light loginbutton" type="submit" name="action">Sign Up</button>
-    </div>
-</div>
+
 
 
 {% endblock %}
 {% block script %}
-
+<script>
+    $('form').on('submit', function(e) {
+        $("#error-msg").html("");
+        $.post(
+            "{% url 'rest_register' %}",
+            {
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                username: $('#id').val(),
+                name: $('#name').val(),
+                email: $('#email').val(),
+                password1: $('#password').val(),
+                password2: $('#password-confirm').val(),
+                grade: $('#grade').val(),
+                klass: $('#class').val(),
+                number: $('#number').val(),
+            }
+        ).done(function (data) {
+            console.log(data.responseJSON);
+            alert("회원가입이 완료되었습니다!");
+            location.href = "{% url 'index' %}";
+        }).fail(function (data) {
+            var notify_error = function(resp, elem_id){
+                $("#"+elem_id).addClass("invalid");
+                $("label[for="+elem_id+"]").attr("data-error", resp);
+            };
+            data = data.responseJSON;
+            if(data.username){
+                notify_error(data.username, "id");
+            }
+            if(data.email){
+                notify_error(data.email, "email");
+            }
+            if(data.password1){
+                notify_error(data.password1, "password");
+            }
+            if(data.password2){
+                notify_error(data.password2, "password-confirm");
+            }
+            if(data.grade){
+                notify_error(data.grade, "grade");
+            }
+            if(data.klass){
+                notify_error(data.klass, "class");
+            }
+            if(data.number){
+                notify_error(data.number, "number");
+            }
+            if(data.non_field_errors){
+                $("#error-msg").html(data.non_field_errors);
+            }
+        });
+        e.preventDefault();
+    });
+    $(document).ready(function(){
+        $('select').material_select();
+    });
+</script>
 
 
 {% endblock %}

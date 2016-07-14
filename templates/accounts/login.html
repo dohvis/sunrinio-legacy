@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block style %}
+<link href="/static/css/signin.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
 {% block content %}
     <script>
         // Load the SDK asynchronously
@@ -37,6 +40,10 @@
                 <input id="pw-field" type="password" class="validate" name="password" required="required">
                 <label for="pw-field">PW</label>
             </div>
+
+            <div class="col s12">
+                <p id="error-msg" class="red-text"></p>
+            </div>
         </div>
 
         <div class="row">
@@ -45,11 +52,6 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col s12" align="center">
-                <button class="btn waves-effect waves-light loginbutton" type="submit" name="action">로그인</button>
-            </div>
-        </div>
     </form>
     <div class="row">
         <div class="col s12" align="center">
@@ -63,7 +65,7 @@
     <div class="row">
         <div class="col s12 signup" align="center">
             혹시 회원이 아니신가요?
-            <a class="grey-text text-darken-2 signuplink" href="#">회원가입</a>
+            <a class="grey-text text-darken-2 signuplink" href="{% url 'accounts:signup' %}">회원가입</a>
         </div>
     </div>
 
@@ -150,8 +152,20 @@
             ).done(function (data) {
                 location.href = "{% url 'index' %}";
             }).fail(function (data) {
-                console.log(data);
-                alert('오류가 발생했습니다!');
+                var notify_error = function(resp, elem_id){
+                    $("#"+elem_id).addClass("invalid");
+                    $("label[for="+elem_id+"]").attr("data-error", resp);
+                };
+                data = data.responseJSON;
+                if(data.username){
+                    notify_error(data.username, "id-field");
+                }
+                if(data.password){
+                    notify_error(data.email, "pw-field");
+                }
+                if(data.non_field_errors){
+                    $("#error-msg").html(data.non_field_errors);
+                }
             });
             e.preventDefault();
         });
