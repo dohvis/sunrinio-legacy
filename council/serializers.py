@@ -12,25 +12,30 @@ class PartySerializer(serializers.HyperlinkedModelSerializer):
         fields = ('name',)
 
 
-class ActivitySerializer(serializers.RelatedField):
+class RelatedActivitySerializer(serializers.RelatedField):
     def to_representation(self, value):
         try:
             image = value.image.url
         except ValueError:
             image = ''
 
-        return {'image': image, 'content': value.content}
+        res = {
+            'image': image, 'content': value.content,
+            'created_at': value.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+            'updated_at': value.updated_at.strftime("%Y-%m-%d %H:%M:%S"),
+        }
+        return res
 
 
 class PromiseSerializer(serializers.ModelSerializer):
     party_name = serializers.CharField(source='party.name')
-    details = ActivitySerializer(queryset=Activity.objects.all(), many=True)
+    activities = RelatedActivitySerializer(queryset=Activity.objects.all(), many=True)
 
     class Meta:
         model = Promise
-        fields = ('party_name', 'title', 'description', 'details',)
+        fields = ('party_name', 'title', 'description', 'activities',)
 
 
-class DetailSerializer(serializers.ModelSerializer):
+class ActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity

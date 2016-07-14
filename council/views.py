@@ -7,14 +7,14 @@ from council.models import (
     Promise,
 )
 from council.serializers import (
-    DetailSerializer,
+    ActivitySerializer,
     PartySerializer,
     PromiseSerializer,
 )
 
 
 class DetailViewSet(viewsets.ModelViewSet):
-    serializer_class = DetailSerializer
+    serializer_class = ActivitySerializer
     queryset = Activity.objects.all()
 
     def get_queryset(self):
