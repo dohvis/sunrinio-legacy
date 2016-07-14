@@ -104,6 +104,23 @@ def create_schedule():
     return objs
 
 
+def create_council():
+    from council.models import (
+        Activity,
+        Party,
+        Promise,
+    )
+    parties = ("두드림", "신명", "청사진",)
+    promises = [["Lotto Day", "빌려 Dream"], ["유니버셜 신명", "급식의 지니"], ["청사진 신문", "월단 청문회"], ]
+    activities = [[], ["러브액츄얼리틀어줬읍니다", "오늘 급식에 연어나옴"], [], ]
+    for party in parties:
+        party = Party.objects.create(name=party)
+        for promise in promises:
+            promise = Promise.objects.create(party=party, title=promise)
+            for activity in activities:
+                Activity.objects.create(promise=promise, content=activity)
+
+
 def run():
     try:
         create_social_apps()
@@ -136,3 +153,10 @@ def run():
 
     create_schedule()
     print("[+] Create Schedule")
+
+    try:
+        create_council()
+        print("[+] Create Council")
+
+    except IntegrityError as e:
+        print(e)
