@@ -55,6 +55,7 @@ INSTALLED_APPS = [
 
     'accounts',
     'boards',
+    'council',
     'dinner',
     'hotplace',
     'schedule',
