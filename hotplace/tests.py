@@ -18,18 +18,18 @@ class TestPlace(TestCase):
         self.assertEqual(place.rate_avg, 4.0)
 
     def test_gps_filter(self):
-        from django.conf.global_settings import STATICFILES_DIRS
-        fp = open(STATICFILES_DIRS[0] + '/image/logo.png', "rb")
+        from sunrinseed.settings.base import STATICFILES_DIRS
+        fp = open(STATICFILES_DIRS[0] + '/images/logo.png', "rb")
         excluded_place = {
             'x': 120.0, 'y': 37.0,
             'name': '육쌈냉면', 'description': '냉면에 고기싸줌', 'address': "서울특별시 용산구 청파동 111-58 ",
-            'rate_avg': 5.0, 'image': 'http://', 'url': 'http://testserver/api/places/1/', 'reviews': [],
+            'rate_avg': 5.0, 'url': 'http://testserver/api/places/1/', 'reviews': [],
             'telephone': '010-1234-5678',
         }
         included_place = {
             'x': 127.1, 'y': 37.0,
             'name': '육쌈냉면', 'description': '냉면에 고기싸줌', 'address': "서울특별시 용산구 청파동 111-58 ",
-            'rate_avg': 5.0, 'image': 'http://', 'url': 'http://testserver/api/places/2/', 'reviews': [],
+            'rate_avg': 5.0, 'url': 'http://testserver/api/places/2/', 'reviews': [],
             'telephone': '010-1234-5678',
         }
         for place in [excluded_place, included_place]:
@@ -51,9 +51,9 @@ class TestPlace(TestCase):
                 ),  # response
             ),  # valid request
             (
-                {'x': 'aa', 'y': 'aa'},
+                {'ne': '4.3,13.2', 'sw': '3.2,12.4'},
                 (
-                    400, [{'x': 120, 'y': 37, 'name': '육쌈냉면', 'description': '냉면에 고기싸줌'}]
+                    200, []
                 ),
             ),  # invalid request
         )

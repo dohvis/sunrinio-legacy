@@ -10,7 +10,7 @@ class PlaceSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Place
-        exclude_fields = ('location',)
+        fields = ('name', 'address', 'description', 'telephone', 'x', 'y', 'rate_avg', 'reviews', 'url',)
 
 
 class ReviewSerializer(serializers.HyperlinkedModelSerializer):
