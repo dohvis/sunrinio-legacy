@@ -145,27 +145,3 @@ video.responsive-video {
 {
     padding-left : 10px;
 }
-.lineheight{
-    line-height: 22px;
-}
-.mainmeal
-{
-    background-color: #36b3ff;
-}
-.mainnotice
-{
-    background-color: #0091ea;
-}
-.mainhot
-{
-    background-color: #006eb2;
-}
-.mealimg
-{
-    width:40%;
-    height:40%;
-}
-
-.hot{
-    width:100%;
-}
