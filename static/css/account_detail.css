@@ -1,0 +1,26 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.user-profile-image {
+    width: 160px;
+    height: 160px;
+}
+.user-info {
+    font-size: 1.5em;
+}
+.area-title {
+    font-size: 1.8em;
+}
+
+#image-area {
+    text-align: center;
+    padding: 20px;
+}
+#user-name {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 2.5em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#user-bio {
+    font-size: 1.2em;
+}
