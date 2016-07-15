@@ -9,7 +9,6 @@
   "attr-no-duplication": true,
   "title-require": true,
   "style-disabled": true,
-  "inline-style-disabled": true,
   "space-tab-mixed-disabled": "true",
   "inline-script-disabled": true,
   "id-class-ad-disabled": true,
