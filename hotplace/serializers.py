@@ -6,11 +6,11 @@ from .models import (
 
 
 class PlaceSerializer(serializers.HyperlinkedModelSerializer):
-    reviews = serializers.HyperlinkedIdentityField(view_name='review-detail', many=True)
+    reviews = serializers.SlugRelatedField(slug_field='comment', queryset=Review.objects.all(), many=True)
 
     class Meta:
         model = Place
-        fields = ('name', 'address', 'description', 'location', 'reviews')
+        exclude_fields = ('location',)
 
 
 class ReviewSerializer(serializers.HyperlinkedModelSerializer):

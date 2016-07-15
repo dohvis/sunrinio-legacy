@@ -4,5 +4,10 @@ from .models import (
     Review,
 )
 
-admin.site.register(Place)
+
+class PlaceAdmin(admin.ModelAdmin):
+    list_display = ['name', 'y', 'x']
+
+
+admin.site.register(Place, PlaceAdmin)
 admin.site.register(Review)

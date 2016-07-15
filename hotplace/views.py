@@ -14,14 +14,15 @@ class PlaceViewSet(viewsets.ReadOnlyModelViewSet):
 
     def list(self, request, *args, **kwargs):
         """
-        This view should return a list of all the purchases
-        for the currently authenticated user.
         """
+        ne = [float(x) for x in self.request.query_params.get('ne', '43.0,132.0').split(",")]
+        sw = [float(x) for x in self.request.query_params.get('sw', '33.0,124.0').split(",")]
+        # 우리나라 위도 경도 범위 참고해서 우리나라 전범위
+        # 위도(y),경도(x) 범위: (124.0, 132.0) (33.0, 43.0)
 
-        user = self.request.user
-        x = self.request.query_params.get('x', '1.0')
-        y = self.request.query_params.get('y', '1.0')
-        queryset = Place.objects.filter()
+        x_range = (sw[1], ne[1],)
+        y_range = (sw[0], ne[0],)
+        queryset = Place.objects.filter(x__range=x_range, y__range=y_range)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
 
