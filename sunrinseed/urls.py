@@ -55,7 +55,7 @@ promise_router = nested_routers.NestedSimpleRouter(party_router, r'party')
 promise_router.register(r'promises', council_views.PromiseViewSet)
 
 activity_router = nested_routers.NestedSimpleRouter(promise_router, r'promises')
-activity_router.register(r'activity', council_views.DetailViewSet)
+activity_router.register(r'activities', council_views.ActivityViewSet)
 
 urlpatterns = [
     url(r'^api/teams/(?P<pk>\d+)/join', include(join_urls.urls)),

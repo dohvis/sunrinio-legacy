@@ -28,14 +28,16 @@ class RelatedActivitySerializer(serializers.RelatedField):
 
 
 class PromiseSerializer(serializers.ModelSerializer):
-    party_name = serializers.CharField(source='party.name')
-    activities = RelatedActivitySerializer(queryset=Activity.objects.all(), many=True)
+    party_name = serializers.CharField(source='party.name', read_only=True)
+    activity = RelatedActivitySerializer(queryset=Activity.objects.all(), many=True)
 
     class Meta:
         model = Promise
-        fields = ('party_name', 'title', 'description', 'activities',)
+        fields = ('party_name', 'title', 'description', 'activity',)
+        readonly_fields = ('party_name',)
 
 
 class ActivitySerializer(serializers.ModelSerializer):
     class Meta:
         model = Activity
+        fields = ('content', 'image',)
