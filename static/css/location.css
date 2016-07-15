@@ -3,7 +3,21 @@
 }
 
 .locateimg {
-    height: 70px;
-    border-radius: 10%;
-    left :15px;
+    height: 60px;
+}
+.marginlocation{
+    margin-top:15px;
+}
+.locatetxt{
+    font-size:20px;
+}
+.icon{
+    height: 30px;
+}
+.iconfont{
+    font-size:25px;
+}
+.widthfull
+{
+    width :100%;
 }

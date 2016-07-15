@@ -5,15 +5,31 @@
 {% endblock %}
 
 {% block content %}
+
     <link href="/static/css/location.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <ul class="collection">
-    <li class="collection-item avatar">
-      <img src="/static/images/location.jpg" class = circle locateimg>
-      <p>용산구 청파로 23길 1 <br>
-      <span class="title">달려라팬</span>
-      <a>연결</a>
-      </p>
+        <div class="row marginlocation">
+            <div class="col s3">
+                <img src="/static/images/location.jpg" class="locateimg">
+            </div>
+            <div class="col s9">
+                용산구 청파로 45길 12-1</br>
+                <span class="locatetxt">WOW 신내떡 숙대입구점</span></br>
+                <a>변경</a>
+            </div>
+        </div>
+    </ul>
+    <div class="row">
+        <div class="col s12">
+            <img src="/static/images/issue-blue.png" class="icon">
+            <a class="iconfont">리뷰</a>
+            <div class="input-field col s12">
+                <input placeholder="드셨던 메뉴를 솔직하게 리뷰해주세요." id="first_name" type="text" class="validate">
 
+            </div>
+            <a class="waves-effect waves-light btn widthfull">리뷰 등록</a>
+        </div>
+    </div>
 {% endblock %}
 
 {% block script %}
