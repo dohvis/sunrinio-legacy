@@ -48,6 +48,7 @@ join_urls.register(r'^', teams_views.Want2JoinViewSet)
 
 urlpatterns = [
     url(r'^api/teams/(?P<pk>\d+)/join', include(join_urls.urls)),
+
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^api/', include(router.urls)),
 
