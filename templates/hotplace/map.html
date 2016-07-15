@@ -1,27 +1,6 @@
 {% extends 'base.html' %}
 {% block style %}
     <link href="/static/css/map.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <style>
-        #map-container {
-            padding: 6px;
-            border-width: 1px;
-            border-style: solid;
-            border-color: #ccc #ccc #999 #ccc;
-            -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-            -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
-            box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
-        / / width: 600 px;
-        }
-
-        #map {
-            height: 500px;
-        }
-
-        #info {
-            height: 500px;
-        }
-
-    </style>
 {% endblock %}
 {% block content %}
     <script src="https://googlemaps.github.io/js-marker-clusterer/examples/data.json"></script>
@@ -30,183 +9,184 @@
 
 
     <div class="row">
-    <div class="col s12">
-        <ul class="tabs">
-            <li class="tab col s3"><a href="#test1">지도</a></li>
-            <li class="tab col s3"><a href="#test2">모든 장소</a></li>
-        </ul>
-    </div>
-    <div id="test1" class="col s12">
-        <div id="map" class="col s12">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#test1">지도</a></li>
+                <li class="tab col s3"><a href="#test2">모든 장소</a></li>
+            </ul>
         </div>
-    </div>
-    <div id="test2" class="col s12">
+        <div id="test1" class="col s12">
+            <div id="map" class="col s12">
+            </div>
+        </div>
+        <div id="test2" class="col s12">
 
-        <div class="row valign-wrapper">
-            <div class="col s3">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                <!-- notice the "circle" class -->
-            </div>
-            <div class="col s9">
-                <a>3POP</a><br/>
+            <div class="row valign-wrapper">
+                <div class="col s3">
+                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                    <!-- notice the "circle" class -->
+                </div>
+                <div class="col s9">
+                    <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기 뭐시기
                 </span>
+                </div>
+                <div class ="col s2 locate_grade">
+                    <a>4.5</a>
+                </div>
             </div>
-            <div class ="col s2 locate_grade">
-            <a>4.5</a>
-            </div>
-        </div>
-        <div class="divider"></div>
-        <div class="row valign-wrapper">
-            <div class="col s3">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                <!-- notice the "circle" class -->
-            </div>
-            <div class="col s9">
-                <a>3POP</a><br/>
+            <div class="divider"></div>
+            <div class="row valign-wrapper">
+                <div class="col s3">
+                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                    <!-- notice the "circle" class -->
+                </div>
+                <div class="col s9">
+                    <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기 뭐시기
                 </span>
+                </div>
+                <div class ="col s2 locate_grade">
+                    <a>4.5</a>
+                </div>
             </div>
-            <div class ="col s2 locate_grade">
-            <a>4.5</a>
-            </div>
-        </div>
-        <div class="divider"></div>
-        <div class="row valign-wrapper">
-            <div class="col s3">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                <!-- notice the "circle" class -->
-            </div>
-            <div class="col s9">
-                <a>3POP</a><br/>
+            <div class="divider"></div>
+            <div class="row valign-wrapper">
+                <div class="col s3">
+                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                    <!-- notice the "circle" class -->
+                </div>
+                <div class="col s9">
+                    <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기 뭐시기
                 </span>
+                </div>
+                <div class ="col s2 locate_grade">
+                    <a>4.5</a>
+                </div>
             </div>
-            <div class ="col s2 locate_grade">
-            <a>4.5</a>
-            </div>
-        </div>
-        <div class="divider"></div>
-        <div class="row valign-wrapper">
-            <div class="col s3">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                <!-- notice the "circle" class -->
-            </div>
-            <div class="col s9">
-                <a>3POP</a><br/>
+            <div class="divider"></div>
+            <div class="row valign-wrapper">
+                <div class="col s3">
+                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                    <!-- notice the "circle" class -->
+                </div>
+                <div class="col s9">
+                    <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기 뭐시기
                 </span>
+                </div>
+                <div class ="col s2 locate_grade">
+                    <a>4.5</a>
+                </div>
             </div>
-            <div class ="col s2 locate_grade">
-            <a>4.5</a>
-            </div>
-        </div>
 
-        <div class="divider"></div>
-    <div class="row valign-wrapper">
-            <div class="col s3">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                <!-- notice the "circle" class -->
-            </div>
-            <div class="col s9">
-                <a>3POP</a><br/>
+            <div class="divider"></div>
+            <div class="row valign-wrapper">
+                <div class="col s3">
+                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                    <!-- notice the "circle" class -->
+                </div>
+                <div class="col s9">
+                    <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기 뭐시기
                 </span>
+                </div>
+                <div class ="col s2 locate_grade">
+                    <a>4.5</a>
+                </div>
             </div>
-            <div class ="col s2 locate_grade">
-            <a>4.5</a>
-            </div>
-        </div>
-        <div class="divider"></div>
-        <div class="row valign-wrapper">
-            <div class="col s3">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                <!-- notice the "circle" class -->
-            </div>
-            <div class="col s9">
-                <a>3POP</a><br/>
+            <div class="divider"></div>
+            <div class="row valign-wrapper">
+                <div class="col s3">
+                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                    <!-- notice the "circle" class -->
+                </div>
+                <div class="col s9">
+                    <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기 뭐시기
                 </span>
+                </div>
+                <div class ="col s2 locate_grade">
+                    <a>4.5</a>
+                </div>
             </div>
-            <div class ="col s2 locate_grade">
-            <a>4.5</a>
-            </div>
-        </div>
-        <div class="divider"></div>
-        <div class="row valign-wrapper">
-            <div class="col s3">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                <!-- notice the "circle" class -->
-            </div>
-            <div class="col s9">
-                <a>3POP</a><br/>
+            <div class="divider"></div>
+            <div class="row valign-wrapper">
+                <div class="col s3">
+                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                    <!-- notice the "circle" class -->
+                </div>
+                <div class="col s9">
+                    <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기 뭐시기
                 </span>
+                </div>
+                <div class ="col s2 locate_grade">
+                    <a>4.5</a>
+                </div>
             </div>
-            <div class ="col s2 locate_grade">
-            <a>4.5</a>
-            </div>
-        </div>
 
-        <div class="divider"></div>
-    <div class="row valign-wrapper">
-            <div class="col s3">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                <!-- notice the "circle" class -->
-            </div>
-            <div class="col s9">
-                <a>3POP</a><br/>
+            <div class="divider"></div>
+            <div class="row valign-wrapper">
+                <div class="col s3">
+                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                    <!-- notice the "circle" class -->
+                </div>
+                <div class="col s9">
+                    <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기 뭐시기
                 </span>
+                </div>
+                <div class ="col s2 locate_grade">
+                    <a>4.5</a>
+                </div>
             </div>
-            <div class ="col s2 locate_grade">
-            <a>4.5</a>
-            </div>
-        </div>
-        <div class="divider"></div>
-        <div class="row valign-wrapper">
-            <div class="col s3">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                <!-- notice the "circle" class -->
-            </div>
-            <div class="col s9">
-                <a>3POP</a><br/>
+            <div class="divider"></div>
+            <div class="row valign-wrapper">
+                <div class="col s3">
+                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                    <!-- notice the "circle" class -->
+                </div>
+                <div class="col s9">
+                    <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기 뭐시기
                 </span>
+                </div>
+                <div class ="col s2 locate_grade">
+                    <a>4.5</a>
+                </div>
             </div>
-            <div class ="col s2 locate_grade">
-            <a>4.5</a>
-            </div>
-        </div>
-        <div class="divider"></div>
-        <div class="row valign-wrapper">
-            <div class="col s3">
-                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                <!-- notice the "circle" class -->
-            </div>
-            <div class="col s9">
-                <a>3POP</a><br/>
+            <div class="divider"></div>
+            <div class="row valign-wrapper">
+                <div class="col s3">
+                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                    <!-- notice the "circle" class -->
+                </div>
+                <div class="col s9">
+                    <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기 뭐시기
                 </span>
+                </div>
+                <div class ="col s2 locate_grade">
+                    <a>4.5</a>
+                </div>
             </div>
-            <div class ="col s2 locate_grade">
-            <a>4.5</a>
-            </div>
+
+            <div class="divider"></div>
+
+
         </div>
-
-        <div class="divider"></div>
-
-
     </div>
 
 {% endblock %}
