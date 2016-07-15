@@ -3,30 +3,78 @@
     <link href="/static/css/account_detail.css" rel="stylesheet" type="text/css"/>
 {% endblock %}
 {% block content %}
-<div class="container">
-    <div class="row" id="image-area">
-        <div class="col s4">
-            <img class="circle user-profile-image" src="/media/{{ request.user.profile_image }}">
+    <div class="container">
+        <div class="row">
+            <div class="card blue-grey col s12 l6">
+                <div class="row" id="image-area">
+                    <div class="col s6">
+                        <img class="circle user-profile-image" src="/media/{{ request.user.profile_image }}">
+                    </div>
+                    <div class="card-content white-text">
+                        <div class="col s6">
+                            <p id="user-name">양민석</p>
+                            <p class="user-info">2015년 입학</p>
+                            <p class="user-info">2학년 3반 14번</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 l6">
+                <div class="col s12">
+                    <p class="area-title">자기소개</p>
+                    <p id="user-bio">안녕하세요, 양민석입니다.<br>
+                        Python에 관심이 많은 학생입니다.<br>
+                        아주 많은 내용입니다.<br>
+                        아주 많은 내용이라서 세 줄 안에는 다 들어가질 않습니다.<br>
+                        더 많은 내용입니다.<br>
+                        더 많은 내용입니다.<br>
+                        이 줄은 매우 길어서 아마 페이지에 표시될 때 한 줄에 표시되지 않을 겁니다. 아주 많은 내용이 들어가있죠. 이것 보세요, 넘어갔잖아요.
+                    </p>
+                    <a href="#">
+                        <div class="chip">Python</div>
+                    </a>
+                    <a href="#">
+                        <div class="chip">JS</div>
+                    </a>
+                </div>
+
+            </div>
         </div>
-        <div class="col s8">
-            <p id="user-name">양민석</p>
-            <p id="user-joined">2015년 입학</p>
-            <p id="user-class">2학년 3반 14번</p>
+        <hr/>
+        <div class="row">
+            <div class="col s12">
+                <p class="area-title">팀 목록</p>
+                <a href="#!">
+                <div class="col s12 m6 l4">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content black-text">
+                            <span class="card-title">돼지국밥</span>
+                            <p class="card-body">STAC 2016 진출</p>
+                        </div>
+                    </div>
+                </div>
+                    </a>
+                <div class="col s12 m6 l4">
+                    <a href="#!">
+                        <div class="card blue-grey lighten-5">
+                            <div class="card-content black-text">
+                                <span class="card-title">Purus</span>
+                                <p class="card-body">디지털 콘텐츠 경진대회(2015) 입상</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col s12 m6 l4">
+                    <a href="#!">
+                    <div class="card blue-grey lighten-5">
+                        <div class="card-content black-text">
+                            <span class="card-title">주난이뱃살</span>
+                            <p class="card-body">순천향대 청소년 정보보호 페스티벌(YISF) 참가</p>
+                        </div>
+                    </div>
+                        </a>
+                </div>
+            </div>
         </div>
     </div>
-    <hr/>
-    <div class="row">
-        <div class="col s12">
-            <p class="area-title">자기소개</p>
-            <p class="flow-text" id="user-bio">안녕하세요, 양민석입니다.<br>Python에 관심이 많은 학생입니다.</p>
-        </div>
-    </div>
-    <hr/>
-    <div class="row">
-        <div class="col s12">
-            <p class="area-title">관심분야</p>
-            <p class="flow-text" id="user-bio">안녕하세요, 양민석입니다.<br>Python에 관심이 많은 학생입니다.</p>
-        </div>
-    </div>
-</div>
 {% endblock %}
