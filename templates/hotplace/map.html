@@ -1,5 +1,10 @@
 {% extends 'base.html' %}
+<<<<<<< HEAD
 {% block style %}
+=======
+{% block head %}
+    <link href="/static/css/map.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+>>>>>>> hotplace
     <style>
         #map-container {
             padding: 6px;
@@ -13,7 +18,7 @@
         }
 
         #map {
-            height: 400px;
+            height: 500px;
         }
 
         #info {
@@ -28,46 +33,184 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4k1rRvHyZodyQJO8QiBoi3tywMoKdCc"></script>
 
 
-    <h3>A simple example of MarkerClusterer (100 markers)</h3>
-    <div id="map-container" class="row">
-        <div id="map" class="col s8"></div>
-        <div id="info" class="col s4">
-            <ul class="collection">
-                <li class="collection-item avatar">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="circle">
-                    <span class="title">Title</span>
-                    <p>First Line <br>
-                        Second Line
-                    </p>
-                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                </li>
-                <li class="collection-item avatar">
-                    <i class="material-icons ">folder</i>
-                    <span class="title">Title</span>
-                    <p>First Line <br>
-                        Second Line
-                    </p>
-                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                </li>
-                <li class="collection-item avatar">
-                    <i class="material-icons  green">insert_chart</i>
-                    <span class="title">Title</span>
-                    <p>First Line <br>
-                        Second Line
-                    </p>
-                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                </li>
-                <li class="collection-item avatar">
-                    <i class="material-icons  red">play_arrow</i>
-                    <span class="title">Title</span>
-                    <p>First Line <br>
-                        Second Line
-                    </p>
-                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                </li>
-            </ul>
-
+    <div class="row">
+    <div class="col s12">
+        <ul class="tabs">
+            <li class="tab col s3"><a href="#test1">지도</a></li>
+            <li class="tab col s3"><a href="#test2">모든 장소</a></li>
+        </ul>
+    </div>
+    <div id="test1" class="col s12">
+        <div id="map" class="col s12">
         </div>
+    </div>
+    <div id="test2" class="col s12">
+
+        <div class="row valign-wrapper">
+            <div class="col s3">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col s9">
+                <a>3POP</a></BR>
+                <span class="black-text locationaddress">
+                서울시 용산구 뭐시기 뭐시기
+                </span>
+            </div>
+            <div class ="col s2 locate_grade">
+            <a>4.5</a>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row valign-wrapper">
+            <div class="col s3">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col s9">
+                <a>3POP</a></BR>
+                <span class="black-text locationaddress">
+                서울시 용산구 뭐시기 뭐시기
+                </span>
+            </div>
+            <div class ="col s2 locate_grade">
+            <a>4.5</a>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row valign-wrapper">
+            <div class="col s3">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col s9">
+                <a>3POP</a></BR>
+                <span class="black-text locationaddress">
+                서울시 용산구 뭐시기 뭐시기
+                </span>
+            </div>
+            <div class ="col s2 locate_grade">
+            <a>4.5</a>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row valign-wrapper">
+            <div class="col s3">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col s9">
+                <a>3POP</a></BR>
+                <span class="black-text locationaddress">
+                서울시 용산구 뭐시기 뭐시기
+                </span>
+            </div>
+            <div class ="col s2 locate_grade">
+            <a>4.5</a>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+    <div class="row valign-wrapper">
+            <div class="col s3">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col s9">
+                <a>3POP</a></BR>
+                <span class="black-text locationaddress">
+                서울시 용산구 뭐시기 뭐시기
+                </span>
+            </div>
+            <div class ="col s2 locate_grade">
+            <a>4.5</a>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row valign-wrapper">
+            <div class="col s3">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col s9">
+                <a>3POP</a></BR>
+                <span class="black-text locationaddress">
+                서울시 용산구 뭐시기 뭐시기
+                </span>
+            </div>
+            <div class ="col s2 locate_grade">
+            <a>4.5</a>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row valign-wrapper">
+            <div class="col s3">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col s9">
+                <a>3POP</a></BR>
+                <span class="black-text locationaddress">
+                서울시 용산구 뭐시기 뭐시기
+                </span>
+            </div>
+            <div class ="col s2 locate_grade">
+            <a>4.5</a>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+    <div class="row valign-wrapper">
+            <div class="col s3">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col s9">
+                <a>3POP</a></BR>
+                <span class="black-text locationaddress">
+                서울시 용산구 뭐시기 뭐시기
+                </span>
+            </div>
+            <div class ="col s2 locate_grade">
+            <a>4.5</a>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row valign-wrapper">
+            <div class="col s3">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col s9">
+                <a>3POP</a></BR>
+                <span class="black-text locationaddress">
+                서울시 용산구 뭐시기 뭐시기
+                </span>
+            </div>
+            <div class ="col s2 locate_grade">
+            <a>4.5</a>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row valign-wrapper">
+            <div class="col s3">
+                <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
+                <!-- notice the "circle" class -->
+            </div>
+            <div class="col s9">
+                <a>3POP</a></BR>
+                <span class="black-text locationaddress">
+                서울시 용산구 뭐시기 뭐시기
+                </span>
+            </div>
+            <div class ="col s2 locate_grade">
+            <a>4.5</a>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+
     </div>
 
 {% endblock %}
