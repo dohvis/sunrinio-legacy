@@ -22,7 +22,7 @@ class CouncilTest(TestCase):
                     'party_name': party.name,
                     'title': promise.title,
                     'description': promise.description,
-                    'activities': [
+                    'activity': [
                         {
                             'content': activity.content,
                             'image': activity.image,
@@ -30,7 +30,7 @@ class CouncilTest(TestCase):
                             'updated_at': activity.updated_at.strftime("%Y-%m-%d %H:%M:%S"),
                         },
                     ],
-                },]
+                }, ]
             ),
         )
         for case in get_cases:
@@ -38,17 +38,32 @@ class CouncilTest(TestCase):
             self.assertEqual(resp.status_code, 200)
             self.assertJSONEqual(str(resp.content, encoding='utf8'), case[1])
 
+        image_fp = open("media/sulsam.jpg", 'rb')
         post_cases = (
             (
-                '/api/council/sinmyung/',
-                {'title': '공약명', 'description': '설명'}
+                '/api/party/{}/promises/'.format(party.pk),
+                {'title': '공약명', 'description': '설명'},
+                Promise,
             ),
             (
-                '/api/council/sinmyung/1/',
-                {'image': '증거사진', 'content': '내용'}
+                '/api/party/{}/promises/{}/activities/'.format(party.pk+1, promise.pk),
+                {'image': image_fp, 'content': '내용'},
+                Activity,
             ),
         )
+        for case in post_cases:
+            req_data = case[1]
+            object = case[2]
+            resp = self.c.post(case[0], data=req_data, )
+            print("[*] response content: ", resp.content)
+            self.assertEqual(resp.status_code, 201)
+            promise = Promise.objects.first()
+            for key in req_data.keys():
+                if key == 'image':
+                    continue
+                self.assertEqual(getattr(object.objects.get(), key), req_data[key])
 
+        image_fp.close()
         patch_cases = (
             (
                 '/api/council/sinmyung/',
@@ -60,3 +75,5 @@ class CouncilTest(TestCase):
             ),
 
         )
+        for case in patch_cases:
+            pass
