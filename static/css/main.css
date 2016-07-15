@@ -1,0 +1,25 @@
+.main-content{
+    line-height: 25px;
+    font-size: 1.1em;
+}
+#main-meal
+{
+    background-color: #36b3ff;
+}
+#main-notice
+{
+    background-color: #0091ea;
+}
+#main-hot
+{
+    background-color: #006eb2;
+}
+#meal-img
+{
+    width:144px;
+    height:144px;
+}
+
+.hot{
+    width: 100%;
+}

@@ -1,54 +1,62 @@
 {% extends 'base.html' %}
 {% block title %}
 {% endblock %}
+{% block style %}
+    <link href="/static/css/main.css" rel="stylesheet" type="text/css">
+{% endblock %}
 {% block content %}
-    <div class="row">
-    <div class="col s12 m6">
-        <div class="card mainmeal">
-            <div class="card-content white-text center">
-                <div class="col s12">
-                    <img src="/static/images/meal.png" class="mealimg">
-                </div>
-                <span class="card-title">오늘의 급식</span>
-                <p class="lineheight">햇반,맛짬뽕,삼겹살,피자</br>치킨,치킨무</p>
-            </div>
-        </div>
-
-        <div class="card mainnotice">
-            <div class="card-content white-text">
-
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <span class="card-title align-center">공지사항</span>
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m8 l6 offset-m2 offset-l3">
+                <div class="card" id="main-meal">
+                    <div class="card-content white-text center">
+                        <div class="col s12">
+                            <img src="/static/images/meal.png" id="meal-img">
+                        </div>
+                        <span class="card-title">오늘의 급식</span>
+                        <p class="main-content">햇반,맛짬뽕,삼겹살,피자</br>치킨,치킨무</p>
                     </div>
-                    <div class="col s3">
-                        <img class="hot" src="/static/images/calendar.png"></div>
-                    <p class="lineheight">
-                    <div class="col s6"></div>
-                    <p class="lineheight">
-                        7일~12일 1학기 기말고사</br>
-                        15일 전교회장 선거</br>
-                        19일 1학년 멀티 꽃동네 봉사</br>
-                    </p>
                 </div>
-            </div>
-        </div>
 
-        <div class="card mainhot">
-            <div class="card-content white-text">
+                <div class="card" id="main-notice">
+                    <div class="card-content white-text">
 
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <span class="card-title">핫이슈</span>
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <span class="card-title align-center">공지사항</span>
+                            </div>
+                            <div class="col s3">
+                                <img class="hot" src="/static/images/calendar.png"></div>
+                            <div class="col s9">
+                                <p class="main-content">
+                                    7일~12일 1학기 기말고사</br>
+                                    15일 전교회장 선거</br>
+                                    19일 1학년 멀티 꽃동네 봉사</br>
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col s3">
-                        <img class="hot" src="/static/images/discuss-issue.png"></div>
-                    <p class="lineheight">
-                    <div class="col s6"></div>
-                    1.오늘 급식 어떻게 생각해요?</br>
-                    2.숙대 주씨 알바생 이쁘던데요?</br>
-                    3.금요일 단축수업함?
-                    </p>
+                </div>
+
+                <div class="card" id="main-hot">
+                    <div class="card-content white-text">
+
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <span class="card-title">핫이슈</span>
+                            </div>
+                            <div class="col s3">
+                                <img class="hot" src="/static/images/discuss-issue.png">
+                            </div>
+                            <div class="col s9">
+                                <p class="main-content">
+                                    1.오늘 급식 어떻게 생각해요?</br>
+                                    2.숙대 주씨 알바생 이쁘던데요?</br>
+                                    3.금요일 단축수업함?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
