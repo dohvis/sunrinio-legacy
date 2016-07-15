@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+   <div class="row">
+        <nav>
+            <div class="nav-wrapper">
+                <div class="col s12">
+                    <a href="#!" class="breadcrumb">커뮤니티</a>
+                    <a href="#!" class="breadcrumb">게시판</a>
+                    <a href="#!" class="breadcrumb">글쓰기</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+  <form>
+    <textarea id="mytextarea"></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+{% endblock %}
+{% block script %}
+<script src="/static/js/textboxio.js"></script>
+  <script type="text/javascript">
+    var editor = textboxio.replace('#mytextarea');
+  </script>
+{% endblock %}
+
