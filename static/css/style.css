@@ -9,13 +9,14 @@
 
 
 nav {
-  background-color: #00bcd4;
+  background-color: #f6f6f6;
 }
 
 nav ul a,
 nav .brand-logo {
   font-family: 'Noto Sans KR', sans-serif;
-  color: #444;
+  color: #0091ea;
+
 }
 
 p {
@@ -23,7 +24,7 @@ p {
 }
 
 .button-collapse {
-  color: #ffffff;
+  color: #0091ea;
 }
 
 .parallax-container {
@@ -136,4 +137,35 @@ video.responsive-video {
 }
 .meal_text {
     margin-top : auto;
+}
+.comment{
+    width : 100%;
+}
+.boardlist
+{
+    padding-left : 10px;
+}
+.lineheight{
+    line-height: 22px;
+}
+.mainmeal
+{
+    background-color: #36b3ff;
+}
+.mainnotice
+{
+    background-color: #0091ea;
+}
+.mainhot
+{
+    background-color: #006eb2;
+}
+.mealimg
+{
+    width:40%;
+    height:40%;
+}
+
+.hot{
+    width:100%;
 }
