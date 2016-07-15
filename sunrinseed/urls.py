@@ -19,11 +19,9 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 
 from rest_framework.routers import DefaultRouter
-from rest_framework_nested import routers as nested_routers
 
 from accounts import urls as accounts_urls
 from accounts import views as accounts_views
-from council import views as council_views
 from hotplace import views as place_views
 from boards import views as boards_views
 from schedule import views as schedule_views
@@ -48,23 +46,11 @@ router.register(r'schedule', schedule_views.ScheduleViewSet)
 join_urls = DefaultRouter()
 join_urls.register(r'^', teams_views.Want2JoinViewSet)
 
-party_router = DefaultRouter()
-party_router.register(r'party', council_views.PartyViewSet, base_name='promises')
-
-promise_router = nested_routers.NestedSimpleRouter(party_router, r'party')
-promise_router.register(r'promises', council_views.PromiseViewSet)
-
-activity_router = nested_routers.NestedSimpleRouter(promise_router, r'promises')
-activity_router.register(r'activities', council_views.ActivityViewSet)
-
 urlpatterns = [
     url(r'^api/teams/(?P<pk>\d+)/join', include(join_urls.urls)),
 
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^api/', include(router.urls)),
-    url(r'^api/', include(party_router.urls)),
-    url(r'^api/', include(promise_router.urls)),
-    url(r'^api/', include(activity_router.urls)),
 
     url(r'^api/auth/', include('rest_auth.urls')),
     url(r'^api/auth/registration/', include('rest_auth.registration.urls')),
