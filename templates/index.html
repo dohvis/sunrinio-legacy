@@ -3,95 +3,58 @@
 {% endblock %}
 {% block content %}
     <div class="row">
-        <ul class="tabs">
-            <li class="tab col s3">
-                <a href="#home" class="active"><i class="small material-icons cyan-text">home</i></a>
-            </li>
-            <li class="tab col s3">
-                <a href="#community"><i class="small material-icons cyan-text">group</i></a>
-            </li>
-            <li class="tab col s3">
-                <a href="#hotplace"><i class="small material-icons cyan-text">gps_fixed</i></a>
-            </li>
-            <li class="tab col s3">
-                <a href="#webhard"><i class="small material-icons cyan-text">folder</i></a>
-            </li>
-        </ul>
-
-    </div>
-
-
-    <div id="home">
-        <div class="container">
-            <div class="card">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator" src="/static/images/office.jpg" alt="slider">
+    <div class="col s12 m6">
+        <div class="card mainmeal">
+            <div class="card-content white-text center">
+                <div class="col s12">
+                    <img src="/static/images/meal.png" class="mealimg">
                 </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">선린해커톤</span>
+                <span class="card-title">오늘의 급식</span>
+                <p class="lineheight">햇반,맛짬뽕,삼겹살,피자</br>치킨,치킨무</p>
+            </div>
+        </div>
 
-                </div>
-                <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i
-                        class="material-icons right">close</i></span>
-                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+        <div class="card mainnotice">
+            <div class="card-content white-text">
+
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <span class="card-title align-center">공지사항</span>
+                    </div>
+                    <div class="col s3">
+                        <img class="hot" src="/static/images/calendar.png"></div>
+                    <p class="lineheight">
+                    <div class="col s6"></div>
+                    <p class="lineheight">
+                        7일~12일 1학기 기말고사</br>
+                        15일 전교회장 선거</br>
+                        19일 1학년 멀티 꽃동네 봉사</br>
+                    </p>
                 </div>
             </div>
+        </div>
 
-            <table class="striped">
-                <thead>
-                <tr>
-                    <th data-field="id">공지사항</th>
-                    <th data-field="name">제목</th>
-                    <th data-field="price">작성자</th>
-                </tr>
-                </thead>
+        <div class="card mainhot">
+            <div class="card-content white-text">
 
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>취업할래여</td>
-                    <td>김주용</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>대학갈래여</td>
-                    <td>김도현</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>공부할래여</td>
-                    <td>양민석</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>밥먹을래여</td>
-                    <td>이예림</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>취업할래여</td>
-                    <td>김주용</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>대학갈래여</td>
-                    <td>김도현</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>공부할래여</td>
-                    <td>양민석</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>밥먹을래여</td>
-                    <td>이예림</td>
-                </tr>
-                </tbody>
-            </table>
+                <div class="row">
+                    <div class="col s12 center-align">
+                        <span class="card-title">핫이슈</span>
+                    </div>
+                    <div class="col s3">
+                        <img class="hot" src="/static/images/discuss-issue.png"></div>
+                    <p class="lineheight">
+                    <div class="col s6"></div>
+                    1.오늘 급식 어떻게 생각해요?</br>
+                    2.숙대 주씨 알바생 이쁘던데요?</br>
+                    3.금요일 단축수업함?
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
+
+
 {% endblock %}
 
 {% block script %}
