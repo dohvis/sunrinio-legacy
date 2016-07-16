@@ -1,0 +1,23 @@
+.meal-card{
+    background-color: #36b3ff;
+}
+#meal-img{
+    width:100%;
+}
+#meal-title{
+    font-size:15px
+}
+#meal-score{
+    font-size:42px;
+}
+.card .score{
+    padding: 5px;
+}
+#comment-bar{
+    background-color: #36b3ff;
+    height:23px;
+}
+#comment-bar #count{
+    padding-left : 1.5rem;
+    color : #fff;
+}

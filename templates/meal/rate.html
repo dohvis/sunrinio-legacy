@@ -1,83 +1,63 @@
 {% extends 'base.html' %}
 {% block content %}
+    <link href="/static/css/meal.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <div class="container">
+    <div class="row">
+        <div class="card meal-card">
+            <div class="row">
+                <div class="card-content">
+                    <div class="col s4">
+                        <div class="col s12">
+                            <img src="/static/images/meal.png" id="meal-img">
+                        </div>
+                        <span id="meal-title">오늘의 급식</span>
 
-    <div class="divider">
+                    </div>
+                    <div class="col s4 right-align">
+                        <p class="main-content">햇반</p>
+                        <p class="main-content">우동</p>
+                        <p class="main-content">오리김치볶음</p>
+                        <p class="main-content">두부양념구이</p>
+                        <p class="main-content">깍두기</p>
+                        <p class="main-content">무쌈</p>
+                    </div>
+                </div>
 
-        <h5 align="center">중식</h5>
-
-        <div class="divider"></div>
-
-    </div>
-    <div class="row meal-layout ">
-
-        <div class="col s3">
-
-            <div class="meal-top">
-                <p>메추리알</p>
             </div>
         </div>
-        <div class="col s3">
-            <div class="meal-top">
-                <p>김치</p>
+        <div class="row">
+            <div class="card">
+                <div class="row">
+                    <div class="score card-content   center">
+                        <span class="blue-text lighten-4" id="meal-score">3.4 </span><span
+                            id="meal-score">|   별 별 별 별</span>
+                    </div>
+
+                </div>
+                <div class="row" id="comment-bar">
+                    <span id="count">댓글 2개</span>
+                    <ul class="collection">
+                        <li class="collection-item avatar openchatimg">
+                            <img src="/static/images/rogo.png" alt="" class="circle">
+                            <span class="title">김주용</span>
+                            <p>안녕하세여</p>
+                        </li>
+                        <li class="collection-item avatar openchatimg">
+                            <img src="/static/images/rogo.png" alt="" class="circle">
+                            <span class="title">김주용</span>
+                            <p>안녕하세여</p>
+                        </li>
+                        <li class="collection-item avatar openchatimg">
+                            <img src="/static/images/rogo.png" alt="" class="circle">
+                            <span class="title">김주용</span>
+                            <p>안녕하세여</p>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
-        </div>
-        <div class="col s3">
-            <div class="meal-top">
-                <p>멸치</p>
-            </div>
-        </div>
-        <div class="col s3">
-            <div class="meal-top">
-                <p>감자</p>
-            </div>
-        </div>
-        <div class="col s3">
-            <a>8.3</a>
-        </div>
-        <div class="col s3">
-            <a>8.3</a>
-        </div>
-        <div class="col s3">
-            <a>8.3</a>
-        </div>
-        <div class="col s3">
-            <a>8.3</a>
-        </div>
-        <div class="col s6">
-            <div class="meal-bottom">
-                <p>잡곡밥</p>
-            </div>
-        </div>
-        <div class="col s6">
-            <div class="meal-bottom2">
-                <p>콩나물 국</p>
-            </div>
-        </div>
-        <div class="col s6">
-            <a>9.2</a>
-        </div>
-        <div class="col s6">
-            <a>5.3</a>
         </div>
     </div>
-    <ul class="collection with-header">
-        <a class="collection-item" align="center">각메뉴를 선택해서 평점을 매겨보세요!</a>
-    </ul>
-
-    <!-- Modal Trigger -->
-    <button data-target="modal1" class="btn modal-trigger">Modal</button>
-
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
-
 {% endblock %}
 {% block script %}
 
