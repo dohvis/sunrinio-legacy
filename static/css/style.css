@@ -91,6 +91,15 @@ video.responsive-video {
 .tabs .indicator {
   background-color: #00bcd4;
 }
+.side-nav .p{
+    margin-left: 16px;
+}
+.side-nav{
+    width :300px;
+}
+.sort{
+    margin-left: 40px;
+}
 
 /*loginbutton*/
 .loginbutton {
