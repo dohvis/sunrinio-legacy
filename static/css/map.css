@@ -1,4 +1,4 @@
-.map-container {
+#map-container {
     padding: 6px;
     border-width: 1px;
     border-style: solid;
@@ -9,12 +9,23 @@
 / / width: 600 px;
 }
 
-.map {
-    height: 400px;
+#map {
+    height: 500px;
 }
 
-.info {
+#info {
     height: 500px;
+}
+
+.map-container {
+    padding: 6px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc #ccc #999 #ccc;
+    -webkit-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+    -moz-box-shadow: rgba(64, 64, 64, 0.5) 0 2px 5px;
+    box-shadow: rgba(64, 64, 64, 0.1) 0 2px 5px;
+/ / width: 600 px;
 }
 
 .locationphoto {
@@ -30,9 +41,11 @@
 
     margin-bottom: 0px;
 }
-.locationaddress{
-    font-size : 11px;
+
+.locationaddress {
+    font-size: 11px;
 }
-.locate_grade{
-    font-size : 18px;
+
+.locate_grade {
+    font-size: 18px;
 }
