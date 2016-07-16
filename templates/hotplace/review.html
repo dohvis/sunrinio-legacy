@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" href="/static/bower_components/raty/lib/jquery.raty.css">
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+
+    <link href="/static/css/location.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <ul class="collection">
+        <div class="row marginlocation">
+            <div class="col s3">
+                <img src="/static/images/location.jpg" class="locateimg">
+            </div>
+            <div class="col s9">
+                용산구 청파로 45길 12-1<br/>
+                <span class="locatetxt">WOW 신내떡 숙대입구점</span><br/>
+                <a>변경</a>
+            </div>
+        </div>
+    </ul>
+    <div class="row">
+        <div class="valign-wrapper row">
+            <div class="col s3">
+                평점
+            </div>
+            <div class="col s7 right-align">
+                <div id="place_star" class="raty"></div>
+            </div>
+            <div class="col s2 center-align scoreboard">
+                <div id="place_target"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <img src="/static/images/issue-blue.png" class="icon">
+            <a class="iconfont">리뷰</a>
+            <div class="input-field col s12">
+                <input placeholder="드셨던 메뉴를 솔직하게 리뷰해주세요." id="first_name" type="text" class="validate">
+
+            </div>
+            <a class="waves-effect waves-light btn widthfull">리뷰 등록</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="/static/bower_components/raty/lib/jquery.raty.js"></script>
+    <script src="/static/js/raty_wrapper.js"></script>
+    <script>
+        drawRaty("place", 3.0, false);
+    </script>
+{% endblock %}
