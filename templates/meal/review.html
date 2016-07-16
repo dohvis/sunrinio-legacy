@@ -3,20 +3,16 @@
 {% block style %}
     <link rel="stylesheet" href="/static/bower_components/raty/lib/jquery.raty.css">
     <link href="/static/css/meal.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/static/css/location.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 {% endblock %}
-
-{% block title %}
-
-{% endblock %}
-
+{% block title %} 급식 리뷰 {% endblock %}
 {% block content %}
-
     <div class="row">
         <div class="col s12 m6">
             <div class="card">
-                <div class="center-align blue-text text-lighten-1 rate-title" >평점을 매겨주세요!</div>
+                <div class="center-align blue-text text-lighten-1 rate-title">평점을 매겨주세요!</div>
                 <div class="divider"></div>
-                <link href="/static/css/location.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
                 <div class="row row-bottom">
                     <div class="valign-wrapper row">
                         <div class="col s3">
@@ -108,7 +104,7 @@
         drawRaty("vegetable", 3.0, false);
         drawRaty("dessert", 3.0, false);
         drawRaty("source", 3.0, false);
-        drawRaty("etc1", 3.);
-        drawRaty("etc2", 3.);
+        drawRaty("etc1", 3.0);
+        drawRaty("etc2", 3.0);
     </script>
 {% endblock %}

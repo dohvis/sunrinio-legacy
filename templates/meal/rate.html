@@ -2,27 +2,27 @@
 {% block content %}
     <link href="/static/css/meal.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <div class="container">
-    <div class="row">
-        <div class="card meal-card">
-            <div class="row">
-                <div class="card-content">
-                    <div class="col s4">
-                        <div class="col s12">
-                            <img src="/static/images/meal.png" id="meal-img">
-                        </div>
-                        <span id="meal-title">오늘의 급식</span>
+        <div class="row">
+            <div class="card meal-card">
+                <div class="row">
+                    <div class="card-content">
+                        <div class="col s4">
+                            <div class="col s12">
+                                <img src="/static/images/meal.png" id="meal-img">
+                            </div>
+                            <span id="meal-title">오늘의 급식</span>
 
-                    </div>
-                    <div class="col s4 right-align">
-                        <p class="main-content">햇반</p>
-                        <p class="main-content">우동</p>
-                        <p class="main-content">오리김치볶음</p>
-                        <p class="main-content">두부양념구이</p>
-                        <p class="main-content">깍두기</p>
-                        <p class="main-content">무쌈</p>
+                        </div>
+                        <div class="col s4 right-align">
+                            <p class="main-content">햇반</p>
+                            <p class="main-content">우동</p>
+                            <p class="main-content">오리김치볶음</p>
+                            <p class="main-content">두부양념구이</p>
+                            <p class="main-content">깍두기</p>
+                            <p class="main-content">무쌈</p>
+                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <div class="row">
@@ -46,17 +46,7 @@
                     <span id="count">댓글 2개</span>
                     <ul class="collection">
                         <li class="collection-item avatar openchatimg">
-                            <img src="/static/images/rogo.png" alt="" class="circle">
-                            <span class="title">김주용</span>
-                            <p>안녕하세여</p>
-                        </li>
-                        <li class="collection-item avatar openchatimg">
-                            <img src="/static/images/rogo.png" alt="" class="circle">
-                            <span class="title">김주용</span>
-                            <p>안녕하세여</p>
-                        </li>
-                        <li class="collection-item avatar openchatimg">
-                            <img src="/static/images/rogo.png" alt="" class="circle">
+                            <img src="/static/images/logo.png" alt="" class="circle">
                             <span class="title">김주용</span>
                             <p>안녕하세여</p>
                         </li>
@@ -77,7 +67,7 @@
         drawRaty("vegetable", 3.0, false);
         drawRaty("dessert", 3.0, false);
         drawRaty("source", 3.0, false);
-        drawRaty("etc1", 3.);
-        drawRaty("etc2", 3.);
+        drawRaty("etc1", 3.0);
+        drawRaty("etc2", 3.0);
     </script>
 {% endblock %}
