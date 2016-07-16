@@ -15,7 +15,6 @@
   ],
   "dependencies": {
     "Materialize": "materialize#^0.97.6",
-    "font-awesome": "^4.6.3",
-    "raty": "^2.7.0"
+    "font-awesome": "^4.6.3"
   }
 }

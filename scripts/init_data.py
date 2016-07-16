@@ -1,6 +1,3 @@
-import os
-from sunrinseed.settings.base import BASE_DIR
-
 from django.contrib.sites.models import Site
 from django.core.files import File
 from django.db.utils import (
@@ -16,15 +13,6 @@ from allauth.socialaccount.models import SocialApp
 
 FB_ID = "528049860707304"
 FB_SECRET = "92cb5cd475a48d9aafec759a9e540e11"
-
-
-class Utils:
-    @classmethod
-    def load_json(self, fn):
-        from json import loads
-        with open(fn, 'r') as fp:
-            data = fp.read()
-        return loads(data)
 
 
 def create_super_user():
@@ -47,11 +35,12 @@ def create_social_apps():
 
 
 def create_places():
-    info_list = Utils.load_json(os.path.join(BASE_DIR, "scripts/fixtures/near_sunrin.json"))
+    import pickle
+    info_list = pickle.load("fixtures/near_sunrin.json")
     for info in info_list:
         Place.objects.create(
-            name=info['title'],
-            address=info['addr'],
+            name=info['name'],
+            address=info['address'],
             telephone=info['telephone'],
             x=info['x'],
             y=info['y'],
@@ -63,7 +52,8 @@ def create_reviews():
     place = Place.objects.first() or create_places()
     place2 = Place.objects.all()[1]
     user = User.objects.first() or create_super_user()
-
+    from sunrinseed.settings.base import BASE_DIR
+    import os
     sulsam = open(os.path.join(BASE_DIR, 'media', 'sulsam.jpg'), 'rb')
     yuksam = open(os.path.join(BASE_DIR, 'media', '6sam.jpg'), 'rb')
     info_list = [

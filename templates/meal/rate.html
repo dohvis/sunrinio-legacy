@@ -29,8 +29,16 @@
             <div class="card">
                 <div class="row">
                     <div class="score card-content   center">
-                        <span class="blue-text lighten-4" id="meal-score">3.4 </span><span
-                            id="meal-score">|   별 별 별 별</span>
+                        <span class="blue-text lighten-4" id="meal-score">
+                            <div class="col s7 right-align">
+                                <div id="place_star" class="raty">
+                                </div>
+                            </div>
+                        <div class="col s2 center-align scoreboard ">
+                            <div id="place_target">
+                            </div>
+                        </div>
+                        </span>
                     </div>
 
                 </div>
@@ -60,5 +68,16 @@
     </div>
 {% endblock %}
 {% block script %}
-
+    <script src="/static/bower_components/raty/lib/jquery.raty.js"></script>
+    <script src="/static/js/raty_wrapper.js"></script>
+    <script>
+        drawRaty("rice", 3.0, false);
+        drawRaty("soup", 3.0, false);
+        drawRaty("kimchi", 3.0, false);
+        drawRaty("vegetable", 3.0, false);
+        drawRaty("dessert", 3.0, false);
+        drawRaty("source", 3.0, false);
+        drawRaty("etc1", 3.);
+        drawRaty("etc2", 3.);
+    </script>
 {% endblock %}
