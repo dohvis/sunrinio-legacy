@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+{% block content %}
+    <link href="/static/css/location.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <div class="contect">
+        <div class="row">
+
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#test1">정보</a></li>
+
+                <li class="tab col s3"><a href="#test2">리뷰</a></li>
+            </ul>
+        </div>
+        <div id="test1" class="col s12">
+            <div class="row">
+                <div class="col s12 m7">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="/static/images/location.jpg">
+                            <span class="card-title">달려라 팬</span>
+                        </div>
+                        <div class="card-content center-align">
+                            <p class="gr    ade"><a>4.5</a> | </p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="card white center-align">
+                        <div class="card-content ">
+                            <p>위치 I 숙명여대 입구</p>
+                            <p>전화 I 010-0000-0000</p>
+                            <p>영업 I AM10:00~PM02:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="test2" class="col s12">
+            <ul class="collection">
+                <li class="collection-item avatar">
+                    <img src="/static/images/sample.jpg" alt="" class="circle userimg">
+                    <span class="title">김주용</span> <span>AM 10:00</span>
+                    <p>진짜 너무 맛있어서 2인분시켜먹었어요.~!
+                    </p>
+                    <img src="/static/images/sample.jpg" alt="" class="userimg">
+                    <img src="/static/images/sample.jpg" alt="" class="userimg">
+                    <img src="/static/images/sample.jpg" alt="" class="userimg">
+                </li>
+            </ul>
+            <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                <a class="btn-floating btn-large red">
+                    <i class="large material-icons">mode_edit</i>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
