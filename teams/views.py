@@ -4,6 +4,8 @@ from rest_framework.viewsets import (
     ModelViewSet,
     ReadOnlyModelViewSet,
 )
+from rest_framework import permissions
+from teams.permissions import IsMemberOrReadonly
 from teams.models import (
     Team,
     Want2Join,
@@ -13,14 +15,17 @@ from teams.serializers import (
     TeamSerializer,
     Want2JoinSerializer,
 )
+from accounts.models import User
 
-
-class TeamViewSet(ReadOnlyModelViewSet):
+class TeamViewSet(ModelViewSet):
     """
     팀 정보 조회 API
     """
     queryset = Team.objects.all()
     serializer_class = TeamSerializer
+
+    permission_classes = (permissions.IsAuthenticated,
+                          IsMemberOrReadonly)
 
 
 class Want2JoinViewSet(ModelViewSet):
@@ -29,6 +34,9 @@ class Want2JoinViewSet(ModelViewSet):
     """
     queryset = Want2Join.objects.all()
     serializer_class = Want2JoinSerializer
+
+    permission_classes = (permissions.IsAuthenticated,
+                          IsMemberOrReadonly)
 
     def create(self, request, *args, **kwargs):
         pk = kwargs['pk']

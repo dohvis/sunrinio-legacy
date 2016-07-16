@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link href="/static/css/team_list.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block title %}
+    팀 목록
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m8 l6 offset-m2">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">
+                            돼지국밥<i class="material-icons right">more_vert</i>
+                        </span>
+                        <p class="grey-text text-darken-2">Smarteen App Challenge 2016</p>
+                        <div class="row profile-image-list">
+                            <div class="col s12">
+                                <img src="/media/profile_image/5106603.jpg" class="circle profile-image" title="양민석"/>
+                                <img src="/media/profile_image/9590242.jpg" class="circle profile-image" title="김도현"/>
+                                <img src="/media/profile_image/5106603.jpg" class="circle profile-image"/>
+                                <img src="/media/profile_image/9590242.jpg" class="circle profile-image"/>
+                                <img src="/media/profile_image/5106603.jpg" class="circle profile-image"/>
+                                <img src="/media/profile_image/9590242.jpg" class="circle profile-image"/>
+                            </div>
+                        </div>
+                        <div class="row tags-list">
+                            <div class="col s12">
+                                <a href="#"><div class="chip">Python</div></a>
+                                <a href="#"><div class="chip">Django</div></a>
+                                <a href="#"><div class="chip">Android</div></a>
+                                <a href="#"><div class="chip">STAC</div></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-action">
+                        <a class="btn-flat waves-effect waves-light-blue" href="#">참여 신청</a>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title activator grey-text text-darken-4">
+                            돼지국밥<i class="material-icons right">close</i>
+                        </span>
+                        <p>저희 팀은 두 명 다 보안 대회 3회 대상이라는 빛나는 실적을 가진 팀입니다. 여기 오시면 무조건 상 받을수 있어요. 버스 책임져드림</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m8 l6 offset-m2">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">
+                            Flaskr<i class="material-icons right">more_vert</i>
+                        </span>
+                        <p class="grey-text text-darken-2">선린해커톤</p>
+                        <div class="row profile-image-list">
+                            <div class="col s12">
+                                <img src="/media/profile_image/5106603.jpg" class="circle profile-image" title="양민석"/>
+                                <img src="/media/profile_image/9590242.jpg" class="circle profile-image" title="김도현"/>
+                            </div>
+                        </div>
+                        <div class="row tags-list">
+                            <div class="col s12">
+                                <a href="#"><div class="chip">Python</div></a>
+                                <a href="#"><div class="chip">Flask</div></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-action">
+                        <a class="btn-flat waves-effect waves-light-blue" href="#">참여 신청</a>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title activator grey-text text-darken-4">
+                            Flaskr<i class="material-icons right">close</i>
+                        </span>
+                        <p>Flask를 사랑하는 사람들의 팀입니다. 해커톤 나갈 준비중입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="/static/bower_components/es6-promise/promise.js"></script><!-- Promise polyfill -->
+    <script type="text/javascript">
+        if(!this.Promise){
+            Promise = ES6Promise.Promise; //Fallback to polyfill if Promise is not present
+        }
+        var tags = {};
+        var teams = [];
+        var users = {};
+        var tag_request = function(){ // Request Tag asynchronously
+            return new Promise(function(resolve, reject) {
+                $.get("/api/tags/")
+                        .done(function (data) {
+                            $.each(data, function (i, tag) {
+                                window.tags[tag.name] = tag; // Construct tag lookup table
+                            });
+                            resolve();
+                        })
+                        .fail(function () {
+                            Materialize.toast('태그 정보를 받아오는데 실패했습니다', 3000);
+                            reject();
+                        });
+            });
+        };
+        var teams_request = function(){
+            return new Promise(function(resolve, reject) {
+                $.get("/api/teams/")
+                        .done(function(data){
+                            teams = data;
+                            resolve();
+                        })
+                        .fail(function(){
+                            Materialize.toast('팀 정보를 받아오는데 실패했습니다', 3000);
+                            reject();
+                        });
+            });
+        };
+        Promise.all([tag_request(),teams_request()])
+                .then(function(){ // Wait for document to load
+                    return new Promise(function(resolve){
+                        $(document).ready(resolve);
+                    });
+                })
+                .then(function(){
+
+                    var card_builder = function(team_name, team_desc, user_list, tag_list){
+                        var card;
+                        card = '<div class="col s12 m8 l6 offset-m2">\
+                                    <div class="card">\
+                                        <div class="card-content">\
+                                            <span class="card-title activator grey-text text-darken-4">\
+                                                -!TeamName!-<i class="material-icons right">more_vert</i>\
+                                            </span>\
+                                            <p class="grey-text text-darken-2">-!TeamIntro!-</p>\
+                                            <div class="row profile-image-list">\
+                                                <div class="col s12">\
+                                                -!TeamMember!-\
+                                                </div>\
+                                            </div>\
+                                            <div class="row tags-list">\
+                                                <div class="col s12">\
+                                                -!TeamTags!-\
+                                                </div>\
+                                            </div>\
+                                        </div>\
+                                        <div class="card-action">\
+                                            <a class="btn-flat waves-effect waves-light-blue" href="#">참여 신청</a>\
+                                        </div>\
+                                        <div class="card-reveal">\
+                                            <span class="card-title activator grey-text text-darken-4">\
+                                                -!TeamName!-<i class="material-icons right">close</i>\
+                                            </span>\
+                                            <p>-!TeamDesc!-</p>\
+                                        </div>\
+                                    </div>\
+                                </div>';
+
+                    }
+                });
+
+    </script>
+{% endblock %}

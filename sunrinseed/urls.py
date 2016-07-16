@@ -43,11 +43,9 @@ router.register(r'boards', boards_views.BoardViewSet)
 router.register(r'posts', boards_views.PostViewSet)
 router.register(r'schedule', schedule_views.ScheduleViewSet)
 
-join_urls = DefaultRouter()
-join_urls.register(r'^', teams_views.Want2JoinViewSet)
 
 urlpatterns = [
-    url(r'^api/teams/(?P<pk>\d+)/join', include(join_urls.urls)),
+    url(r'^api/teams/(?P<pk>\d+)/join', teams_views.Want2JoinViewSet.as_view(actions={'get': 'list', 'post': 'create'})),
 
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^api/', include(router.urls)),
