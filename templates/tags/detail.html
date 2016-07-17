@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link href="/static/bower_components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/tags.css" rel="stylesheet" type="text/css">
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col s12 center-align" id="tag-head-container">
+                <div class="chip" id="tag-head"><i class="fa fa-tag"></i> Python</div>
+                <span>의 검색 결과</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content light-blue lighten-5">
+                        <span class="card-title">Users</span>
+                        <ul class="collection">
+
+                            <li class="collection-item avatar grey lighten-4">
+                                <div class="row">
+                                    <div class="col s12">
+                                        <img src="/media/profile_image/5106603.jpg" alt="" class="circle">
+                                        <a href="/accounts/1">
+                                            <span class="title black-text">양민석</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <span>
+                                <a href="#">
+                                    <div class="chip">Python</div>
+                                </a>
+                                <a href="#">
+                                    <div class="chip">JS</div>
+                                </a>
+                                </span>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content blue lighten-5">
+                        <span class="card-title">Teams</span>
+
+                        <div class="card">
+                            <div class="card-content black-text grey lighten-4">
+                                <a href="#">
+                                <span class="card-title black-text">돼지국밥</span>
+                                    </a>
+                                <p class="card-body">STAC 2016 진출</p>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-content black-text grey lighten-4">
+                                <span class="card-title">돼지국밥</span>
+                                <p class="card-body">STAC 2016 진출</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
