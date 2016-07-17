@@ -30,7 +30,7 @@ class TestPlace(TestCase):
         included_place = {
             'x': 127.1, 'y': 37.0,
             'name': '육쌈냉면', 'description': '냉면에 고기싸줌', 'address': "서울특별시 용산구 청파동 111-58 ",
-            'rate_avg': 5.0, 'url': 'http://testserver/api/places/2/', 'reviews': [],
+            'rate_avg': 5.0, 'url': 'http://testserver/api/places/2/', 'reviews': [], 'pk': 2,
             'telephone': '010-1234-5678',
         }
         for place in [excluded_place, included_place]:
