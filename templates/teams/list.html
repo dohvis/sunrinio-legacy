@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link href="/static/css/team_list.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block title %}
+    팀 목록
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row" id="main">
+        </div>
+    </div>
+    <div class="fixed-action-btn" id="fab">
+        <a class="btn-floating btn-large red" href="{% url 'teams:add' %}">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="/static/bower_components/es6-promise/promise.js"></script><!-- Promise polyfill -->
+    <script type="text/javascript">
+        if(!this.Promise){
+            Promise = ES6Promise.Promise; //Fallback to polyfill if Promise is not present
+        }
+        var tags = {};
+        var teams = [];
+        var users = {};
+        var tag_request = function(){ // Request Tag asynchronously
+            return new Promise(function(resolve, reject) {
+                $.get("/api/tags/")
+                        .done(function (data) {
+                            $.each(data, function (i, tag) {
+                                window.tags[tag.name] = tag; // Construct tag lookup table
+                            });
+                            resolve();
+                        })
+                        .fail(function () {
+                            Materialize.toast('태그 정보를 받아오는데 실패했습니다', 3000);
+                            reject();
+                        });
+            });
+        };
+        var teams_request = function(){
+            return new Promise(function(resolve, reject) {
+                $.get("/api/teams/")
+                        .done(function(data){
+                            teams = data;
+                            resolve();
+                        })
+                        .fail(function(){
+                            Materialize.toast('팀 정보를 받아오는데 실패했습니다', 3000);
+                            reject();
+                        });
+            });
+        };
+        Promise.all([tag_request(),teams_request()])
+                .then(function(){ // Wait for document to load
+                    return new Promise(function(resolve){
+                        $(document).ready(resolve);
+                    });
+                })
+                .then(function(){
+                    var card_builder = function(team_pk, team_name, team_intro, team_desc, user_list, tag_list){
+                        var card;
+                        card = '<div class="col s12 m8 l6 offset-m2">\
+                                    <div class="card">\
+                                        <div class="card-content">\
+                                            <span class="card-title activator grey-text text-darken-4">\
+                                                -!TeamName!-<i class="material-icons right">more_vert</i>\
+                                            </span>\
+                                            <p class="grey-text text-darken-2">-!TeamIntro!-</p>\
+                                            <div class="row profile-image-list">\
+                                                <div class="col s12">\
+                                                -!TeamMember!-\
+                                                </div>\
+                                            </div>\
+                                            <div class="row tags-list">\
+                                                <div class="col s12">\
+                                                -!TeamTags!-\
+                                                </div>\
+                                            </div>\
+                                        </div>\
+                                        <div class="card-action">\
+                                            <a class="btn-flat waves-effect waves-light-blue" href="/teams/-!TeamPK!-/">참여 신청</a>\
+                                        </div>\
+                                        <div class="card-reveal">\
+                                            <span class="card-title activator grey-text text-darken-4">\
+                                                -!TeamName!-<i class="material-icons right">close</i>\
+                                            </span>\
+                                            <p>-!TeamDesc!-</p>\
+                                        </div>\
+                                    </div>\
+                                </div>';
+                        card = card.replace(/-!TeamName!-/gi,team_name);
+                        card = card.replace('-!TeamIntro!-', team_intro);
+                        var user_profile_images = "";
+                        $.each(user_list, function(i, elem){
+                            var user_pk = elem.split('/');
+                            user_pk = user_pk[user_pk.length-2];
+                            user_profile_images += '<a href="/accounts/'+user_pk+'/"><img src="'+elem+'profile_image" class="circle profile-image"/></a>'
+                        });
+                        card = card.replace('-!TeamMember!-', user_profile_images);
+                        var team_tags = "";
+                        $.each(tag_list, function(i, elem){
+                            var tag_pk = window.tags[elem].url.split('/');
+                            tag_pk = tag_pk[tag_pk.length-2];
+                            team_tags += '<a href="/tags/'+tag_pk+'"><div class="chip">'+elem+'</div></a>';
+                        });
+                        card = card.replace('-!TeamTags!-', team_tags);
+                        card = card.replace('-!TeamDesc!-', team_desc);
+                        card = card.replace('-!TeamPK!-', team_pk);
+                        return $.parseHTML(card);
+                    };
+                    $.each(window.teams, function(i, elem){
+                        var team_pk = elem.url.split('/');
+                        team_pk = team_pk[team_pk.length - 2];
+                        var card = card_builder(team_pk, elem.name, elem.introduce, elem.content, elem.users, elem.tags);
+                        $("#main").append(card);
+                    })
+                });
+
+    </script>
+{% endblock %}

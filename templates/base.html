@@ -11,7 +11,6 @@
     <link href="/static/bower_components/Materialize/dist/css/materialize.css" type="text/css" rel="stylesheet"
           media="screen,projection"/>
     <link href="/static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="/static/css/sidebar.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link href="/static/bower_components/font-awesome/css/font-awesome.min.css" type="text/css" rel="stylesheet"
           media="screen,projection"/>
     {% block style %}{% endblock %}
@@ -37,7 +36,7 @@
                         {% if request.user.is_authenticated %}
                             <div class="row valign-wrapper">
                                 <div class="col s7">
-                                    <img src="/media/{{ request.user.profile_image }}" alt="프로필 사진"
+                                    <img src="{{ request.user.get_profile_image }}" alt="프로필 사진"
                                          class="circle user_photo-img">
                                     <!-- notice the "circle" class -->
                                 </div>
@@ -58,24 +57,24 @@
                     </div>
                 </div>
             </li>
-            <a href=""><li><img src="/static/images/home-button.png" class="sideicon"> <span class="sort">Home</span></li></a>
-            <li> <a href="badges.html"><img src="/static/images/MYAPAGE.png" class="sideicon"><span class="sort">마이페이지</span></a></li>
-            <li><a href="http://sunrinwiki.layer7.kr"><img src="/static/images/export-button.png" class="sideicon"><span class="sort">선린위키로</span></a></li>
+            <li><a href="badges.html">Home</a></li>
+            <li><a href="badges.html">마이페이지</a></li>
+            <li><a href="http://sunrinwiki.layer7.kr">선린위키로</a></li>
 
             <div class="divider"></div>
             <p class="grey-text text-darken-1 left-align p">커뮤니티</p>
-            <a href=""><li><img src="/static/images/restaurant.png" class="sideicon"> <span class="sort">오늘의 급식</span></li></a>
-            <a href=""><li><img src="/static/images/BOARD.png" class="sideicon"> <span class="sort">게시판</span></li></a>
+            <li class="sort"><a href="badges.html">오늘의 급식</a></li>
+            <li class="sort"><a href="collapsible.html">게시판</a></li>
             <div class="divider"></div>
 
             <p class="grey-text text-darken-1 left-align p">공모전팀</p>
-            <a href=""><li><img src="/static/images/TEAM.png" class="sideicon"> <span class="sort">팀구하기</span></li></a>
-            <a href=""><li><img src="/static/images/TEAM.png" class="sideicon"> <span class="sort">팀만들기</span></li></a>
+            <li class="sort"><a href="badges.html">팀구하기</a></li>
+            <li class="sort"><a href="collapsible.html">팀만들기</a></li>
             <div class="divider"></div>
 
             <p class="grey-text text-darken-1 left-align p">오늘 뭐하지?</p>
-            <a href=""><li><img src="/static/images/place.png" class="sideicon"> <span class="sort">선린장소</span></li></a>
-            <a href=""><li><img src="/static/images/openchat.png" class="sideicon"> <span class="sort">오픈채팅</span></li></a>
+            <li class="sort"><a href="badges.html">선린장소</a></li>
+            <li class="sort"><a href="collapsible.html">오픈채팅</a></li>
             <div class="divider"></div>
         </ul>
 

@@ -7,7 +7,9 @@ from allauth.account.adapter import get_adapter
 from allauth.account.utils import setup_user_email
 
 from accounts.models import User
+from accounts.permissions import IsOwnerOrReadOnly
 from teams.models import Team
+from tags.models import Tag
 
 
 class RegisterSerializer(serializers.Serializer):
@@ -95,8 +97,8 @@ class VerifyEmailSerializer(serializers.Serializer):
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    tags = serializers.StringRelatedField(many=True)
-    teams = serializers.HyperlinkedRelatedField(queryset=Team.objects.all(), view_name='team-detail', many=True)
+    tags = serializers.SlugRelatedField(queryset=Tag.objects.all(), many=True, slug_field='name', read_only=False)
+    teams = serializers.HyperlinkedRelatedField(view_name='team-detail', many=True, read_only=True)
     profile_image = serializers.ImageField(required=False)
 
     class Meta:

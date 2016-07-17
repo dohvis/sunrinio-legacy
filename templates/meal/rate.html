@@ -13,7 +13,7 @@
                             <span id="meal-title">오늘의 급식</span>
 
                         </div>
-                        <div class="col s4 right-align meal-card">
+                        <div class="col s4 right-align">
                             <p class="main-content">햇반</p>
                             <p class="main-content">우동</p>
                             <p class="main-content">오리김치볶음</p>
@@ -21,73 +21,52 @@
                             <p class="main-content">깍두기</p>
                             <p class="main-content">무쌈</p>
                         </div>
-                        <div class="col s4paddingzero">
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                            </p>
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-half.png">
-                            </p>
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                            </p>
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-half.png">
-                            </p>
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                            </p>
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-half.png">
-                            </p>
-                        </div>
                     </div>
+
                 </div>
+            </div>
+            <div class="row">
+                <div class="card">
+                    <div class="row">
+                        <div class="score card-content   center">
+                        <span class="blue-text lighten-4" id="meal-score">
+                            <div class="col s7 right-align">
+                                <div id="place_star" class="raty">
+                                </div>
+                            </div>
+                        <div class="col s2 center-align scoreboard ">
+                            <div id="place_target">
+                            </div>
+                        </div>
+                        </span>
+                        </div>
 
+                    </div>
+                    <div class="row" id="comment-bar">
+                        <span id="count">댓글 2개</span>
+                        <ul class="collection">
+                            <li class="collection-item avatar openchatimg">
+                                <img src="/static/images/rogo.png" alt="" class="circle">
+                                <span class="title">김주용</span>
+                                <p>안녕하세여</p>
+                            </li>
+                            <li class="collection-item avatar openchatimg">
+                                <img src="/static/images/rogo.png" alt="" class="circle">
+                                <span class="title">김주용</span>
+                                <p>안녕하세여</p>
+                            </li>
+                            <li class="collection-item avatar openchatimg">
+                                <img src="/static/images/rogo.png" alt="" class="circle">
+                                <span class="title">김주용</span>
+                                <p>안녕하세여</p>
+                            </li>
+                        </ul>
+                    </div>
 
-                <div class="card center-align">
-                    <a id="meal-score">2.4 </a>
-                    <img src="/static/images/raty/star-on.png">
-                    <img src="/static/images/raty/star-on.png">
-                    <img src="/static/images/raty/star-half.png">
-                    <img src="/static/images/raty/star-off.png">
-                    <img src="/static/images/raty/star-off.png">
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="row" id="comment-bar">
-        <span id="count">댓글 2개</span>
-        
-        <ul class="collection">
-            <li class="collection-item avatar openchatimg">
-                <img src="/static/images/logo.png" alt="" class="circle">
-                <span class="title">김주용</span>
-                <p>안녕하세여</p>
-            </li>
-            <li class="collection-item avatar openchatimg">
-                <img src="/static/images/logo.png" alt="" class="circle">
-                <span class="title">김주용</span>
-                <p>안녕하세여</p>
-            </li>
-        </ul>
-    </div>
-
 {% endblock %}
 {% block script %}
     <script src="/static/bower_components/raty/lib/jquery.raty.js"></script>

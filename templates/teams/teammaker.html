@@ -5,40 +5,110 @@
     <link href="/static/css/main.css" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block content %}
+
     <div class="container">
         <div class="row">
-            <div class="col s12 m6">
-                <div class="card">
-                    <div class="card-content blue-text text-lighten-1 ">
-                        <div class="row">
-                            <span class="card-title">팀만들기</span>
-                            <div class="input-field col s12">
-                                <input id="" type="text" class="validate">
-                                <label for="팀이름">팀이름</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="" type="text" class="validate">
-                                <label for="대회 이름">대회 이름</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                <label for="팀소개">팀소개</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="" type="text" class="validate">
-                                <label for="태그">태그</label>
+            <form>
+                {% csrf_token %}
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="card-content text-lighten-1 ">
+                            <div class="row">
+                                <span class="card-title blue-text">팀 생성</span>
+                                <div class="input-field col s12">
+                                    <input id="team-name" type="text" class="validate" required>
+                                    <label for="team-name">팀 이름</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input id="introduction" type="text" class="validate">
+                                    <label for="introduction">대회/행사 이름</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <textarea id="contents" class="materialize-textarea" required></textarea>
+                                    <label for="contents">팀 소개</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <select id="tags" class="blue-text" multiple>
+                                        <option value="" disabled>태그 선택</option>
+                                    </select>
+                                    <label for="tags">태그</label>
+                                </div>
+                                <div class="col s12">
+                                    <p id="error-msg" class="red-text"></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-action right-align">
-                        <a class="waves-effect waves-light btn ">팀생성</a>
+                        <div class="card-action right-align">
+                            <a class="waves-effect waves-light btn" id="create-team">팀 생성</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
 {% endblock %}
 
 {% block script %}
+    <script type="text/javascript">
+        var tags = [];
+        var origin = window.location.origin;
+        $.get('/api/tags')
+                .done(function(data){
+                    tags = data;
+                    $(document).ready(function(){
+                        var tags_builder = function(tags){
+                            var tagstring = "";
+                            $.each(tags, function(i, elem){
+                                tagstring += '<option value="'+elem.name+'">'+elem.name+'</option>';
+                            });
+                            return tagstring;
+                        };
+                        $("#tags").append(tags_builder(window.tags));
+                        $('select').material_select();
+                    })
+                });
+        $('#create-team').on('click', function(){
+            var payload = {
+                name: $('#team-name').val(),
+                tags: $('#tags').val(),
+                users: [origin + '/api/users/' + {{ request.user.pk }}+'/'],
+                introduce: $('#introduction').val(),
+                content : $('#contents').val()
+            };
+            $.ajax({
+                url: '/api/teams/',
+                type: 'POST',
+                data: JSON.stringify(payload),
+                contentType: 'application/json; charset=UTF-8',
+                dataType: 'json',
+                beforeSend: function(xhr, settings){
+                    xhr.setRequestHeader("X-CSRFToken", $('input[name=csrfmiddlewaretoken]').val())
+                }
+            })
+                    .done(function(){
+                        alert('팀 생성이 완료되었습니다!');
+                        window.location = '/teams/'
+                    })
+                    .fail(function(data){
+                        var notify_error = function(resp, elem_id){
+                            $("#"+elem_id).addClass("invalid");
+                            $("label[for="+elem_id+"]").attr("data-error", resp);
+                        };
+                        data = data.responseJSON;
+                        if(data.name){
+                            notify_error(data.name, "team-name");
+                        }
+                        if(data.introduce){
+                            notify_error(data.introduce, "introduction");
+                        }
+                        if(data.content){
+                            notify_error(data.content, "contents");
+                        }
+                        if(data.non_field_errors){
+                            $("#error-msg").html(data.non_field_errors);
+                        }
+                    });
+        })
+    </script>
 {% endblock %}
