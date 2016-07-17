@@ -45,9 +45,9 @@ router.register(r'boards', boards_views.BoardViewSet)
 router.register(r'posts', boards_views.PostViewSet)
 router.register(r'schedule', schedule_views.ScheduleViewSet)
 
-
 urlpatterns = [
-    url(r'^api/teams/(?P<pk>\d+)/join', teams_views.Want2JoinViewSet.as_view(actions={'get': 'list', 'post': 'create'})),
+    url(r'^api/teams/(?P<pk>\d+)/join',
+        teams_views.Want2JoinViewSet.as_view(actions={'get': 'list', 'post': 'create'})),
     url(r'^api/users/(?P<pk>\d+)/profile_image', accounts_views.get_profile_image),
 
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
@@ -59,6 +59,9 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(accounts_urls, namespace='accounts')),
+
+    url(r'^board/(?P<board_pk>\d+)/', boards_views.board_post,),
+    url(r'^board/(?P<board_pk>\d+)/(?P<post_pk>\d+)/', boards_views.post_view),
     url(r'^teams/', include(teams_urls, namespace='teams')),
     url(r'^allauth/', include('allauth.urls')),
     url(r'^docs/', include('rest_framework_swagger.urls')),
