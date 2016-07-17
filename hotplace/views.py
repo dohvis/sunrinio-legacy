@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import (
+    get_object_or_404,
+    render,
+)
 from rest_framework import generics, viewsets
 from rest_framework.response import Response
 from .models import (
@@ -36,3 +39,10 @@ class ReviewViewSet(viewsets.ModelViewSet):
 
 def mapview(request):
     return render(request, 'hotplace/map.html')
+
+
+def place_detail(request, place_pk):
+    place = get_object_or_404(Place, pk=place_pk)
+    context = {'place': place}
+    print(context['place'].name, type(context['place']),111)
+    return render(request, 'hotplace/detail.html', context)
