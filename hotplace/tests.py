@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.utils.timezone import now
 from accounts.tests import make_user
 from hotplace.models import (
     Place,
@@ -12,8 +13,8 @@ class TestPlace(TestCase):
 
     def test_signal(self):
         place = Place.objects.create(name="노래방", x=126.96694811560961, y=37.544515649066426)
-        Review.objects.create(place=place, user=self.user, rate=3.5, comment='asdf')
-        Review.objects.create(place=place, user=self.user, rate=4.5, comment='asdf2')
+        Review.objects.create(place=place, user=self.user, rate=3.5, comment='asdf', when=now())
+        Review.objects.create(place=place, user=self.user, rate=4.5, comment='asdf2', when=now())
         place.refresh_from_db()
         self.assertEqual(place.rate_avg, 4.0)
 
