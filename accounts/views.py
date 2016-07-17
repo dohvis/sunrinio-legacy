@@ -64,3 +64,6 @@ def update_profile_image(request):
 def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
     return render(request, 'accounts/detail.html', context={'user': user})
+
+def user_mypage(request):
+    return render(request, 'accounts/detail.html', context={'user': request.user})
