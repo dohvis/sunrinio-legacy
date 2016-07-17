@@ -57,6 +57,9 @@
                         {% endfor %}
                     </li>
                 {% endfor %}
+            {% if not review %}
+                <li class="collection-item avatar">등록된 리뷰가 없습니다.</li>
+            {% endif %}
             </ul>
             <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
                 <a class="btn-floating btn-large red" href="/hotplace/{{ place.pk }}/review/">

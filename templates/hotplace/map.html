@@ -3,8 +3,7 @@
     <link href="/static/css/map.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 {% endblock %}
 {% block content %}
-    <script src="https://googlemaps.github.io/js-marker-clusterer/examples/data.json"></script>
-    <script src="https://googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"></script
+    <script src="https://googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"></script>
 
 
     <div class="row">
@@ -51,17 +50,19 @@
                 '<img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">' +
                 '</div>' +
                 '<div class="col s9">' +
-                '<a>{name}</a><br/>' +
+                '<a href="/hotplace/{pk}/">{name}</a><br/>' +
                 '<span class="black-text locationaddress">' +
                 '{address}' +
                 '</span>' +
                 '</div>' +
                 '<div class="col s2 locate_grade">' +
-                '<a>4.5</a>' +
+                '<a>{rate_avg}</a>' +
                 '</div></div></div>';
         function appendPlaceList(place) {
             var placeCard = BaseplaceCard.replace("{name}", place.name);
+            placeCard = placeCard.replace("{pk}", place.pk);
             placeCard = placeCard.replace("{address}", place.address);
+            placeCard = placeCard.replace("{rate_avg}", place.rate_avg);
             $("#placeList").append(placeCard);
         }
         function drawMarker(data) {
