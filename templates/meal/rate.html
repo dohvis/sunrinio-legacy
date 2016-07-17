@@ -23,7 +23,6 @@
                                         <img src="/static/images/meal.png" id="meal-img">
                                     </div>
                                     <span id="meal-title">오늘의 급식</span>
-
                                 </div>
                                 <div class="col s4 right-align meal-card">
                                     <p class="main-content">햇반</p>
@@ -70,7 +69,6 @@
                             </div>
                         </div>
 
-
                         <div class="card center-align">
                             <a id="meal-score">2.4 </a>
                             <img src="/static/images/raty/star-on.png">
@@ -84,19 +82,17 @@
             </div>
 
             <div class="row" id="comment-bar">
-                <span id="count">댓글 2개</span>
+                <span id="count">댓글 {{ reviews.count }}개</span>
 
                 <ul class="collection">
-                    <li class="collection-item avatar openchatimg">
-                        <img src="/static/images/logo.png" alt="" class="circle">
-                        <span class="title">김주용</span>
-                        <p>안녕하세여</p>
-                    </li>
-                    <li class="collection-item avatar openchatimg">
-                        <img src="/static/images/logo.png" alt="" class="circle">
-                        <span class="title">김주용</span>
-                        <p>안녕하세여</p>
-                    </li>
+                    {% for review in reivews %}
+                        <li class="collection-item avatar openchatimg">
+                            <img src="/static/images/logo.png" alt="" class="circle">
+                            <span class="title">{{ review.writer.name }}</span>
+                            <p>{{ review.content }}</p>
+                            <p>{{ review.rate }}</p>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -181,17 +177,12 @@
                     <a class="iconfont">리뷰</a>
                     <div class="input-field col s12">
                         <input placeholder="드셨던 메뉴를 솔직하게 리뷰해주세요." id="first_name" type="text" class="validate">
-
                     </div>
                     <a class="waves-effect waves-light btn widthfull">리뷰 등록</a>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
 
 {% endblock %}
 {% block script %}
