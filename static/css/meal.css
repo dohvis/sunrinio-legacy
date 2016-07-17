@@ -29,3 +29,19 @@
     margin-bottom:0px;
 }
 
+.star{
+    height: 18px;
+}
+.meal-card{
+    color: white;
+}
+.col.s4paddingzero {
+    width: 33.3333333333%;
+    margin-left: auto;
+    left: auto;
+    padding: 0px;
+    right: auto;
+}
+.pstar {
+    height: 28px;
+}
