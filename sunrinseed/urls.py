@@ -62,9 +62,8 @@ urlpatterns = [
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^debug/(?P<dir_name>\w+)/(?P<template_name>\w+)/$', util_views.template_debug),
     url(r'hotplace/$', place_views.mapview),
-    url(r'hotplace/review/$', place_views.add_review),
-    url(r'hotplace/(?P<place_pk>\d+)/', place_views.place_detail),
-
+    url(r'hotplace/(?P<place_pk>\d+)/$', place_views.place_detail),
+    url(r'hotplace/(?P<place_pk>\d+)/review/$', place_views.add_review),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

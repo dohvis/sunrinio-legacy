@@ -33,7 +33,7 @@ class Review(models.Model):
     user = models.ForeignKey(User, related_name='recently_visit')
     rate = models.FloatField(default=0.0)
     comment = models.CharField(max_length=500)
-    when = models.DateTimeField()
+    when = models.DateTimeField(auto_now_add=True)
     image = models.ImageField()
 
     def __str__(self):

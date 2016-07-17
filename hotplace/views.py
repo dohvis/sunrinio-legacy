@@ -1,13 +1,17 @@
 from django.shortcuts import (
     get_object_or_404,
     render,
+    redirect,
+    HttpResponse,
 )
-from rest_framework import generics, viewsets
+from rest_framework import viewsets
 from rest_framework.response import Response
+from accounts.models import User
 from .models import (
     Place,
     Review,
 )
+from .forms import PlaceReviewForm
 from .serializers import PlaceSerializer, ReviewSerializer
 
 
@@ -47,5 +51,24 @@ def place_detail(request, place_pk):
     return render(request, 'hotplace/detail.html', context)
 
 
-def add_review(request):
-    return render(request, 'hotplace/review.html')
+def add_review(request, place_pk):
+    place = get_object_or_404(Place, pk=place_pk)
+    if request.method == 'GET':
+        form = PlaceReviewForm()
+    elif request.method == 'POST':
+        form = PlaceReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.place = Place.objects.get(pk=place_pk)
+            review.user = request.user
+            review.save()
+            return redirect('/hotplace/{}/'.format(place_pk))
+        else:
+            print(form.errors)
+            return HttpResponse(status=400)
+
+    else:
+        form = PlaceReviewForm()
+
+    context = {'place': place, 'form': form}
+    return render(request, 'hotplace/review.html', context)
