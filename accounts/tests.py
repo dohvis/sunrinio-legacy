@@ -109,7 +109,7 @@ class TestUserList(TestCase):
                 {
                     "url": "http://testserver/api/users/1/", "username": "testuser", "name": "김선린",
                     "grade": 1, "klass": 2, "number": 3,
-                    "tags": ['<python>', '<django>'],
+                    "tags": ['python', 'django'],
                     "teams": [], "introduction": "접대롤 잘함 / 스택하고파여",
                     "profile_image": None,
                 },
