@@ -82,6 +82,7 @@ class Meal(models.Model):
     etc2 = models.ForeignKey(UnknownMeal, related_name='meals')
 
     date = models.DateField(help_text='날짜')
+    rate_avg = models.FloatField(default=0)
 
     def __str__(self):
         return "{} {} {}".format("중식" if self.type == 0 else "석식", self.date, self.content)
