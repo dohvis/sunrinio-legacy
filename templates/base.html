@@ -36,7 +36,7 @@
                         {% if request.user.is_authenticated %}
                             <div class="row valign-wrapper">
                                 <div class="col s7">
-                                    <img src="/media/{{ request.user.profile_image }}" alt="프로필 사진"
+                                    <img src="{{ request.user.get_profile_image }}" alt="프로필 사진"
                                          class="circle user_photo-img">
                                     <!-- notice the "circle" class -->
                                 </div>

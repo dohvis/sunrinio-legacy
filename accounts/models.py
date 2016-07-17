@@ -51,6 +51,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         return self.name
 
+    def get_profile_image(self):
+        try:
+            return self.profile_image.url
+        except ValueError:
+            return '/media/default_profile.png'
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._password = None

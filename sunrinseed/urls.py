@@ -46,6 +46,7 @@ router.register(r'schedule', schedule_views.ScheduleViewSet)
 
 urlpatterns = [
     url(r'^api/teams/(?P<pk>\d+)/join', teams_views.Want2JoinViewSet.as_view(actions={'get': 'list', 'post': 'create'})),
+    url(r'^api/users/(?P<pk>\d+)/profile_image', accounts_views.get_profile_image),
 
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^api/', include(router.urls)),

@@ -7,6 +7,7 @@ from django.shortcuts import (
     HttpResponse,
     render,
     redirect,
+    get_object_or_404
 )
 from django.contrib.auth import logout as _logout
 
@@ -42,6 +43,12 @@ def logout(request):
 
 def signup(request):
     return render(request, "accounts/signup.html")
+
+
+def get_profile_image(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    return redirect(user.get_profile_image())
+
 
 def update_profile_image(request):
     # TODO: POST말고 다른 메소드로는 파일업로드가 안되서 우선 임시로 프사변경만 API따로 만들어둠
