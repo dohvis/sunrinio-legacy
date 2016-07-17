@@ -47,7 +47,9 @@
                                 <img src="{{ user.profile_image.url }}" alt="{{ user.name }}" class="circle">
                                 <div class="row">
                                     <div class="col s12">
-                                        <span class="title">{{ user.name }}</span>
+                                        <a href="{% url 'accounts:detail' user.pk %}">
+                                            <span class="title black-text">{{ user.name }}</span>
+                                        </a>
                                     </div>
                                 </div>
                                 {% for tag in user.tags.all %}
@@ -73,7 +75,7 @@
                                 <img src="{{ join_request.user.profile_image.url }}" alt="{{ join_request.user.name }}" class="circle">
                                 <div class="row">
                                     <div class="col s12">
-                                        <a href="/users/{{ join_request.user.pk }}/"><span class="title black-text">{{ join_request.user.name }}</span></a>
+                                        <a href="{% url 'accounts:detail' join_request.user.pk %}"><span class="title black-text">{{ join_request.user.name }}</span></a>
                                         {% if isowner %}
                                             <a class="waves-effect waves-light btn accept right red lighten-1 user-decline"
                                                href="/teams/{{ team.pk }}/joins/{{ join_request.user.pk }}/reject/">거절</a>

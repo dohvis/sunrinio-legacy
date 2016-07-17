@@ -59,3 +59,8 @@ def update_profile_image(request):
     user.profile_image = img
     user.save()
     return HttpResponse(status=200)
+
+
+def user_detail(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    return render(request, 'accounts/detail.html', context={'user': user})
