@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework import generics, viewsets
 from rest_framework.response import Response
 from .models import (
@@ -31,3 +32,7 @@ class ReviewViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer, *args, **kwargs):
         serializer.save(user=self.request.user)
+
+
+def mapview(request):
+    return render(request, 'hotplace/map.html')
