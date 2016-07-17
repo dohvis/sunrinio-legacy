@@ -9,17 +9,15 @@
 {% endblock %}
 
 {% block content %}
-
     <link href="/static/css/location.css" type="text/css" rel="stylesheet" media="screen,projection"/>
     <ul class="collection">
         <div class="row marginlocation">
             <div class="col s3">
-                <img src="/static/images/location.jpg" class="locateimg">
+                <img src="{{ place.image.url }}" class="locateimg">
             </div>
             <div class="col s9">
-                용산구 청파로 45길 12-1<br/>
-                <span class="locatetxt">WOW 신내떡 숙대입구점</span><br/>
-                <a>변경</a>
+                {{ place.address }}<br/>
+                <span class="locatetxt">{{ place.name|safe }}</span><br/>
             </div>
         </div>
     </ul>
@@ -41,10 +39,9 @@
             <img src="/static/images/issue-blue.png" class="icon">
             <a class="iconfont">리뷰</a>
             <div class="input-field col s12">
-                <input placeholder="드셨던 메뉴를 솔직하게 리뷰해주세요." id="first_name" type="text" class="validate">
-
+                <input placeholder="맛, 가격, 시설등을 고려해 솔직한 평가를 작성해주세요." type="text" class="validate" id="comment">
             </div>
-            <a class="waves-effect waves-light btn widthfull">리뷰 등록</a>
+            <a class="waves-effect waves-light btn widthfull" onclick="reviewSubmit();">리뷰 등록</a>
         </div>
     </div>
 {% endblock %}
@@ -53,6 +50,16 @@
     <script src="/static/bower_components/raty/lib/jquery.raty.js"></script>
     <script src="/static/js/raty_wrapper.js"></script>
     <script>
+        function reviewSubmit(elem) {
+            $('<form action="/hotplace/{{ place.pk }}/review/" method="POST">' +
+                    "{% csrf_token %}" +
+                    '<input type="hidden" name="rate" value="' + $("#place_target").html() + '">' +
+                    '<input type="hidden" name="comment" value="' + $("#comment").val() + '">' +
+                    '</form>').submit();
+        }
+        $("#see_comments").click(function () {
+
+        });
         drawRaty("place", 3.0, false);
     </script>
 {% endblock %}

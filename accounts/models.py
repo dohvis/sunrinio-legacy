@@ -20,8 +20,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.CharField(max_length=64, null=True, blank=True, help_text="이메일 주소")
     is_staff = models.BooleanField(default=False, help_text="관리자 여부")
 
-    first_name = models.CharField(max_length=10, null=True)
-    last_name = models.CharField(max_length=10, null=True)
+    first_name = models.CharField(max_length=10, null=True, blank=True)
+    last_name = models.CharField(max_length=10, null=True, blank=True)
 
     name = models.CharField(max_length=10, null=False, help_text="이름")
     birthday = models.DateField(blank=True, null=True, help_text="생일")
@@ -35,7 +35,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     graduate_year = models.IntegerField(help_text="졸업년도")
     gender = models.IntegerField(choices=Gender.CHOICES, null=True, blank=True, help_text='성별')
 
-    profile_image = models.ImageField(upload_to='profile_image')
+    profile_image = models.ImageField(upload_to='profile_image', default="profile_image/default.png")
     introduction = models.CharField(max_length=256, blank=True)
     tags = models.ManyToManyField(Tag, related_name='users', help_text="유저 태그")
 

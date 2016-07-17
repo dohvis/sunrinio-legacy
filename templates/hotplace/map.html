@@ -3,216 +3,136 @@
     <link href="/static/css/map.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 {% endblock %}
 {% block content %}
-    <script src="https://googlemaps.github.io/js-marker-clusterer/examples/data.json"></script>
     <script src="https://googlemaps.github.io/js-marker-clusterer/src/markerclusterer.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4k1rRvHyZodyQJO8QiBoi3tywMoKdCc"></script>
 
 
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3"><a href="#test1">지도</a></li>
-                <li class="tab col s3"><a href="#test2">모든 장소</a></li>
+                <li class="tab col s3"><a href="#sunrinmap">지도</a></li>
+                <li class="tab col s3"><a href="#placeListTap">모든 장소</a></li>
             </ul>
         </div>
-        <div id="test1" class="col s12">
+        <div id="sunrinmap" class="col s12">
             <div id="map" class="col s12">
             </div>
         </div>
-        <div id="test2" class="col s12">
-
-            <div class="row valign-wrapper">
-                <div class="col s3">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                    <!-- notice the "circle" class -->
-                </div>
-                <div class="col s9">
-                    <a>3POP</a><br/>
+        <div id="placeListTap" class="col s12">
+            <div id="placeList">
+                <div class="divider"></div>
+                <div class="row valign-wrapper">
+                    <div class="col s3">
+                        <img src="http://{image_url}" alt="" class="locationphoto">
+                        <!-- notice the "circle" class -->
+                    </div>
+                    <div class="col s9">
+                        <a>3POP</a><br/>
                 <span class="black-text locationaddress">
                 서울시 용산구 뭐시기
                 </span>
+                    </div>
+                    <div class="col s2 locate_grade">
+                        <a>{rate}</a>
+                    </div>
                 </div>
-                <div class="col s2 locate_grade">
-                    <a>4.5</a>
-                </div>
-            </div>
-            <div class="divider"></div>
-            <div class="row valign-wrapper">
-                <div class="col s3">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                    <!-- notice the "circle" class -->
-                </div>
-                <div class="col s9">
-                    <a>3POP</a><br/>
-                <span class="black-text locationaddress">
-                서울시 용산구 뭐시기
-                </span>
-                </div>
-                <div class="col s2 locate_grade">
-                    <a>4.5</a>
-                </div>
-            </div>
-            <div class="divider"></div>
-            <div class="row valign-wrapper">
-                <div class="col s3">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                    <!-- notice the "circle" class -->
-                </div>
-                <div class="col s9">
-                    <a>3POP</a><br/>
-                <span class="black-text locationaddress">
-                서울시 용산구 뭐시기
-                </span>
-                </div>
-                <div class="col s2 locate_grade">
-                    <a>4.5</a>
-                </div>
-            </div>
-            <div class="divider"></div>
-            <div class="row valign-wrapper">
-                <div class="col s3">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                    <!-- notice the "circle" class -->
-                </div>
-                <div class="col s9">
-                    <a>3POP</a><br/>
-                <span class="black-text locationaddress">
-                서울시 용산구 뭐시기
-                </span>
-                </div>
-                <div class="col s2 locate_grade">
-                    <a>4.5</a>
-                </div>
-            </div>
-
-            <div class="divider"></div>
-            <div class="row valign-wrapper">
-                <div class="col s3">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                    <!-- notice the "circle" class -->
-                </div>
-                <div class="col s9">
-                    <a>3POP</a><br/>
-                <span class="black-text locationaddress">
-                서울시 용산구 뭐시기
-                </span>
-                </div>
-                <div class="col s2 locate_grade">
-                    <a>4.5</a>
-                </div>
-            </div>
-            <div class="divider"></div>
-            <div class="row valign-wrapper">
-                <div class="col s3">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                    <!-- notice the "circle" class -->
-                </div>
-                <div class="col s9">
-                    <a>3POP</a><br/>
-                <span class="black-text locationaddress">
-                서울시 용산구 뭐시기
-                </span>
-                </div>
-                <div class="col s2 locate_grade">
-                    <a>4.5</a>
-                </div>
-            </div>
-            <div class="divider"></div>
-            <div class="row valign-wrapper">
-                <div class="col s3">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                    <!-- notice the "circle" class -->
-                </div>
-                <div class="col s9">
-                    <a>3POP</a><br/>
-                <span class="black-text locationaddress">
-                서울시 용산구 뭐시기
-                </span>
-                </div>
-                <div class="col s2 locate_grade">
-                    <a>4.5</a>
-                </div>
-            </div>
-
-            <div class="divider"></div>
-            <div class="row valign-wrapper">
-                <div class="col s3">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                    <!-- notice the "circle" class -->
-                </div>
-                <div class="col s9">
-                    <a>3POP</a><br/>
-                <span class="black-text locationaddress">
-                서울시 용산구 뭐시기
-                </span>
-                </div>
-                <div class="col s2 locate_grade">
-                    <a>4.5</a>
-                </div>
-            </div>
-            <div class="divider"></div>
-            <div class="row valign-wrapper">
-                <div class="col s3">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                    <!-- notice the "circle" class -->
-                </div>
-                <div class="col s9">
-                    <a>3POP</a><br/>
-                <span class="black-text locationaddress">
-                서울시 용산구 뭐시기
-                </span>
-                </div>
-                <div class="col s2 locate_grade">
-                    <a>4.5</a>
-                </div>
-            </div>
-            <div class="divider"></div>
-            <div class="row valign-wrapper">
-                <div class="col s3">
-                    <img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">
-                    <!-- notice the "circle" class -->
-                </div>
-                <div class="col s9">
-                    <a>3POP</a><br/>
-                <span class="black-text locationaddress">
-                서울시 용산구 뭐시기
-                </span>
-                </div>
-                <div class="col s2 locate_grade">
-                    <a>4.5</a>
-                </div>
-            </div>
-
-            <div class="divider"></div>
-
-
+            </div><!-- #placeList -->
         </div>
+
     </div>
 
 {% endblock %}
 {% block script %}
     <script>
-        function initialize() {
-            var center = new google.maps.LatLng(37.4419, -122.1419);
-
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 3,
-                center: center,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-
+        var BaseplaceCard = '' +
+                '<div class="divider"></div>' +
+                '<div class="row valign-wrapper">' +
+                '<div class="col s3">' +
+                '<img src="http://materializecss.com/images/yuna.jpg" alt="" class="locationphoto">' +
+                '</div>' +
+                '<div class="col s9">' +
+                '<a href="/hotplace/{pk}/">{name}</a><br/>' +
+                '<span class="black-text locationaddress">' +
+                '{address}' +
+                '</span>' +
+                '</div>' +
+                '<div class="col s2 locate_grade">' +
+                '<a>{rate_avg}</a>' +
+                '</div></div></div>';
+        function appendPlaceList(place) {
+            var placeCard = BaseplaceCard.replace("{name}", place.name);
+            placeCard = placeCard.replace("{pk}", place.pk);
+            placeCard = placeCard.replace("{address}", place.address);
+            placeCard = placeCard.replace("{rate_avg}", place.rate_avg);
+            $("#placeList").append(placeCard);
+        }
+        function drawMarker(data) {
+            var infowindow = [];
             var markers = [];
-            for (var i = 0; i < 100; i++) {
-                var dataPhoto = data.photos[i];
-                var latLng = new google.maps.LatLng(dataPhoto.latitude,
-                        dataPhoto.longitude);
+            $("#placeList").html('');
+            for (var i = 0; i < data.length; i++) {
+                var place = data[i];
+                var latLng = new google.maps.LatLng(place.y, place.x);
                 var marker = new google.maps.Marker({
                     position: latLng
                 });
                 markers.push(marker);
+                appendPlaceList(place);
+                var markerContent = '' +
+                        '<div class="infowindow">' +
+                        '<h2 class="marker-title">' + data[i].name + '</h2>' +
+                        '<div class="marker-body">' + data[i].address + '</div>' +
+                        '</div>';
+                infowindow[i] = new google.maps.InfoWindow({
+                    content: markerContent
+                });
+                (function (m) {
+                    markers[m].addListener('click', function () {
+                        console.log(infowindow[m]);
+                        infowindow[m].open(map, markers[m]);
+                        setTimeout(function () {
+                            infowindow[m].close();
+                        }, 3000);
+                    });
+                })(i);
             }
+            
             var markerCluster = new MarkerClusterer(map, markers, {imagePath: 'https://googlemaps.github.io/js-marker-clusterer/images/m'});
         }
-        google.maps.event.addDomListener(window, 'load', initialize);
+
+        function loadPlaceinArea(map) {
+            var bounds = map.getBounds();
+            var ne = bounds.getNorthEast(); // LatLng of the north-east corner
+            var sw = bounds.getSouthWest(); // LatLng of the south-west corder
+            var url = '/api/places/';
+            var res = [];
+            $.get(url, {
+                'ne': ne.lat() + ',' + ne.lng(),
+                'sw': sw.lat() + ',' + sw.lng()
+            }, function (placeInArea) {
+                res = placeInArea;
+                drawMarker(res);
+            });
+
+        }
+        function initialize() {
+            var center = new google.maps.LatLng(37.54431647617547, 126.969938342295);
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: center,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+
+
+            map.addListener('center_changed', function () {
+
+                loadPlaceinArea(map);
+            });
+            google.maps.event.addDomListener(window, 'load', function () {
+                loadPlaceinArea(map);
+            });
+        }
+
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC4k1rRvHyZodyQJO8QiBoi3tywMoKdCc&callback=initialize"></script>
 {% endblock %}
