@@ -18,6 +18,6 @@
     "known-properties": true
   },
   "jshint": {
-    "multistr": true,
+    "multistr": true
   }
 }
