@@ -1,0 +1,19 @@
+.team-name{
+    font-size:22px;
+    color:#36b3ff;
+}
+.accept{
+    padding-left:10px;
+    padding-right:10px;
+}
+.collection .collection-item.avatar{
+ min-height: 10px;
+}
+.accept-div{
+    height: 60px;
+}
+.card .cardcontent {
+    padding: 5px;
+    text-align: center;
+    border-radius: 0 0 2px 2px;
+}

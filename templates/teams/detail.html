@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link href="/static/css/team.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/account_detail.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+    <nav>
+        <div class="nav-wrapper">
+            <div class="col s12 center-align">
+                <a class="team-name">혼밥</a>
+            </div>
+        </div>
+    </nav>
+            <div class="col s12 l6">
+
+                <div class="card ">
+                    <div class="cardcontent ">
+                        <span class="card-title">팀소개</span>
+
+                    </div>
+                    <div class="card-action">
+                        <p id="user-bio">
+                            저희 팀은 두 명 다 보안 대회 3회 대상이라는 빛나는 실적을 가진 팀입니다. 여기 오시면 무조건 상 받을수 있어요. 버스 책임져드림
+                        </p>
+                        <a href="#">
+                            <div class="chip">Python</div>
+                        </a>
+                        <a href="#">
+                            <div class="chip">JS</div>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="card ">
+                    <div class="cardcontent">
+                        <span class="card-title">팀원 목록</span>
+                    </div>
+                    <ul class="collection">
+                        <li class="collection-item avatar">
+                            <img src="images/yuna.jpg" alt="" class="circle">
+                            <span class="title">김도현</span>
+                            <p>
+                                <a href="#">
+                                    <div class="chip">Python</div>
+                                </a>
+                                <a href="#">
+                                    <div class="chip">Django</div>
+                                </a>
+                                <a href="#">
+                                    <div class="chip">Flask</div>
+                                </a>
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <img src="images/yuna.jpg" alt="" class="circle">
+                            <span class="title">양민석</span>
+                            <p>
+                                <a href="#">
+                                    <div class="chip">Python</div>
+                                </a>
+                                <a href="#">
+                                    <div class="chip">Django</div>
+                                </a>
+                                <a href="#">
+                                    <div class="chip">javascript</div>
+                                </a>
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+                        </li>
+                        <li class="collection-item avatar">
+                            <img src="images/yuna.jpg" alt="" class="circle">
+                            <span class="title">김주용</span>
+                            <p>
+
+                                <a href="#">
+                                    <div class="chip">PHP</div>
+                                </a>
+                                <a href="#">
+                                    <div class="chip">CSS</div>
+                                </a>
+
+                            </p>
+                            <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="card ">
+                    <div class="cardcontent ">
+                        <span class="card-title">지원자</span>
+
+                    </div>
+                    <ul class="collection">
+                        <li class="collection-item avatar accept-div">
+                            <div class="row ">
+                                <div class="col s12 ">
+                                    <div class="col s8">
+                                        <img src="images/yuna.jpg" alt="" class="circle">
+                                        <span class="title">김주용</span>
+                                    </div>
+                                    <div class="col s4">
+                                        <a class="waves-effect waves-light btn accept">승인</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+
+{% endblock %}
