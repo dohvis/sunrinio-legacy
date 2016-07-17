@@ -44,5 +44,8 @@ def mapview(request):
 def place_detail(request, place_pk):
     place = get_object_or_404(Place, pk=place_pk)
     context = {'place': place}
-    print(context['place'].name, type(context['place']),111)
     return render(request, 'hotplace/detail.html', context)
+
+
+def add_review(request):
+    return render(request, 'hotplace/review.html')
