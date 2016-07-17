@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import (
-    Image,
     Place,
     Review,
 )
@@ -12,4 +11,3 @@ class PlaceAdmin(admin.ModelAdmin):
 
 admin.site.register(Place, PlaceAdmin)
 admin.site.register(Review)
-admin.site.register(Image)

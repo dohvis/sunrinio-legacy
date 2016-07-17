@@ -41,9 +41,10 @@
             <img src="/static/images/issue-blue.png" class="icon">
             <a class="iconfont">리뷰</a>
             <div class="input-field col s12">
-                <input placeholder="드셨던 메뉴를 솔직하게 리뷰해주세요." id="first_name" type="text" class="validate">
-
+                <input placeholder="드셨던 메뉴를 솔직하게 리뷰해주세요." type="text" class="validate">
             </div>
+            <input type="date" class="datepicker">
+
             <a class="waves-effect waves-light btn widthfull">리뷰 등록</a>
         </div>
     </div>
@@ -54,5 +55,11 @@
     <script src="/static/js/raty_wrapper.js"></script>
     <script>
         drawRaty("place", 3.0, false);
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 1, // Creates a dropdown of 15 years to control year
+            format: 'yyyy-mm-dd'
+        });
+
     </script>
 {% endblock %}
