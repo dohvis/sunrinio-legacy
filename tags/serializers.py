@@ -11,4 +11,4 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Tag
-        fields = ('name', 'teams', 'users')
+        fields = ('url', 'name', 'teams', 'users')

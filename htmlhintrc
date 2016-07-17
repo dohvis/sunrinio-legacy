@@ -17,5 +17,5 @@
     "display-property-grouping": true,
     "known-properties": true
   },
-  "jshint": {}
+  "jshint": false
 }
