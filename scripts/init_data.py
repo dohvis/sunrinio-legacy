@@ -11,7 +11,7 @@ from boards.models import (
     Board,
     Post,
 )
-from hotplace.models import Image, Place, Review
+from hotplace.models import Place, Review
 from allauth.socialaccount.models import SocialApp
 
 FB_ID = "528049860707304"
@@ -80,8 +80,6 @@ def create_reviews():
             when=datetime.now(),
             comment=review_info[3],
         )
-        for img in info[1]:
-            Image.objects.create(image=File(img), review=review)
     sulsam.close()
     yuksam.close()
 
