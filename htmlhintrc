@@ -17,7 +17,5 @@
     "display-property-grouping": true,
     "known-properties": true
   },
-  "jshint": {
-    "multistr": true
-  }
+  "jshint": false
 }
