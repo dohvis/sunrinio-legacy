@@ -28,7 +28,8 @@ class Comment(models.Model):
     author = models.ForeignKey(User)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
+    content = models.CharField(max_length=250)
+    
     def __str__(self):
         return '<%s %s>' % (self.__class__.__name__, self.parent.title)
 
