@@ -105,6 +105,7 @@ def team_member_delete(request, pk, user_pk):
         마지막 남은 팀원이 자신을 삭제할 때 팀도 삭제합니다.
         """
         team.delete()
+        return render(request, 'alert.html', context={'message': '팀이 성공적으로 삭제되었습니다!', 'location': '/teams/'})
     return render(request, 'alert.html', context={'message': '성공적으로 삭제되었습니다!', 'location': '/teams/'+pk})
 
 
