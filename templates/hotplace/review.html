@@ -41,7 +41,7 @@
             <div class="input-field col s12">
                 <input placeholder="맛, 가격, 시설등을 고려해 솔직한 평가를 작성해주세요." type="text" class="validate" id="comment">
             </div>
-            <a class="waves-effect waves-light btn widthfull" onclick="reviewSubmit();">리뷰 등록</a>
+            <a class="waves-effect waves-light btn widthfull review-submit">리뷰 등록</a>
         </div>
     </div>
 {% endblock %}
@@ -61,5 +61,8 @@
 
         });
         drawRaty("place", 3.0, false);
+        $(document).ready(function(){
+            $(".review-submit").click(reviewSubmit);
+        });
     </script>
 {% endblock %}
