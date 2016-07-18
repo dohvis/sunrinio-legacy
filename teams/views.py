@@ -100,6 +100,11 @@ def team_member_delete(request, pk, user_pk):
         return render(request, 'alert.html', context={'message': '권한이 없습니다!', 'location': '/teams/'+pk})
     delete_target = User.objects.get(pk=user_pk)
     team.members.remove(delete_target)
+    if team.members.count() == 0:
+        """
+        마지막 남은 팀원이 자신을 삭제할 때 팀도 삭제합니다.
+        """
+        team.delete()
     return render(request, 'alert.html', context={'message': '성공적으로 삭제되었습니다!', 'location': '/teams/'+pk})
 
 

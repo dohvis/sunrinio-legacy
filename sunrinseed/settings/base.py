@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'schedule',
     'tags',
     'teams',
+    'meals',
 ]
 
 MIDDLEWARE_CLASSES = [
