@@ -207,6 +207,7 @@ venv/
 
 #Local Setting
 local_.*.py
+production.py
 node_modules/
 bower_components/
 bundle.js
