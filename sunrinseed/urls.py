@@ -25,6 +25,7 @@ from accounts import views as accounts_views
 from hotplace import views as place_views
 from boards import views as boards_views
 from schedule import views as schedule_views
+from tags import urls as tags_urls
 from tags import views as tags_views
 from teams import urls as teams_urls
 from teams import views as teams_views
@@ -60,6 +61,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(accounts_urls, namespace='accounts')),
     url(r'^teams/', include(teams_urls, namespace='teams')),
+    url(r'^tags/', include(tags_urls, namespace='tags')),
     url(r'^allauth/', include('allauth.urls')),
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^debug/(?P<dir_name>\w+)/(?P<template_name>\w+)/$', util_views.template_debug),

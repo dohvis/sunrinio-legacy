@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="col s12 center-align" id="tag-head-container">
-                <div class="chip" id="tag-head"><i class="fa fa-tag"></i> Python</div>
+                <div class="chip" id="tag-head"><i class="fa fa-tag"></i> {{ tag.name }}</div>
                 <span>의 검색 결과</span>
             </div>
         </div>
@@ -17,26 +17,25 @@
                     <div class="card-content light-blue lighten-5">
                         <span class="card-title">Users</span>
                         <ul class="collection">
-
-                            <li class="collection-item avatar grey lighten-4">
-                                <div class="row">
-                                    <div class="col s12">
-                                        <img src="/media/profile_image/5106603.jpg" alt="" class="circle">
-                                        <a href="/accounts/1">
-                                            <span class="title black-text">양민석</span>
-                                        </a>
+                            {% for user in tag.users.all %}
+                                <li class="collection-item avatar grey lighten-4">
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <img src="{{ user.profile_image.url }}" alt="" class="circle">
+                                            <a href="{% url 'accounts:detail' user.pk %}">
+                                                <span class="title black-text">{{ user.name }}</span>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
                                 <span>
-                                <a href="#">
-                                    <div class="chip">Python</div>
+                                {% for tag in user.tags.all %}
+                                <a href="{% url 'tags:detail' tag.pk %}">
+                                    <div class="chip">{{ tag.name }}</div>
                                 </a>
-                                <a href="#">
-                                    <div class="chip">JS</div>
-                                </a>
+                                {% endfor %}
                                 </span>
-                            </li>
-
+                                </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
@@ -45,21 +44,16 @@
                 <div class="card">
                     <div class="card-content blue lighten-5">
                         <span class="card-title">Teams</span>
-
+                        {% for team in tag.teams.all %}
                         <div class="card">
                             <div class="card-content black-text grey lighten-4">
-                                <a href="#">
-                                <span class="card-title black-text">돼지국밥</span>
-                                    </a>
-                                <p class="card-body">STAC 2016 진출</p>
+                                <a href="{% url 'teams:detail' team.pk %}">
+                                    <span class="card-title black-text">{{ team.name }}</span>
+                                </a>
+                                <p class="card-body">{{ team.introduce }}</p>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-content black-text grey lighten-4">
-                                <span class="card-title">돼지국밥</span>
-                                <p class="card-body">STAC 2016 진출</p>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

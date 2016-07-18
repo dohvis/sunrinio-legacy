@@ -4,7 +4,7 @@ from accounts.models import User
 
 
 class BaseMealElement(models.Model):
-    name = models.CharField(max_length='32', unique=True)
+    name = models.CharField(max_length=32, unique=True)
 
     class Meta:
         abstract = True
@@ -64,11 +64,14 @@ class UnknownMeal(BaseMealElement):
 
 
 class Meal(models.Model):
-    class Type:
-        LUNCH = 0
-        DINNER = 1
+    LUNCH = 0
+    DINNER = 1
+    TYPES = (
+        (LUNCH, 'Lunch'),
+        (DINNER, 'Dinner'),
+    )
 
-    type = models.IntegerField(choices=Type, help_text='중식/석식')
+    type = models.IntegerField(choices=TYPES, help_text='중식/석식')
     content = models.TextField(blank=False, default='급식이 제공되지 않습니다.', help_text='급식 내용')
 
     rice = models.ForeignKey(Rice, related_name='meals')
@@ -78,8 +81,8 @@ class Meal(models.Model):
     dessert = models.ForeignKey(Dessert, related_name='meals')
     source = models.ForeignKey(Source, related_name='meals')
 
-    etc1 = models.ForeignKey(UnknownMeal, related_name='meals')
-    etc2 = models.ForeignKey(UnknownMeal, related_name='meals')
+    etc1 = models.ForeignKey(UnknownMeal, related_name='side1')
+    etc2 = models.ForeignKey(UnknownMeal, related_name='side2')
 
     date = models.DateField(help_text='날짜')
     rate_avg = models.FloatField(default=0)
