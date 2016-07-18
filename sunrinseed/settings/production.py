@@ -9,8 +9,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'sunrinseed',
-        'USER': 'nero',
-        'PASSWORD': 'nerodatabase',
+        'USER': 'secret',
+        'PASSWORD': 'secret',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
