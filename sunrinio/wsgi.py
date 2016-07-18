@@ -1,5 +1,5 @@
 """
-WSGI config for sunrinseed project.
+WSGI config for sunrinio project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -16,7 +16,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../"
 
 site.addsitedir('/home/nero/.virtualenvs/sseed/lib/python3.4/site-packages')
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sunrinseed.settings.production")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "sunrinio.settings.production")
 
 from django.core.wsgi import get_wsgi_application  # NOQA
 

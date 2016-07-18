@@ -1,6 +1,6 @@
 import os
 from datetime import datetime
-from sunrinseed.settings.base import BASE_DIR
+from sunrinio.settings.base import BASE_DIR
 from django.contrib.sites.models import Site
 from django.core.files import File
 from django.db.utils import (
@@ -63,7 +63,7 @@ def create_reviews():
     place = Place.objects.first() or create_places()
     place2 = Place.objects.all()[1]
     user = User.objects.first() or create_super_user()
-    from sunrinseed.settings.base import BASE_DIR
+    from sunrinio.settings.base import BASE_DIR
     import os
     sulsam = open(os.path.join(BASE_DIR, 'media', 'sulsam.jpg'), 'rb')
     yuksam = open(os.path.join(BASE_DIR, 'media', '6sam.jpg'), 'rb')

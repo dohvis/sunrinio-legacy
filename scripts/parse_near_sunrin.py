@@ -2,7 +2,7 @@ from pickle import dump
 from requests import get
 from xml.dom import minidom
 
-from sunrinseed.settings.local_nero import DAUM_API_KEY, NAVER_API_HEADERS
+from sunrinio.settings.local_nero import DAUM_API_KEY, NAVER_API_HEADERS
 
 
 def get_location_by_naver(addr):

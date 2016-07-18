@@ -1,5 +1,5 @@
 import os
-from sunrinseed.settings.base import BASE_DIR
+from sunrinio.settings.base import BASE_DIR
 
 
 def run():

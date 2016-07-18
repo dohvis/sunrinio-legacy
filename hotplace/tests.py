@@ -19,7 +19,7 @@ class TestPlace(TestCase):
         self.assertEqual(place.rate_avg, 4.0)
 
     def test_gps_filter(self):
-        from sunrinseed.settings.base import STATICFILES_DIRS
+        from sunrinio.settings.base import STATICFILES_DIRS
         fp = open(STATICFILES_DIRS[0] + '/images/logo.png', "rb")
         excluded_place = {
             'x': 120.0, 'y': 37.0,

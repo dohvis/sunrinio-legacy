@@ -1,4 +1,4 @@
-"""sunrinseed URL Configuration
+"""sunrinio URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -33,9 +33,9 @@ from dinner import views as dinner_views
 from meals import views as meal_views
 from utils import views as util_views
 from openchat import views as open_views
-from sunrinseed import views as index_views
+from sunrinio import views as index_views
 
-from sunrinseed.settings import base as settings
+from sunrinio.settings import base as settings
 
 router = DefaultRouter()
 router.register(r'users', accounts_views.UserViewSet)
