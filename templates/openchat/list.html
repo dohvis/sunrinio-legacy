@@ -1,48 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
     <ul class="collection">
-        <li class="collection-item avatar openchatimg">
-            <img src="/static/images/logo.png" alt="" class="circle">
-            <span class="title">김주용</span>
-            <p>안녕하세여</p>
-        </li>
-        <li class="collection-item avatar">
-            <img src="/static/images/logo.png" alt="" class="circle">
-            <span class="title">김주용</span>
-            <p>안녕하세여</p>
-        </li>
-        <li class="collection-item avatar">
-            <img src="/static/images/logo.png" alt="" class="circle">
-            <span class="title">김주용</span>
-            <p>안녕하세여</p>
-        </li>
-        <li class="collection-item avatar">
-            <img src="/static/images/logo.png" alt="" class="circle">
-            <span class="title">김주용</span>
-            <p>안녕하세여</p>
-        </li>
-        <li class="collection-item avatar">
-            <img src="/static/images/logo.png" alt="" class="circle">
-            <span class="title">김주용</span>
-            <p>안녕하세여</p>
-        </li>
-        <li class="collection-item avatar">
-            <img src="/static/images/logo.png" alt="" class="circle">
-            <span class="title">김주용</span>
-            <p>안녕하세여</p>
-        </li>
-        <li class="collection-item avatar">
-            <img src="/static/images/logo.png" alt="" class="circle">
-            <span class="title">김주용</span>
-            <p>안녕하세여</p>
-        </li>
+        {% for c in chats %}
+            <li class="collection-item avatar openchatimg">
+                <img src="{{ c.user.profile_image.url }}" alt="" class="circle">
+                <span class="title">{{ c.user.username }}</span>
+                <p>{{ c.description }}</p>
+            </li>
+        {% endfor %}
     </ul>
     <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a class="btn-floating btn-large red">
+        <a class="btn-floating btn-large red" id="add">
             <i class="large material-icons">add</i>
         </a>
     </div>
 {% endblock %}
 {% block script %}
-
+    <script>
+        $("#add").click(function () {
+            var inputString = prompt('오픈채팅 url을 입력하세요', 'http://~~');
+            $.get('/openchat/add/?url=' + inputString);
+            location.reload()
+        });
+    </script>
 {% endblock %}
