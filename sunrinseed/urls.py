@@ -32,6 +32,7 @@ from teams import views as teams_views
 from dinner import views as dinner_views
 from meals import views as meal_views
 from utils import views as util_views
+from sunrinseed import views as index_views
 
 from sunrinseed.settings import base as settings
 
@@ -51,7 +52,7 @@ urlpatterns = [
     url(r'^api/teams/(?P<pk>\d+)/join', teams_views.Want2JoinViewSet.as_view(actions={'get': 'list', 'post': 'create'})),
     url(r'^api/users/(?P<pk>\d+)/profile_image', accounts_views.get_profile_image),
 
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
+    url(r'^$', index_views.index, name='index'),
     url(r'^api/', include(router.urls)),
 
     url(r'^api/auth/', include('rest_auth.urls')),
