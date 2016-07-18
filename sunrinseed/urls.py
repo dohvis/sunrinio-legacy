@@ -32,6 +32,7 @@ from teams import views as teams_views
 from dinner import views as dinner_views
 from meals import views as meal_views
 from utils import views as util_views
+from openchat import views as open_views
 from sunrinseed import views as index_views
 
 from sunrinseed.settings import base as settings
@@ -47,9 +48,9 @@ router.register(r'boards', boards_views.BoardViewSet)
 router.register(r'posts', boards_views.PostViewSet)
 router.register(r'schedule', schedule_views.ScheduleViewSet)
 
-
 urlpatterns = [
-    url(r'^api/teams/(?P<pk>\d+)/join', teams_views.Want2JoinViewSet.as_view(actions={'get': 'list', 'post': 'create'})),
+    url(r'^api/teams/(?P<pk>\d+)/join',
+        teams_views.Want2JoinViewSet.as_view(actions={'get': 'list', 'post': 'create'})),
     url(r'^api/users/(?P<pk>\d+)/profile_image', accounts_views.get_profile_image),
 
     url(r'^$', index_views.index, name='index'),
@@ -69,6 +70,9 @@ urlpatterns = [
     url(r'hotplace/$', place_views.mapview),
     url(r'hotplace/(?P<place_pk>\d+)/$', place_views.place_detail),
     url(r'hotplace/(?P<place_pk>\d+)/review/$', place_views.add_review),
+
+    url(r'openchat/$', open_views.openchat_view),
+    url(r'openchat/add/$', open_views.add),
 
     url(r'^meal/', meal_views.meal_view),
 ]

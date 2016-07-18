@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'boards',
     'council',
     'dinner',
+    'openchat',
     'hotplace',
     'schedule',
     'tags',
