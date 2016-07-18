@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block style %}
+    <link href="/static/css/team.css" rel="stylesheet" type="text/css"/>
+    <link href="/static/css/account_detail.css" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="col s12 l6">
+            <div class="card ">
+                <div class="card-content">
+                    <div class="card-title-area">
+                        <span id="team-name" class="card-title blue-text strong">{{ team.name }}</span>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 grey-text">
+                            <p id="team-intro ">
+                                {{ team.introduce }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <p id="team-contents">
+                                {{ team.content }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row tags-list">
+                        <div class="col s12">
+                            {% for tag in team.tags.all %}
+                                <a href="/tags/{{ tag.pk }}/"><div class="chip">{{ tag.name }}</div></a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title-area">
+                        <span class="card-title">팀원 목록</span>
+                    </div>
+                    <ul class="collection">
+                        {% for user in team.members.all %}
+                            <li class="collection-item avatar">
+                                <img src="{{ user.profile_image.url }}" alt="{{ user.name }}" class="circle">
+                                <div class="row">
+                                    <div class="col s12">
+                                        <a href="{% url 'accounts:detail' user.pk %}">
+                                            <span class="title black-text">{{ user.name }}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                {% for tag in user.tags.all %}
+                                    <a href="/tags/{{ tag.pk }}"><div class="chip">{{ tag.name }}</div></a>
+                                {% endfor %}
+                                {% if isowner %}
+                                    <a href="/teams/{{ team.pk }}/members/{{ user.pk }}/delete" class="secondary-content"><i class="material-icons">delete</i></a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card ">
+                <div class="card-content">
+                    <div class="card-title-area ">
+                        <span class="card-title">지원자</span>
+                    </div>
+                    <ul class="collection">
+                        {% for join_request in joins %}
+                            <li class="collection-item avatar accept-div">
+                                <img src="{{ join_request.user.profile_image.url }}" alt="{{ join_request.user.name }}" class="circle">
+                                <div class="row">
+                                    <div class="col s12">
+                                        <a href="{% url 'accounts:detail' join_request.user.pk %}"><span class="title black-text">{{ join_request.user.name }}</span></a>
+                                        {% if isowner %}
+                                            <a class="waves-effect waves-light btn accept right red lighten-1 user-decline"
+                                               href="/teams/{{ team.pk }}/joins/{{ join_request.user.pk }}/reject/">거절</a>
+                                            <a class="waves-effect waves-light btn accept right light-blue user-accept"
+                                               href="/teams/{{ team.pk }}/joins/{{ join_request.user.pk }}/accept/">승인</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% if not isowner %}
+                <a href="/teams/{{ team.pk }}/join" class="waves-effect waves-light full-button btn-large">
+                    <i class="material-icons left">add</i> 가입 요청
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -6,12 +6,14 @@
  * Made By MaterializeCSS.com
  */
 @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
+@import url(https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css);
 
 nav {
   background-color: #f6f6f6;
 }
-
+body {
+  font-family: 'Nanum Barun Gothic', sans-serif;
+}
 nav ul a,
 nav .brand-logo {
   font-family: 'Noto Sans KR', sans-serif;
@@ -97,6 +99,7 @@ video.responsive-video {
 .side-nav{
     width :300px;
 }
+
 .sort{
     margin-left: 40px;
     margin-bottom:30px;

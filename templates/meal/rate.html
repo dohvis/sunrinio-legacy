@@ -1,91 +1,188 @@
 {% extends 'base.html' %}
 {% block content %}
     <link href="/static/css/meal.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <div class="container">
-        <div class="row">
-            <div class="card meal-card">
-                <div class="row">
-                    <div class="card-content">
-                        <div class="col s4">
-                            <div class="col s12">
-                                <img src="/static/images/meal.png" id="meal-img">
-                            </div>
-                            <span id="meal-title">오늘의 급식</span>
+    <link rel="stylesheet" href="/static/bower_components/raty/lib/jquery.raty.css">
+    <link href="/static/css/meal.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/static/css/location.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#test1">오늘의 급식</a></li>
 
+                <li class="tab col s3"><a href="#test2">리뷰 남기기</a></li>
+            </ul>
+        </div>
+        <div id="test1" class="col s12">
+            <div class="container">
+                <div class="row">
+                    <div class="card meal-card">
+                        <div class="row">
+                            <div class="card-content">
+                                <div class="col s4">
+                                    <div class="col s12">
+                                        <img src="/static/images/meal.png" id="meal-img">
+                                    </div>
+                                    <span id="meal-title">오늘의 급식</span>
+                                </div>
+                                <div class="col s4 right-align meal-card">
+                                    <p class="main-content">햇반</p>
+                                    <p class="main-content">우동</p>
+                                    <p class="main-content">오리김치볶음</p>
+                                    <p class="main-content">두부양념구이</p>
+                                    <p class="main-content">깍두기</p>
+                                    <p class="main-content">무쌈</p>
+                                </div>
+                                <div class="col s4paddingzero">
+                                    <p class="main-content pstar">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                    </p>
+                                    <p class="main-content pstar">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-half.png">
+                                    </p>
+                                    <p class="main-content pstar">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                    </p>
+                                    <p class="main-content pstar">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-half.png">
+                                    </p>
+                                    <p class="main-content pstar">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                    </p>
+                                    <p class="main-content pstar">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-on.png">
+                                        <img src="/static/images/raty/starsmall-half.png">
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col s4 right-align meal-card">
-                            <p class="main-content">햇반</p>
-                            <p class="main-content">우동</p>
-                            <p class="main-content">오리김치볶음</p>
-                            <p class="main-content">두부양념구이</p>
-                            <p class="main-content">깍두기</p>
-                            <p class="main-content">무쌈</p>
+
+                        <div class="card center-align">
+                            <a id="meal-score">2.4 </a>
+                            <img src="/static/images/raty/star-on.png">
+                            <img src="/static/images/raty/star-on.png">
+                            <img src="/static/images/raty/star-half.png">
+                            <img src="/static/images/raty/star-off.png">
+                            <img src="/static/images/raty/star-off.png">
                         </div>
-                        <div class="col s4paddingzero">
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                            </p>
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-half.png">
-                            </p>
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                            </p>
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-half.png">
-                            </p>
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                            </p>
-                            <p class="main-content pstar">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-on.png">
-                                <img src="/static/images/raty/starsmall-half.png">
-                            </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row" id="comment-bar">
+                <span id="count">댓글 {{ reviews.count }}개</span>
+
+                <ul class="collection">
+                    {% for review in reivews %}
+                        <li class="collection-item avatar openchatimg">
+                            <img src="/static/images/logo.png" alt="" class="circle">
+                            <span class="title">{{ review.writer.name }}</span>
+                            <p>{{ review.content }}</p>
+                            <p>{{ review.rate }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div id="test2" class="col s12">
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card">
+                        <div class="center-align blue-text text-lighten-1 rate-title">평점을 매겨주세요!</div>
+                        <div class="divider"></div>
+
+                        <div class="row row-bottom">
+                            <div class="valign-wrapper row">
+                                <div class="col s3">
+                                    현미밥
+                                </div>
+                                <div class="col s7 right-align">
+                                    <div id="rice_star" class="raty"></div>
+                                </div>
+                                <div class="col s2 center-align scoreboard">
+                                    <div id="rice_target"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-bottom">
+                            <div class="valign-wrapper row">
+                                <div class="col s3">
+                                    콩나물국
+                                </div>
+                                <div class="col s7 right-align">
+                                    <div id="soup_star" class="raty"></div>
+                                </div>
+                                <div class="col s2 center-align scoreboard">
+                                    <div id="soup_target"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-bottom">
+                            <div class="valign-wrapper row">
+                                <div class="col s3 menu-text">
+                                    배추김치
+                                </div>
+                                <div class="col s7 right-align">
+                                    <div id="kimchi_star" class="raty"></div>
+                                </div>
+                                <div class="col s2 center-align scoreboard">
+                                    <div id="kimchi_target"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rowrow-bottom">
+                            <div class="valign-wrapper row">
+                                <div class="col s3">
+                                    샐러드
+                                </div>
+                                <div class="col s7 right-align">
+                                    <div id="vegetable_star" class="raty"></div>
+                                </div>
+                                <div class="col s2 center-align scoreboard">
+                                    <div id="vegetable_target"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-bottom">
+                            <div class="valign-wrapper row">
+                                <div class="col s3">
+                                    삼겹살
+                                </div>
+                                <div class="col s7 right-align">
+                                    <div id="etc1_star" class="raty"></div>
+                                </div>
+                                <div class="col s2 center-align scoreboard">
+                                    <div id="etc1_target"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
-                <div class="card center-align">
-                    <a id="meal-score">2.4 </a>
-                    <img src="/static/images/raty/star-on.png">
-                    <img src="/static/images/raty/star-on.png">
-                    <img src="/static/images/raty/star-half.png">
-                    <img src="/static/images/raty/star-off.png">
-                    <img src="/static/images/raty/star-off.png">
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <img src="/static/images/issue-blue.png" class="icon">
+                    <a class="iconfont">리뷰</a>
+                    <div class="input-field col s12">
+                        <input placeholder="드셨던 메뉴를 솔직하게 리뷰해주세요." id="first_name" type="text" class="validate">
+                    </div>
+                    <a class="waves-effect waves-light btn widthfull">리뷰 등록</a>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row" id="comment-bar">
-        <span id="count">댓글 2개</span>
-        
-        <ul class="collection">
-            <li class="collection-item avatar openchatimg">
-                <img src="/static/images/logo.png" alt="" class="circle">
-                <span class="title">김주용</span>
-                <p>안녕하세여</p>
-            </li>
-            <li class="collection-item avatar openchatimg">
-                <img src="/static/images/logo.png" alt="" class="circle">
-                <span class="title">김주용</span>
-                <p>안녕하세여</p>
-            </li>
-        </ul>
     </div>
 
 {% endblock %}

@@ -16,7 +16,7 @@ class Place(models.Model):
     rate_avg = models.FloatField(default=0.0)
 
     def __str__(self):
-        return "{}".format(self.name)
+        return "<Place: {}>".format(self.name)
 
     def save(self, *args, **kwargs):
         if len(self.location) < 1:  # if new objects
@@ -33,14 +33,8 @@ class Review(models.Model):
     user = models.ForeignKey(User, related_name='recently_visit')
     rate = models.FloatField(default=0.0)
     comment = models.CharField(max_length=500)
+    when = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField()
 
     def __str__(self):
         return "{}: {}".format(self.place.name, self.comment[:10])
-
-
-class Image(models.Model):
-    image = models.ImageField()
-    review = models.ForeignKey(Review, related_name='images')
-
-    def __str__(self):
-        return "{}'s image".format(self.review.place.name)

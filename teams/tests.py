@@ -1,3 +1,5 @@
+from json import dumps
+
 from django.test import TestCase, Client
 from accounts.models import User
 from teams.models import (
@@ -62,6 +64,46 @@ class TestTeamList(TestCase):
                 },
             ]
         )
+
+class TestTeamUpdate(TestCase):
+    """
+    팀 편집 테스트
+    """
+    def setUp(self):
+        self.team, self.leader, self.user = make_team_and_user()
+        self.c = Client()
+        self.c.login(username=self.user.username, password='qwer1234')
+
+    def test_team_edit_guest(self):
+        put_data = {
+            "url": "http://testserver/api/teams/1/",
+            "name": "New Name",
+            "tags": [
+            ],
+            "users": [
+            ],
+            "introduce": "STAC 2016",
+            "content": "수정된 데이터입니다."
+        }
+        res = self.c.put('/api/teams/1/', put_data, content_type="application/json")
+        print(res.content)
+        self.assertEqual(res.status_code, 403)
+
+    def test_team_edit_owner(self):
+        self.c.logout()
+        self.c.login(username=self.leader.username, password='qwer1234')
+        put_data = {
+            "url": "http://testserver/api/teams/1/",
+            "name": "Another New Name",
+            "tags": [],
+            "users": [],
+            "introduce": "모바일 콘텐츠 경진대회 2016",
+            "content": "새로운 데이터입니다."
+        }
+        res = self.c.put('/api/teams/1/', dumps(put_data), content_type="application/json")
+        print(res.content)
+        self.assertEqual(res.status_code, 200)
+        self.assertJSONEqual(str(res.content, encoding='utf-8'), put_data)
 
 
 class TestJoinRequest(TestCase):

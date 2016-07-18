@@ -26,8 +26,10 @@ from hotplace import views as place_views
 from boards import views as boards_views
 from schedule import views as schedule_views
 from tags import views as tags_views
+from teams import urls as teams_urls
 from teams import views as teams_views
 from dinner import views as dinner_views
+from meals import views as meal_views
 from utils import views as util_views
 
 from sunrinseed.settings import base as settings
@@ -43,11 +45,10 @@ router.register(r'boards', boards_views.BoardViewSet)
 router.register(r'posts', boards_views.PostViewSet)
 router.register(r'schedule', schedule_views.ScheduleViewSet)
 
-join_urls = DefaultRouter()
-join_urls.register(r'^', teams_views.Want2JoinViewSet)
 
 urlpatterns = [
-    url(r'^api/teams/(?P<pk>\d+)/join', include(join_urls.urls)),
+    url(r'^api/teams/(?P<pk>\d+)/join', teams_views.Want2JoinViewSet.as_view(actions={'get': 'list', 'post': 'create'})),
+    url(r'^api/users/(?P<pk>\d+)/profile_image', accounts_views.get_profile_image),
 
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='index'),
     url(r'^api/', include(router.urls)),
@@ -58,9 +59,15 @@ urlpatterns = [
 
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(accounts_urls, namespace='accounts')),
+    url(r'^teams/', include(teams_urls, namespace='teams')),
     url(r'^allauth/', include('allauth.urls')),
     url(r'^docs/', include('rest_framework_swagger.urls')),
     url(r'^debug/(?P<dir_name>\w+)/(?P<template_name>\w+)/$', util_views.template_debug),
+    url(r'hotplace/$', place_views.mapview),
+    url(r'hotplace/(?P<place_pk>\d+)/$', place_views.place_detail),
+    url(r'hotplace/(?P<place_pk>\d+)/review/$', place_views.add_review),
+
+    url(r'^meal/', meal_views.meal_view),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

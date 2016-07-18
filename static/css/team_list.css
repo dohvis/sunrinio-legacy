@@ -1,0 +1,22 @@
+.profile-image {
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+}
+.profile-image-list {
+    padding-top: 10px;
+}
+.tags-list {
+    margin-bottom: 0px;
+}
+.card-action > a {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #0091ea !important;
+}
+.card-action > a:hover {
+    color: #00b3ff !important;
+}
+.waves-effect.waves-light-blue .waves-ripple {
+    background-color: #beecff
+}
