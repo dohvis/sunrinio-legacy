@@ -1,7 +1,7 @@
 beautifulsoup4==4.4.1
 bs4==0.0.1
 defusedxml==0.4.1
-Django==1.9.7
+Django==1.8.9
 django-allauth==0.24.1
 django-debug-toolbar==1.4
 django-extensions==1.6.1
