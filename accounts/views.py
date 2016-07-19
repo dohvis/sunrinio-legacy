@@ -10,6 +10,7 @@ from django.shortcuts import (
     get_object_or_404
 )
 from django.contrib.auth import logout as _logout
+from django.contrib.auth.decorators import login_required
 
 from accounts.models import User
 from accounts.permissions import IsOwnerOrReadOnly
@@ -65,5 +66,7 @@ def user_detail(request, pk):
     user = get_object_or_404(User, pk=pk)
     return render(request, 'accounts/detail.html', context={'user': user})
 
+
+@login_required
 def user_mypage(request):
     return render(request, 'accounts/detail.html', context={'user': request.user})
