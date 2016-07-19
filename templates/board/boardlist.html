@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper grey">
+                <div class="col s12">
+                    <a href="#!" class="breadcrumb">게시판</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <ul class="collection">
+        {% for board in boards %}
+        <li class="collection-item">
+            <a href="{% url 'boards:post_list' board.pk %}"><span class="title">{{ board.name }}</span></a>
+        </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+{% block script %}
+{% endblock %}

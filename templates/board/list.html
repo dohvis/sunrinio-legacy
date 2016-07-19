@@ -3,10 +3,10 @@
 
     <div class="row">
         <nav>
-            <div class="nav-wrapper">
+            <div class="nav-wrapper grey">
                 <div class="col s12">
-                    <a href="#!" class="breadcrumb">게시판</a>
-                    <a href="/board/{{ board.pk }}" class="breadcrumb">{{ board.name }}</a>
+                    <a href="{% url 'boards:list' %}" class="breadcrumb">게시판</a>
+                    <a href="{% url 'boards:post_list' board.pk %}" class="breadcrumb">{{ board.name }}</a>
                 </div>
             </div>
         </nav>
@@ -14,7 +14,7 @@
     <ul class="collection">
         {% for post in posts %}
         <li class="collection-item avatar">
-            <a href="/board/{{ board.pk }}/{{post.pk}}/"><span class="title">{{ post.title }}</span></a>
+            <a href="{% url 'boards:post_view' board.pk post.pk %}"><span class="title">{{ post.title }}</span></a>
             <p>{{ post.author.get_full_name }} | 댓글 {{ post.comments.count }} </p>
             <p>{{ post.created_at|date:"Y년 n월 j일 Af" }}</p>
         </li>
@@ -27,7 +27,7 @@
         {% else %}
             <li class="disabled" style="display:none">
         {% endif %}
-            <a href="/board/{{ board.pk }}/list/{{ prev_page_idx }}"><i class="material-icons">chevron_left</i></a></li>
+            <a href="{% url 'boards:post_list' board.pk %}?page={{ prev_page_idx }}"><i class="material-icons">chevron_left</i></a></li>
         {% for page in pages %}
             {% for key, value in page.items %}
                 {% if key %}
@@ -35,7 +35,7 @@
                 {% else %}
                     <li class="waves-effect">
                 {% endif %}
-                        <a href="/board/{{ board.pk}}/list/{{ value }}">{{ value }}</a></li>
+                        <a href="{% url 'boards:post_list' board.pk %}?page={{ value }}">{{ value }}</a></li>
             {% endfor %}
         {% endfor %}
         {% if prev_page_btn %}
@@ -43,10 +43,10 @@
         {% else %}
             <li class="disabled" style="display:none">
         {% endif %}
-        <a href="/board/{{ board.pk }}/list/{{ next_page_idx }}"><i class="material-icons">chevron_right</i></a></li>
+        <a href="{% url 'boards:post_list' board.pk %}?page={{ nextpage_idx }}"><i class="material-icons">chevron_right</i></a></li>
     </ul>
     <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-        <a href="../write/" class="btn-floating btn-large red">
+        <a href="{% url 'boards:post_write' board.pk %}" class="btn-floating btn-large red">
             <i class="large material-icons">mode_edit</i>
         </a>
 

@@ -5,8 +5,8 @@
             <div class="nav-wrapper">
                 <div class="col s12">
                     <a href="#!" class="breadcrumb">커뮤니티</a>
-                    <a href="#!" class="breadcrumb">게시판</a>
-                    <a href="#!" class="breadcrumb">글쓰기</a>
+                    <a href="{% url 'boards:post_list' board.pk %}" class="breadcrumb">{{ board.name }}</a>
+                    <a href="{% url 'boards:post_write' board.pk %}" class="breadcrumb">글쓰기</a>
                 </div>
             </div>
         </nav>
