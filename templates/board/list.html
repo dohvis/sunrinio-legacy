@@ -5,47 +5,45 @@
         <nav>
             <div class="nav-wrapper">
                 <div class="col s12">
-                    <a href="#!" class="breadcrumb">커뮤니티</a>
                     <a href="#!" class="breadcrumb">게시판</a>
+                    <a href="/board/{{ board.pk }}" class="breadcrumb">{{ board.name }}</a>
                 </div>
             </div>
         </nav>
     </div>
     <ul class="collection">
-        <li class="collection-item avatar boardlist">
-            <span class="title">가입인사 드립니당</span>
-            <p>김주용 | 댓글 6 </p>
-        </li>
+        {% for post in posts %}
         <li class="collection-item avatar">
-            <span class="title">동아리 질문드려요!!@</span>
-            <p>익명 | 댓글 6 </p>
+            <a href="/board/{{ board.pk }}/{{post.pk}}/"><span class="title">{{ post.title }}</span></a>
+            <p>{{ post.author.get_full_name }} | 댓글 {{ post.comments.count }} </p>
+            <p>{{ post.created_at|date:"Y년 n월 j일 Af" }}</p>
         </li>
-        <li class="collection-item avatar">
-            <span class="title">가입인사 드립니당</span>
-            <p>김주용 | 댓글 6 </p>
-        </li>
-        <li class="collection-item avatar">
-            <span class="title">동아리 질문드려요!!@</span>
-            <p>익명 | 댓글 6 </p>
-        </li>
-        <li class="collection-item avatar">
-            <span class="title">가입인사 드립니당</span>
-            <p>김주용 | 댓글 6 </p>
-        </li>
-        <li class="collection-item avatar">
-            <span class="title">동아리 질문드려요!!@</span>
-            <p>익명 | 댓글 6 </p>
-        </li>
+        {% endfor %}
     </ul>
 
     <ul class="pagination" align="center">
-        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-        <li class="active"><a href="#!">1</a></li>
-        <li class="waves-effect"><a href="#!">2</a></li>
-        <li class="waves-effect"><a href="#!">3</a></li>
-        <li class="waves-effect"><a href="#!">4</a></li>
-        <li class="waves-effect"><a href="#!">5</a></li>
-        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+        {% if prev_page_btn %}
+            <li class="waves-effect">
+        {% else %}
+            <li class="disabled" style="display:none">
+        {% endif %}
+            <a href="/board/{{ board.pk }}/list/{{ prev_page_idx }}"><i class="material-icons">chevron_left</i></a></li>
+        {% for page in pages %}
+            {% for key, value in page.items %}
+                {% if key %}
+                    <li class="active">
+                {% else %}
+                    <li class="waves-effect">
+                {% endif %}
+                        <a href="/board/{{ board.pk}}/list/{{ value }}">{{ value }}</a></li>
+            {% endfor %}
+        {% endfor %}
+        {% if prev_page_btn %}
+            <li class="waves-effect">
+        {% else %}
+            <li class="disabled" style="display:none">
+        {% endif %}
+        <a href="/board/{{ board.pk }}/list/{{ next_page_idx }}"><i class="material-icons">chevron_right</i></a></li>
     </ul>
     <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
         <a href="../write/" class="btn-floating btn-large red">

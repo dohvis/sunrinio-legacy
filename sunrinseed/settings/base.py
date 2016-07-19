@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'rest_framework_swagger',
 
+    'hitcount',
     'accounts',
     'boards',
     'council',

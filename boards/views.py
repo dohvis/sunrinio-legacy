@@ -1,6 +1,15 @@
+from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponseRedirect, Http404
+
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
+from hitcount.models import HitCount
+from hitcount.views import HitCountDetailView
+
+from .forms import (
+    PostWriteForm,
+)
 from .models import (
     Board,
     Post,
@@ -24,8 +33,80 @@ class BoardViewSet(viewsets.ModelViewSet):
             queryset = Board.objects.all()
         return queryset
 
-
 class PostViewSet(viewsets.ModelViewSet):
     permission_classes = (IsAuthenticated,)
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+
+
+
+def post_write(request, board_pk):
+    board = get_object_or_404(Board, pk=board_pk)
+    if not request.user.is_authenticated():
+       return HttpResponseRedirect('/accounts/login')
+
+    if request.method == 'GET':
+        form = PostWriteForm()
+    elif request.method == 'POST':
+        form = PostWriteForm(request.POST)
+        print(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.board = board
+            post.author = request.user
+            post.save()
+            return HttpResponseRedirect('/board/{}/{}'.format(board_pk, post.pk))
+    context_data = {'form':form}
+    return render(request, 'board/write.html', context_data)
+
+class PostView(HitCountDetailView):
+    template_name = 'board/post.html'
+    count_hit = True
+    post = None
+    def get(self, *args, **kwargs):
+        board_pk = self.kwargs['board_pk']
+        post_pk = self.kwargs['post_pk']
+        board = get_object_or_404(Board, pk=board_pk)
+        self.post = get_object_or_404(Post, pk=post_pk)
+        self.object = self.post
+
+        return self.render_to_response(self.get_context_data(**kwargs))
+
+    def get_context_data(self, **kwargs):
+        context = super(PostView, self).get_context_data(**kwargs)
+        context['post'] = self.post
+        return context
+
+post_view = PostView.as_view()
+
+def post_list(request, board_pk, page_idx):
+    if request.method == 'GET':
+        page_idx = int(page_idx)
+        board = get_object_or_404(Board, pk=board_pk)
+        posts = Post.objects.filter(board__pk=board_pk).order_by('-created_at')
+        cnt = 2
+        page_cnt = 5
+        start_page_idx = int(page_idx/page_cnt)*page_cnt
+        end_page_idx = start_page_idx + page_cnt
+        start = cnt*page_idx
+        end = cnt*(page_idx+1)
+        posts = posts[start:end]
+        context_data = {'posts' : posts}
+        context_data['board'] = board
+        pages = []
+
+        for i in range(start_page_idx, end_page_idx):
+            if i == page_idx:
+                pages.append({'active':i})
+            else:
+                pages.append({'':i})
+        print(pages)
+        context_data['pages'] = pages
+        context_data['page_idx'] = page_idx
+        context_data['prev_page_btn'] = page_idx >= page_cnt
+        context_data['next_page_btn'] = True
+        context_data['prev_page_idx'] = start_page_idx-1
+        context_data['next_page_idx'] = end_page_idx+1
+        return render(request, 'board/list.html', context_data)
+    else:
+        return Http404

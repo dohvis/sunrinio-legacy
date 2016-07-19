@@ -60,8 +60,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(accounts_urls, namespace='accounts')),
 
-    url(r'^board/(?P<board_pk>\d+)/', boards_views.board_post,),
-    url(r'^board/(?P<board_pk>\d+)/(?P<post_pk>\d+)/', boards_views.post_view),
+    url(r'^board/(?P<board_pk>\d+)/write', boards_views.post_write),
+    url(r'^board/(?P<board_pk>\d+)/(?P<post_pk>\d+)', boards_views.post_view),
+    url(r'^board/(?P<board_pk>\d+)/list/(?P<page_idx>\d+)', boards_views.post_list),
     url(r'^teams/', include(teams_urls, namespace='teams')),
     url(r'^allauth/', include('allauth.urls')),
     url(r'^docs/', include('rest_framework_swagger.urls')),
