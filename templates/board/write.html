@@ -11,16 +11,36 @@
             </div>
         </nav>
     </div>
-  <form>
-    <textarea id="mytextarea"></textarea>
+  <form method="POST">
+    {% csrf_token %}
+    {{form.title}}
+    <!--textarea id="mytextarea"></textarea-->
 
+    {{ form.content }}
     <button type="submit">Submit</button>
+  {% for error in forms.errors %}
+    error
+  {% endfor %}
   </form>
 {% endblock %}
 {% block script %}
 <script src="/static/js/textboxio.js"></script>
   <script type="text/javascript">
-    var editor = textboxio.replace('#mytextarea');
+    var editor = textboxio.replace('#id_content');
+    $('#id_content')[0].value = "";
+
+    {% if form.errors %}
+        errors = [
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    $('<span>{{ error }}</span>'),
+                {% endfor %}
+            {% endfor %}
+        ];
+        for (var error of errors) {
+            Materialize.toast(error, 5000);
+        }
+    {%  endif %}
   </script>
 {% endblock %}
 

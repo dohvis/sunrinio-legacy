@@ -65,8 +65,8 @@ def create_reviews():
     user = User.objects.first() or create_super_user()
     from sunrinio.settings.base import BASE_DIR
     import os
-    sulsam = open(os.path.join(BASE_DIR, 'media', 'sulsam.jpg'), 'rb')
-    yuksam = open(os.path.join(BASE_DIR, 'media', '6sam.jpg'), 'rb')
+    sulsam = open(os.path.join(BASE_DIR, 'media', 'sulsam.png'), 'rb')
+    yuksam = open(os.path.join(BASE_DIR, 'media', '6sam.png'), 'rb')
     info_list = [
         ((place, user, 4, '좋아염'), [yuksam, ],),
         ((place2, user, 4, '좋아염'), [sulsam, ],),
@@ -128,7 +128,9 @@ def create_council():
             for activity in activities:
                 Activity.objects.create(promise=promise, content=activity)
 
-
+for i in range(10):
+    create_post()
+exit()
 def run():
     try:
         create_social_apps()
