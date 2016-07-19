@@ -65,8 +65,8 @@
             <div class="divider"></div>
             <p class="grey-text text-darken-1 left-align p">커뮤니티</p>
             <a href=""><li><img src="/static/images/restaurant.png" class="sideicon"> <span class="sort">오늘의 급식</span></li></a>
-            <a href=""><li><img src="/static/images/council.png" class="sideicon"> <span class="sort">학생회</span></li></a>
-             <a href=""><li><img src="/static/images/BOARD.png" class="sideicon"> <span class="sort">게시판</span></li></a>
+            <a href="/debug/council/list/"><li><img src="/static/images/council.png" class="sideicon"> <span class="sort">학생회</span></li></a>
+             <a href="{% url 'boards:list' %}"><li><img src="/static/images/BOARD.png" class="sideicon"> <span class="sort">게시판</span></li></a>
             <div class="divider"></div>
 
             <p class="grey-text text-darken-1 left-align p">공모전팀</p>

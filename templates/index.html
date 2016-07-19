@@ -44,7 +44,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="card" id="main-hot">
                     <div class="card-content white-text">
 
@@ -52,16 +51,20 @@
                             <div class="col s12 center-align">
                                 <span class="card-title"><strong>핫이슈</strong></span>
                             </div>
-                            <div class="col s2 cardimage">
-                                <img class="hot" src="/static/images/discuss-issue.png">
-                            </div>
-                            <div class="col s10">
-                                <p class="pclass main-content">
-                                    1.오늘 급식 어떻게 생각해요?<br/>
-                                    2.숙대에 쥬씨 생겼어요?<br/>
-                                    3.금요일 단축수업함?
-                                </p>
-                            </div>
+                            {% if hot_posts %}
+                                <div class="col s2 cardimage">
+                                    <img class="hot" src="/static/images/discuss-issue.png">
+                                </div>
+                                <div class="col s10">
+                                    <p class="pclass main-content">
+                                        {% for news in hot_posts %}
+                                            <a href="/board/{{ news.board.pk }}/{{ news.pk }}/" class="white-text">{{ forloop.counter }}. {{ news.title }}<br/></a>
+                                        {% endfor %}
+                                    </p>
+                                </div>
+                            {% else %}
+                                <p class="center">핫이슈가 없습니다!</p>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
