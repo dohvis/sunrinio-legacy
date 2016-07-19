@@ -23,6 +23,7 @@ from rest_framework.routers import DefaultRouter
 from accounts import urls as accounts_urls
 from accounts import views as accounts_views
 from hotplace import views as place_views
+from boards import urls as boards_urls
 from boards import views as boards_views
 from schedule import views as schedule_views
 from tags import urls as tags_urls
@@ -63,9 +64,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(accounts_urls, namespace='accounts')),
 
-    url(r'^board/(?P<board_pk>\d+)/write', boards_views.post_write),
-    url(r'^board/(?P<board_pk>\d+)/(?P<post_pk>\d+)', boards_views.post_view),
-    url(r'^board/(?P<board_pk>\d+)/list/(?P<page_idx>\d+)', boards_views.post_list),
+    url(r'boards/', include(boards_urls, namespace='boards')),
     url(r'^teams/', include(teams_urls, namespace='teams')),
     url(r'^tags/', include(tags_urls, namespace='tags')),
     url(r'^allauth/', include('allauth.urls')),

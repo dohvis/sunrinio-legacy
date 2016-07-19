@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
     <nav>
-        <div class="nav-wrapper">
+        <div class="nav-wrapper grey">
             <div class="col s12">
-                <a href="#!" class="breadcrumb">게시판</a>
-                <a href="/board/{{ post.board.pk }}" class="breadcrumb">{{ post.board.name }}</a>
-                <a href="#!" class="breadcrumb">{{ post.title }}</a>
+                <a href="{% url 'boards:list' %}" class="breadcrumb">게시판</a>
+                <a href="{% url 'boards:post_list' post.board.pk %}" class="breadcrumb">{{ post.board.name }}</a>
+                <a href="" class="breadcrumb">{{ post.title }}</a>
             </div>
         </div>
     </nav>

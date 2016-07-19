@@ -1,5 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect, Http404
+from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
@@ -39,11 +41,9 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
 
 
-
+@login_required
 def post_write(request, board_pk):
     board = get_object_or_404(Board, pk=board_pk)
-    if not request.user.is_authenticated():
-       return HttpResponseRedirect('/accounts/login')
 
     if request.method == 'GET':
         form = PostWriteForm()
@@ -55,8 +55,8 @@ def post_write(request, board_pk):
             post.board = board
             post.author = request.user
             post.save()
-            return HttpResponseRedirect('/board/{}/{}'.format(board_pk, post.pk))
-    context_data = {'form':form}
+            return HttpResponseRedirect(reverse('boards:post_view', kwargs={'board_pk': board.pk, 'post_pk': post.pk}))
+    context_data = {'form': form, 'board': board}
     return render(request, 'board/write.html', context_data)
 
 class PostView(HitCountDetailView):
@@ -79,8 +79,9 @@ class PostView(HitCountDetailView):
 
 post_view = PostView.as_view()
 
-def post_list(request, board_pk, page_idx):
+def post_list(request, board_pk):
     if request.method == 'GET':
+        page_idx = request.GET.get('page', 0)
         page_idx = int(page_idx)
         board = get_object_or_404(Board, pk=board_pk)
         posts = Post.objects.filter(board__pk=board_pk).order_by('-created_at')
@@ -91,8 +92,7 @@ def post_list(request, board_pk, page_idx):
         start = cnt*page_idx
         end = cnt*(page_idx+1)
         posts = posts[start:end]
-        context_data = {'posts' : posts}
-        context_data['board'] = board
+        context_data = {'posts': posts, 'board': board}
         pages = []
 
         for i in range(start_page_idx, end_page_idx):
@@ -110,3 +110,7 @@ def post_list(request, board_pk, page_idx):
         return render(request, 'board/list.html', context_data)
     else:
         return Http404
+
+def board_list(request):
+    boards = Board.objects.all()
+    return render(request, 'board/boardlist.html', context={'boards': boards})
