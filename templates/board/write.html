@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
+{% block style %}
+<style>
+#id_content {
+max-height: 1000px;
+height: 320px;
+}
+</style>
+{% endblock %}
 {% block content %}
    <div class="row">
         <nav>
             <div class="nav-wrapper">
-                <div class="col s12">
-                    <a href="#!" class="breadcrumb">커뮤니티</a>
-                    <a href="{% url 'boards:post_list' board.pk %}" class="breadcrumb">{{ board.name }}</a>
-                    <a href="{% url 'boards:post_write' board.pk %}" class="breadcrumb">글쓰기</a>
+                <div class="col s12 grey">
+                    <a href="#!" class="breadcrumb grey">커뮤니티</a>
+                    <a href="{% url 'boards:post_list' board.pk %}" class="breadcrumb grey">{{ board.name }}</a>
+                    <a href="{% url 'boards:post_write' board.pk %}" class="breadcrumb grey">글쓰기</a>
                 </div>
             </div>
         </nav>

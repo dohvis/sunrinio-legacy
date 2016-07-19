@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+    <div class="row">
     <nav>
         <div class="nav-wrapper grey">
             <div class="col s12">
@@ -9,10 +10,11 @@
             </div>
         </div>
     </nav>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <a>{{ post.title }}</a>
+                <a><h4>{{ post.title }}</h4></a>
             </div>
             <div class="col s6">
                 <p>{{ post.author.get_full_name }} | 조회수 {{ post.hit_count.hits }}</p>
@@ -46,7 +48,7 @@
         </ul>
         <ul class="collection">
             <li class="collection-item avatar">
-                <img src="images/yuna.jpg" alt="" class="circle">
+                <img src="/media/profile_image/default.png" alt="" class="circle">
                 <span class="title">Title</span>
                 <p>First Line <br>
                     Second Line
