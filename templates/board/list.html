@@ -45,6 +45,7 @@
             <li class="disabled" style="display:none">
         {% endif %}
         <a href="{% url 'boards:post_list' board.pk %}?page={{ nextpage_idx }}"><i class="material-icons">chevron_right</i></a></li>
+        {% comment "</li></li></li> - Dirty fix for htmlhint not understanding django template" %}
     </ul>
     <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
         <a href="{% url 'boards:post_write' board.pk %}" class="btn-floating btn-large red">
