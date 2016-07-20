@@ -15,6 +15,7 @@
   ],
   "dependencies": {
     "Materialize": "materialize#^0.97.6",
-    "font-awesome": "^4.6.3"
+    "font-awesome": "^4.6.3",
+    "es6-promise": "^3.2.2"
   }
 }
