@@ -58,7 +58,7 @@
                                 <div class="col s10">
                                     <p class="pclass main-content">
                                         {% for news in hot_posts %}
-                                            <a href="/board/{{ news.board.pk }}/{{ news.pk }}/" class="white-text">{{ forloop.counter }}. {{ news.title }}<br/></a>
+                                            <a href="{% url 'boards:post_view' news.board.pk news.pk %}" class="white-text">{{ forloop.counter }}. {{ news.title }}<br/></a>
                                         {% endfor %}
                                     </p>
                                 </div>

@@ -1,14 +1,9 @@
 {% extends 'base.html' %}
 {% block style %}
-<style>
-#id_content {
-max-height: 1000px;
-height: 320px;
-}
-</style>
+    <link href="/static/css/post_write.css" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block content %}
-   <div class="row">
+    <div class="row">
         <nav>
             <div class="nav-wrapper">
                 <div class="col s12 grey">
@@ -19,36 +14,46 @@ height: 320px;
             </div>
         </nav>
     </div>
-  <form method="POST">
-    {% csrf_token %}
-    {{form.title}}
-    <!--textarea id="mytextarea"></textarea-->
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{form.title}}
+                    <!--textarea id="mytextarea"></textarea-->
 
-    {{ form.content }}
-    <button type="submit">Submit</button>
-  {% for error in forms.errors %}
-    error
-  {% endfor %}
-  </form>
+                    {{ form.content }}
+                    <div class="row">
+                        <div class="col s12">
+                            <button class="btn waves-effect waves-light right" type="submit" name="action">글쓰기<i class="material-icons right">send</i></button>
+                        </div>
+                    </div>
+                    {% for error in forms.errors %}
+                        error
+                    {% endfor %}
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 {% block script %}
-<script src="/static/js/textboxio.js"></script>
-  <script type="text/javascript">
-    var editor = textboxio.replace('#id_content');
-    $('#id_content')[0].value = "";
+    <script src="/static/js/textboxio.js"></script>
+    <script type="text/javascript">
+        var editor = textboxio.replace('#id_content');
+        $('#id_content')[0].value = "";
 
-    {% if form.errors %}
-        errors = [
-            {% for field, errors in form.errors.items %}
-                {% for error in errors %}
-                    $('<span>{{ error }}</span>'),
+        {% if form.errors %}
+            errors = [
+                {% for field, errors in form.errors.items %}
+                    {% for error in errors %}
+                        $('<span>{{ error }}</span>'),
+                    {% endfor %}
                 {% endfor %}
-            {% endfor %}
-        ];
-        for (var error of errors) {
-            Materialize.toast(error, 5000);
-        }
-    {%  endif %}
-  </script>
+            ];
+            for (var error of errors) {
+                Materialize.toast(error, 5000);
+            }
+        {%  endif %}
+    </script>
 {% endblock %}
 

@@ -2,10 +2,14 @@ from django import forms
 from django.db import models
 from .models import Post
 
+
 class PostWriteForm(forms.ModelForm):
+    title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '제목'}))
+
     class Meta:
         model = Post
         fields = ('title', 'content')
+
     def __init__(self, *args, **kwargs):
         super(PostWriteForm, self).__init__(*args, **kwargs)
         self.fields['title'].error_messages = {'required': '제목을 입력해주세요.'}

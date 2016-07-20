@@ -13,11 +13,10 @@ def index(request):
 
     current = timezone.now()
     last_day = current - timedelta(days=1)
-    hot_posts = Post.objects.filter(created_at__range=(last_day, current)) \
+    hot_posts = Post.objects.filter(comments__created_at__range=(last_day, current)) \
         .annotate(comment_count=Count('comments'))\
         .order_by('-comment_count')[:3]
     # TODO: 히트 게시물 판별 알고리즘 수정
-    print(hot_posts)
     try:
         news = news_board[0].posts.order_by('-created_at')[:3]
     except IndexError:

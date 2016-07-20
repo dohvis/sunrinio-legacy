@@ -12,9 +12,9 @@
     </div>
     <ul class="collection">
         {% for board in boards %}
-        <li class="collection-item">
-            <a href="{% url 'boards:post_list' board.pk %}"><span class="title">{{ board.name }}</span></a>
-        </li>
+            <li class="collection-item">
+                <a href="{% url 'boards:post_list' board.pk %}"><span class="title"><h5>{{ board.name }}</h5></span></a>
+            </li>
         {% endfor %}
     </ul>
 
