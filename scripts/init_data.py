@@ -128,9 +128,7 @@ def create_council():
             for activity in activities:
                 Activity.objects.create(promise=promise, content=activity)
 
-for i in range(10):
-    create_post()
-exit()
+
 def run():
     try:
         create_social_apps()
