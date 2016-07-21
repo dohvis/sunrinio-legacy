@@ -1,7 +1,9 @@
 (function($){
   $(function(){
 
-    $('.button-collapse').sideNav();
+    $('.button-collapse').sideNav({
+        menuWidth: 300
+    });
     $('.parallax').parallax();
 
   }); // end of document ready
