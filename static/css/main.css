@@ -2,17 +2,21 @@
     line-height: 25px;
     font-size: 1.1em;
 }
+#meal
+{
+    width: 20px;
+}
 #main-meal
 {
-    background-color: #36b3ff;
+    background-color: #36b3ff !important;
+}
+#main-event
+{
+    background-color: #0091ea !important;
 }
 #main-notice
 {
-    background-color: #0091ea;
-}
-#main-hot
-{
-    background-color: #006eb2;
+    background-color: #006eb2 !important;
 }
 #meal-img
 {
@@ -39,7 +43,7 @@
   float: left;
   box-sizing: border-box;
   padding: 0 0;
-    padding-right: 10px;
+  padding-right: 10px;
 }
 .hot{
     width: 100%;
@@ -52,9 +56,41 @@
     font-weight:bold ;
 }
 #main-card{
-        height: 100px;
+    height: 100px;
 }
 .card .card-content {
     padding: 10px;
     border-radius: 0 0 2px 2px;
+}
+.slider{
+    height: 210px !important;
+}
+.slides{
+    height: 180px !important;
+}
+.headers{
+    text-align: center;
+    font-size: 16px;
+    margin:0;
+    color:#fff;
+}
+.headerbar{
+    border-bottom: none !important;
+}
+.slider .indicators .indicator-item.active {
+    background-color: #36b3ff;
+}
+.container{
+    margin:2%;
+    width: 96%;
+}
+.maincard{
+border: 1px solid #0091ea;
+}
+.collection {
+    margin: 0.5rem 0 1rem 0;
+    border: 1px solid #0091ea;
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
 }

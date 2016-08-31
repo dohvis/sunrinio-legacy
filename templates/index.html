@@ -2,75 +2,66 @@
 {% block title %}
 {% endblock %}
 {% block style %}
-    <link href="/static/css/main.css" rel="stylesheet" type="text/css">
+<link href="/static/css/main.css" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col s12 m8 l6 offset-m2 offset-l3">
-                <div class="card" id="main-meal">
-                    <div class="card-content white-text center">
-                        <div class="col s12" id="main-card">
-                            <img src="/static/images/meal.png" id="meal-img">
-                        </div>
-                        <span class="card-title"><strong>오늘의 급식</strong></span>
-                        <p class="pclass main-content">햇반,맛짬뽕,삼겹살,피자<br/>치킨,치킨무</p>
-                    </div>
-                </div>
+<div class = "container">
 
-                <div class="card" id="main-notice">
-                    <div class="card-content white-text">
-
-                        <div class="row">
-                            <div class="col s12 center-align">
-                                <span class="card-title align-center"><strong>공지사항</strong></span>
-                            </div>
-                            {% if newses %}
-                                <div class="col s2 ">
-                                    <img class="hot cardimage" src="/static/images/calendar.png">
-                                </div>
-                                <div class="col s10">
-                                    <p class="pclass main-content">
-                                        {% for news in newses %}
-                                            <a href="{% url 'boards:post_view' news.board.pk news.pk %}" class="white-text">{{ news.title }}<br/></a>
-                                        {% endfor %}
-                                    </p>
-                                </div>
-                            {% else %}
-                                <div class="col s12">
-                                    <p class="center">공지사항이 없습니다!</p>
-                                </div>
-                            {% endif %}
-                        </div>
+    <ul class="collection with-header">
+        <div class="slider">
+            <ul class="slides">
+                <li>
+                    <img src="/static/images/slider1.jpg"> <!-- random image -->
+                    <div class="caption center-align">
+                        <h3>선린축제</h3>
+                        <h5 class="light grey-text text-lighten-3">나만의 색깔을 찾아라!</h5>
                     </div>
-                </div>
-                <div class="card" id="main-hot">
-                    <div class="card-content white-text">
-
-                        <div class="row">
-                            <div class="col s12 center-align">
-                                <span class="card-title"><strong>핫이슈</strong></span>
-                            </div>
-                            {% if hot_posts %}
-                                <div class="col s2 cardimage">
-                                    <img class="hot" src="/static/images/discuss-issue.png">
-                                </div>
-                                <div class="col s10">
-                                    <p class="pclass main-content">
-                                        {% for news in hot_posts %}
-                                            <a href="{% url 'boards:post_view' news.board.pk news.pk %}" class="white-text">{{ forloop.counter }}. {{ news.title }}<br/></a>
-                                        {% endfor %}
-                                    </p>
-                                </div>
-                            {% else %}
-                                <p class="center">핫이슈가 없습니다!</p>
-                            {% endif %}
-                        </div>
+                </li>
+                <li>
+                    <img src="http://lorempixel.com/580/250/nature/2"> <!-- random image -->
+                    <div class="caption left-align">
+                        <h3>앙기모찌</h3>
+                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
                     </div>
-                </div>
-            </div>
+                </li>
+                <li>
+                    <img src="http://lorempixel.com/580/250/nature/3"> <!-- random image -->
+                    <div class="caption right-align">
+                        <h3>Right Aligned Caption</h3>
+                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                    </div>
+                </li>
+                <li>
+                    <img src="http://lorempixel.com/580/250/nature/4"> <!-- random image -->
+                    <div class="caption center-align">
+                        <h3>This is our big Tagline!</h3>
+                        <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
+    </ul>
+
+
+    <ul class="collection with-header maincard">
+        <li class="collection-header headerbar" id="main-meal"><p class = "headers">Today's meal</p></li>
+        <li class="collection-item"><a>중식 </a> 햇반, 치킨너겟, 포기김치, 푸딩, 에그타르트</li>
+        <li class="collection-item"><a>석식 </a> 햇반, 치킨너겟, 포기김치, 푸딩, 에그타르트</li>
+        <li class="collection-item" style="text-align:left"><a>급식평가하러가기>></a></li>
+    </ul>
+    <ul class="collection with-header maincard">
+    <li class="collection-header headerbar" id="main-event"><p class = "headers">Today's event</p></li>
+        <li class="collection-item">9월 모의고사</li>
+    </ul>
+    <ul class="collection with-header maincard">
+    <li class="collection-header headerbar" id="main-notice"><p class = "headers">공지사항</p></li>
+        <li class="collection-item">교내 모의해킹 방어대회 안내</li>
+        <li class="collection-item">교내 멀티미디어 콘텐츠 공모전 안내</li>
+        <li class="collection-item">Iot 특강 신청</li>
+    </ul>
+</div>
+</div>
+</div>
 
 
 {% endblock %}
