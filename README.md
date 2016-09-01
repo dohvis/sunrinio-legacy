@@ -16,3 +16,6 @@ http://dev.sunrin.io/docs/
 `webpack --watch`
 
 `python manage.py runserver`
+
+# migration
+`python manage.py migrate`
